@@ -1,0 +1,8 @@
+{
+    "id": "port",
+    "type": "number",
+    "label": {
+        "en": "Port"
+    },
+    "value": 502
+}

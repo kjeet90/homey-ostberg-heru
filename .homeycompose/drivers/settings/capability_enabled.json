@@ -1,0 +1,8 @@
+{
+    "id": "capability_enabled",
+    "type": "checkbox",
+    "label": {
+        "en": "Capability enabled"
+    },
+    "value": true
+}

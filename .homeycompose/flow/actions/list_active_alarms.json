@@ -1,0 +1,28 @@
+{
+    "id": "list_active_alarms",
+    "title": {
+        "en": "Get active alarms"
+    },
+    "titleFormatted": {
+        "en": "Get active alarms"
+    },
+    "hint": {
+        "en": "List all the active alarms on the unit"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+        }
+    ],
+    "tokens": [
+        {
+            "name": "allActive",
+            "title": "Active alarms",
+            "example": "Fire alarm, Supply fan alarm",
+            "type": "string"
+        }
+    ]
+}

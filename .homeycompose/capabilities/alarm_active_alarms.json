@@ -1,0 +1,15 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Active alarms"
+    },
+    "desc": {
+        "en": "Active alarms"
+    },
+    "insights": true,
+    "insightsTitleTrue": "Has active alarms",
+    "insightsTitleFalse": "No active alarms",
+    "icon": "/assets/icons/alert.svg",
+    "getable": true,
+    "setable": false
+}

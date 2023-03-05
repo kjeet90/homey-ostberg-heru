@@ -1,0 +1,31 @@
+{
+    "id": "alarm_reset",
+    "title": {
+        "en": "An alarm was reset"
+    },
+    "titleFormatted": {
+        "en": "An alarm was reset"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+        }
+    ],
+    "tokens": [
+        {
+            "name": "name",
+            "title": "Reset alarm",
+            "example": "Fire alarm",
+            "type": "string"
+        },
+        {
+            "name": "allActive",
+            "title": "Active alarms",
+            "example": "Fire alarm, Supply fan alarm",
+            "type": "string"
+        }
+    ]
+}

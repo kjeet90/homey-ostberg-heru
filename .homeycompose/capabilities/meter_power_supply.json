@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "Supply fan power"
+    },
+    "desc": {
+        "en": "Supply fan power"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "%"
+            },
+            "example": {
+                "en": 50
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "%"
+    },
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "icon": "/assets/icons/speedometer.svg",
+    "insights": true
+}

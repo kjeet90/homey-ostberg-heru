@@ -1,0 +1,40 @@
+{
+    "id": "no.kjeet90.ostbergheru",
+    "version": "1.0.0",
+    "compatibility": ">=8.1.0",
+    "sdk": 3,
+    "platforms": ["local"],
+    "name": {
+        "en": "Östberg Heru"
+    },
+    "description": {
+        "en": "Air quality is life quality"
+    },
+    "category": ["climate"],
+    "permissions": [],
+    "images": {
+        "small": "/assets/images/small.png",
+        "large": "/assets/images/large.png",
+        "xlarge": "/assets/images/xlarge.png"
+    },
+    "author": {
+        "name": "Kjetil Haugland",
+        "email": "hauglandkjetil@gmail.com"
+    },
+    "brandColor": "#d23438",
+    "tags": {
+        "en": ["ostberg", "östberg", "østberg", "heru", "ventilation", "hvac"]
+    },
+    "source": "https://github.com/kjeet90/homey-ostberg-heru",
+    "bugs": {
+        "url": "https://github.com/kjeet90/homey-ostberg-heru/issues"
+    },
+    "contributing": {
+        "donate": {
+            "paypal": {
+                "username": "kjetilhaugland"
+            }
+        }
+    },
+    "homeyCommunityTopicId": 77169
+}

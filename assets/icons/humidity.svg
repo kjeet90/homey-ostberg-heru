@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="humidity.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="15.440407"
+     inkscape:cx="7.1889297"
+     inkscape:cy="20.012426"
+     inkscape:window-width="1312"
+     inkscape:window-height="1024"
+     inkscape:window-x="341"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4" />
+  <path
+     id="path2"
+     style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.43717;stroke-opacity:1"
+     d="m 12,0 -1.0625,1.2244898 c 0,0 -1.813776,2.1142097 -3.6412761,4.8552443 C 5.4687239,8.8207686 3.5,12.102743 3.5,15.252017 A 8.5,8.7479826 0 0 0 12,24 8.5,8.7479826 0 0 0 20.5,15.252017 C 20.5,12.102743 18.531274,8.8207686 16.703774,6.0797341 14.876274,3.3386995 13.0625,1.2244898 13.0625,1.2244898 Z m 0,4.564784 c 0.623331,0.7581584 1.18956,1.3849833 2.379558,3.1637398 1.714168,2.5660742 3.28711,5.8322162 3.28711,7.5234932 0,3.236754 -2.521668,5.831989 -5.666668,5.831989 -3.145,0 -5.6666668,-2.595235 -5.6666668,-5.831989 0,-1.691277 1.5729428,-4.957419 3.2871088,-7.5234932 C 10.81044,5.9497673 11.376668,5.3229424 12,4.564784 Z m 2.54834,6.734693 -5.9793292,6.156622 1.0541996,1.087802 5.9820956,-6.156621 z m -4.7037758,0.03133 a 1.2459892,1.2823399 0 0 0 -1.2478846,1.281435 1.2459892,1.2823399 0 0 0 1.2478846,1.281442 1.2459892,1.2823399 0 0 0 1.2451188,-1.281442 1.2459892,1.2823399 0 0 0 -1.2451188,-1.281443 z m 4.4851898,4.616041 a 1.2459892,1.2823399 0 0 0 -1.245117,1.281444 1.2459892,1.2823399 0 0 0 1.245117,1.281442 1.2459892,1.2823399 0 0 0 1.245114,-1.281442 1.2459892,1.2823399 0 0 0 -1.245114,-1.281444 z" />
+</svg>

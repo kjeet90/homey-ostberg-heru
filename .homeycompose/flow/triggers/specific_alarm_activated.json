@@ -1,0 +1,33 @@
+{
+    "id": "specific_alarm_activated",
+    "title": {
+        "en": "Specific alarm became active"
+    },
+    "titleFormatted": {
+        "en": "[[alarm]] became active"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+        },
+        {
+            "name": "alarm",
+            "type": "autocomplete",
+            "title": { "en": "Alarm" },
+            "placeholder": {
+                "en": "Alarm"
+            }
+        }
+    ],
+    "tokens": [
+        {
+            "name": "name",
+            "title": "Alarm",
+            "example": "Fire alarm",
+            "type": "string"
+        }
+    ]
+}

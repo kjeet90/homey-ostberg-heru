@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "Supply fan RPM"
+    },
+    "desc": {
+        "en": "Supply fan RPM"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "RPM"
+            },
+            "example": {
+                "en": 2560
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "RPM"
+    },
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "icon": "/assets/icons/speedometer.svg",
+    "insights": true
+}

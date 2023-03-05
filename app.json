@@ -1,0 +1,1735 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "no.kjeet90.ostbergheru",
+  "version": "1.0.0",
+  "compatibility": ">=8.1.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Östberg Heru"
+  },
+  "description": {
+    "en": "Air quality is life quality"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Kjetil Haugland",
+    "email": "hauglandkjetil@gmail.com"
+  },
+  "brandColor": "#d23438",
+  "tags": {
+    "en": [
+      "ostberg",
+      "östberg",
+      "østberg",
+      "heru",
+      "ventilation",
+      "hvac"
+    ]
+  },
+  "source": "https://github.com/kjeet90/homey-ostberg-heru",
+  "bugs": {
+    "url": "https://github.com/kjeet90/homey-ostberg-heru/issues"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "kjetilhaugland"
+      }
+    }
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "alarm_activated",
+        "title": {
+          "en": "An alarm became active"
+        },
+        "titleFormatted": {
+          "en": "An alarm became active"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "name",
+            "title": "New alarm",
+            "example": "Fire alarm",
+            "type": "string"
+          },
+          {
+            "name": "allActive",
+            "title": "Active alarms",
+            "example": "Fire alarm, Supply fan alarm",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "alarm_reset",
+        "title": {
+          "en": "An alarm was reset"
+        },
+        "titleFormatted": {
+          "en": "An alarm was reset"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "name",
+            "title": "Reset alarm",
+            "example": "Fire alarm",
+            "type": "string"
+          },
+          {
+            "name": "allActive",
+            "title": "Active alarms",
+            "example": "Fire alarm, Supply fan alarm",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "fan_mode_changed",
+        "title": {
+          "en": "Fan mode changed"
+        },
+        "highlight": true,
+        "tokens": [
+          {
+            "name": "mode",
+            "type": "string",
+            "title": {
+              "en": "Mode"
+            },
+            "example": "Overpressure"
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          }
+        ]
+      },
+      {
+        "id": "regulation_mode_changed_gen3",
+        "title": {
+          "en": "Regulation mode changed"
+        },
+        "highlight": true,
+        "tokens": [
+          {
+            "name": "mode",
+            "type": "string",
+            "title": {
+              "en": "Mode"
+            },
+            "example": "Supply air"
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          }
+        ]
+      },
+      {
+        "id": "regulation_mode_changed_iqc",
+        "title": {
+          "en": "Regulation mode changed"
+        },
+        "highlight": true,
+        "tokens": [
+          {
+            "name": "mode",
+            "type": "string",
+            "title": {
+              "en": "Mode"
+            },
+            "example": "Supply air"
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          }
+        ]
+      },
+      {
+        "id": "specific_alarm_activated",
+        "title": {
+          "en": "Specific alarm became active"
+        },
+        "titleFormatted": {
+          "en": "[[alarm]] became active"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          },
+          {
+            "name": "alarm",
+            "type": "autocomplete",
+            "title": {
+              "en": "Alarm"
+            },
+            "placeholder": {
+              "en": "Alarm"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "name": "name",
+            "title": "Alarm",
+            "example": "Fire alarm",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "specific_alarm_reset",
+        "title": {
+          "en": "Specific alarm was reset"
+        },
+        "titleFormatted": {
+          "en": "[[alarm]] was reset"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          },
+          {
+            "name": "alarm",
+            "type": "autocomplete",
+            "title": {
+              "en": "Alarm"
+            },
+            "placeholder": {
+              "en": "Alarm"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "name": "name",
+            "title": "Alarm",
+            "example": "Fire alarm",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "is_any_alarm_active",
+        "title": {
+          "en": "!{{An alarm is|No alarms are}} active"
+        },
+        "titleFormatted": {
+          "en": "!{{An alarm is|No alarms are}} active"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          }
+        ]
+      },
+      {
+        "id": "is_fan_mode",
+        "title": {
+          "en": "Is fan mode !{{|not}} active"
+        },
+        "titleFormatted": {
+          "en": "Fan mode is !{{|not}} [[mode]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "off",
+                "label": {
+                  "en": "Off"
+                }
+              },
+              {
+                "id": "normal",
+                "label": {
+                  "en": "Normal"
+                }
+              },
+              {
+                "id": "overpressure",
+                "label": {
+                  "en": "Overpressure"
+                }
+              },
+              {
+                "id": "boost",
+                "label": {
+                  "en": "Boost"
+                }
+              },
+              {
+                "id": "away",
+                "label": {
+                  "en": "Away"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "is_regulation_mode_gen3",
+        "title": {
+          "en": "Is regulation mode !{{|not}} active"
+        },
+        "titleFormatted": {
+          "en": "Regulation mode is !{{|not}} [[mode]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "supply",
+                "label": {
+                  "en": "Supply air"
+                }
+              },
+              {
+                "id": "extract",
+                "label": {
+                  "en": "Extract air"
+                }
+              },
+              {
+                "id": "room",
+                "label": {
+                  "en": "Room"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "is_regulation_mode_iqc",
+        "title": {
+          "en": "Is regulation mode !{{|not}} active"
+        },
+        "titleFormatted": {
+          "en": "Regulation mode is !{{|not}} [[mode]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "supply",
+                "label": {
+                  "en": "Supply air"
+                }
+              },
+              {
+                "id": "extract",
+                "label": {
+                  "en": "Extract air"
+                }
+              },
+              {
+                "id": "room",
+                "label": {
+                  "en": "Room"
+                }
+              },
+              {
+                "id": "extract_sw",
+                "label": {
+                  "en": "Extract S/W"
+                }
+              },
+              {
+                "id": "room_sw",
+                "label": {
+                  "en": "Room S/W"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "is_specific_alarm_active",
+        "title": {
+          "en": "Is alarm !{{|not}} active"
+        },
+        "titleFormatted": {
+          "en": "[[alarm]] is !{{|not}} active"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          },
+          {
+            "name": "alarm",
+            "type": "dropdown",
+            "title": {
+              "en": "Alarm"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "fire_alarm",
+                "label": {
+                  "en": "Fire alarm"
+                }
+              },
+              {
+                "id": "rotor_alarm",
+                "label": {
+                  "en": "Rotor alarm"
+                }
+              },
+              {
+                "id": "freeze_alarm",
+                "label": {
+                  "en": "Freeze alarm"
+                }
+              },
+              {
+                "id": "low_supply_alarm",
+                "label": {
+                  "en": "Low supply alarm"
+                }
+              },
+              {
+                "id": "low_rotor_temperature_alarm",
+                "label": {
+                  "en": "Low rotor temperature alarm"
+                }
+              },
+              {
+                "id": "temp_sensor_open_circuit_alarm",
+                "label": {
+                  "en": "Temp. sensor open circuit alarm"
+                }
+              },
+              {
+                "id": "temp_sensor_short_circut_alarm",
+                "label": {
+                  "en": "Temp. sensor short circuit alarm"
+                }
+              },
+              {
+                "id": "pulser_alarm",
+                "label": {
+                  "en": "Pulser alarm"
+                }
+              },
+              {
+                "id": "supply_fan_alarm",
+                "label": {
+                  "en": "Supply fan alarm"
+                }
+              },
+              {
+                "id": "extract_fan_alarm",
+                "label": {
+                  "en": "Extract fan alarm"
+                }
+              },
+              {
+                "id": "supply_filter_alarm",
+                "label": {
+                  "en": "Supply filter alarm"
+                }
+              },
+              {
+                "id": "extract_filter_alarm",
+                "label": {
+                  "en": "Extract filter alarm"
+                }
+              },
+              {
+                "id": "filter_timer_alarm",
+                "label": {
+                  "en": "Filter timer alarm"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "list_active_alarms",
+        "title": {
+          "en": "Get active alarms"
+        },
+        "titleFormatted": {
+          "en": "Get active alarms"
+        },
+        "hint": {
+          "en": "List all the active alarms on the unit"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "allActive",
+            "title": "Active alarms",
+            "example": "Fire alarm, Supply fan alarm",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "set_fan_mode",
+        "title": {
+          "en": "Set fan mode"
+        },
+        "titleFormatted": {
+          "en": "Set fan mode to [[mode]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "off",
+                "label": {
+                  "en": "Off"
+                }
+              },
+              {
+                "id": "normal",
+                "label": {
+                  "en": "Normal"
+                }
+              },
+              {
+                "id": "overpressure",
+                "label": {
+                  "en": "Overpressure"
+                }
+              },
+              {
+                "id": "boost",
+                "label": {
+                  "en": "Boost"
+                }
+              },
+              {
+                "id": "away",
+                "label": {
+                  "en": "Away"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_regulation_mode_gen3",
+        "title": {
+          "en": "Set regulation mode"
+        },
+        "hint": {
+          "en": "Before selecting e.g. Room, make sure this sensor is installed in your system."
+        },
+        "titleFormatted": {
+          "en": "Set regulation mode to [[mode]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "supply",
+                "label": {
+                  "en": "Supply air"
+                }
+              },
+              {
+                "id": "extract",
+                "label": {
+                  "en": "Extract air"
+                }
+              },
+              {
+                "id": "room",
+                "label": {
+                  "en": "Room"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_regulation_mode_iqc",
+        "title": {
+          "en": "Set regulation mode"
+        },
+        "hint": {
+          "en": "Before selecting e.g. Room, make sure this sensor is installed in your system."
+        },
+        "titleFormatted": {
+          "en": "Set regulation mode to [[mode]]"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Mode"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "supply",
+                "label": {
+                  "en": "Supply air"
+                }
+              },
+              {
+                "id": "extract",
+                "label": {
+                  "en": "Extract air"
+                }
+              },
+              {
+                "id": "room",
+                "label": {
+                  "en": "Room"
+                }
+              },
+              {
+                "id": "extract_sw",
+                "label": {
+                  "en": "Extract S/W"
+                }
+              },
+              {
+                "id": "room_sw",
+                "label": {
+                  "en": "Room S/W"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "icon": "/drivers/gen-3-remote/assets/icon.svg",
+      "images": {
+        "large": "/drivers/gen-3-remote/assets/images/large.png",
+        "small": "/drivers/gen-3-remote/assets/images/small.png"
+      },
+      "class": "thermostat",
+      "pair": [
+        {
+          "id": "ip_address"
+        }
+      ],
+      "platforms": [
+        "local"
+      ],
+      "name": {
+        "en": "Gen 3 Remote"
+      },
+      "capabilities": [
+        "measure_temperature",
+        "target_temperature",
+        "fan_mode",
+        "regulation_mode_gen3",
+        "meter_temperature_outdoor_air",
+        "meter_temperature_supply_air",
+        "meter_temperature_waste_air",
+        "meter_temperature_extract_air",
+        "meter_temperature_heat_recovery_wheel",
+        "meter_temperature_room",
+        "meter_temperature_water",
+        "meter_humidity_relative",
+        "meter_rpm_supply",
+        "meter_rpm_extract",
+        "meter_power_supply",
+        "meter_power_extract",
+        "meter_pressure_supply",
+        "meter_pressure_extract",
+        "meter_power_heating",
+        "alarm_active_alarms",
+        "meter_filter_timer"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "title": {
+            "en": "Target temperature"
+          },
+          "min": 15,
+          "max": 40,
+          "step": 1
+        }
+      },
+      "id": "gen-3-remote",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "General"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "IP address"
+              },
+              "value": "0.0.0.0"
+            },
+            {
+              "id": "port",
+              "type": "number",
+              "label": {
+                "en": "Port"
+              },
+              "value": 502
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Add/remove capabilities"
+          },
+          "children": [
+            {
+              "id": "capability_enabled_meter_temperature_room",
+              "label": {
+                "en": "Room temperature"
+              },
+              "hint": {
+                "en": "Do not remove if you use Regulation mode Room"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_humidity_relative",
+              "label": {
+                "en": "Relative humidity"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_temperature_water",
+              "label": {
+                "en": "Water temperature"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_pressure_supply",
+              "label": {
+                "en": "Supply pressure"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_pressure_extract",
+              "label": {
+                "en": "Extract pressure"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_temperature_heat_recovery_wheel",
+              "label": {
+                "en": "Heat recovery wheel temperature"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power_supply",
+              "label": {
+                "en": "Supply power"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power_extract",
+              "label": {
+                "en": "Extract power"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power_heating",
+              "label": {
+                "en": "Heating power"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_rpm_supply",
+              "label": {
+                "en": "Supply RPM"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_rpm_extract",
+              "label": {
+                "en": "Extract RPM"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_alarm_active_alarms",
+              "label": {
+                "en": "Active alarms"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_filter_timer",
+              "label": {
+                "en": "Filter days left"
+              },
+              "type": "checkbox",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "/drivers/iqc-touch/assets/icon.svg",
+      "images": {
+        "large": "/drivers/iqc-touch/assets/images/large.png",
+        "small": "/drivers/iqc-touch/assets/images/small.png"
+      },
+      "class": "thermostat",
+      "pair": [
+        {
+          "id": "ip_address"
+        }
+      ],
+      "platforms": [
+        "local"
+      ],
+      "name": {
+        "en": "IQC Touch"
+      },
+      "capabilities": [
+        "measure_temperature",
+        "target_temperature",
+        "measure_temperature.eco",
+        "target_temperature.eco",
+        "fan_mode",
+        "regulation_mode_iqc",
+        "meter_temperature_outdoor_air",
+        "meter_temperature_supply_air",
+        "meter_temperature_waste_air",
+        "meter_temperature_extract_air",
+        "meter_temperature_heat_recovery_wheel",
+        "meter_temperature_room",
+        "meter_temperature_water",
+        "meter_humidity_relative",
+        "meter_rpm_supply",
+        "meter_rpm_extract",
+        "meter_power_supply",
+        "meter_power_extract",
+        "meter_pressure_supply",
+        "meter_pressure_extract",
+        "meter_power_heating",
+        "alarm_active_alarms",
+        "meter_filter_timer"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "title": {
+            "en": "Comfort target temperature"
+          },
+          "min": 15,
+          "max": 40,
+          "step": 1
+        },
+        "target_temperature.eco": {
+          "title": {
+            "en": "ECO target temperature"
+          },
+          "min": 15,
+          "max": 39,
+          "step": 1
+        }
+      },
+      "id": "iqc-touch",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "General"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "IP address"
+              },
+              "value": "0.0.0.0"
+            },
+            {
+              "id": "port",
+              "type": "number",
+              "label": {
+                "en": "Port"
+              },
+              "value": 502
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Add/remove capabilities"
+          },
+          "children": [
+            {
+              "id": "capability_enabled_meter_temperature_room",
+              "label": {
+                "en": "Room temperature"
+              },
+              "hint": {
+                "en": "Do not remove if you use Regulation mode Room or Room S/W."
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_humidity_relative",
+              "label": {
+                "en": "Relative humidity"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_temperature_water",
+              "label": {
+                "en": "Water temperature"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_pressure_supply",
+              "label": {
+                "en": "Supply pressure"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_pressure_extract",
+              "label": {
+                "en": "Extract pressure"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_temperature_heat_recovery_wheel",
+              "label": {
+                "en": "Heat recovery wheel temperature"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power_supply",
+              "label": {
+                "en": "Supply power"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power_extract",
+              "label": {
+                "en": "Extract power"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power_heating",
+              "label": {
+                "en": "Heating power"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_rpm_supply",
+              "label": {
+                "en": "Supply RPM"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_rpm_extract",
+              "label": {
+                "en": "Extract RPM"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_alarm_active_alarms",
+              "label": {
+                "en": "Active alarms"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_filter_timer",
+              "label": {
+                "en": "Filter days left"
+              },
+              "type": "checkbox",
+              "value": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "alarm_active_alarms": {
+      "type": "boolean",
+      "title": {
+        "en": "Active alarms"
+      },
+      "desc": {
+        "en": "Active alarms"
+      },
+      "insights": true,
+      "insightsTitleTrue": "Has active alarms",
+      "insightsTitleFalse": "No active alarms",
+      "icon": "/assets/icons/alert.svg",
+      "getable": true,
+      "setable": false
+    },
+    "fan_mode": {
+      "type": "enum",
+      "title": {
+        "en": "Fan mode"
+      },
+      "desc": {
+        "en": "Fan mode"
+      },
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "off",
+          "title": {
+            "en": "Off"
+          }
+        },
+        {
+          "id": "normal",
+          "title": {
+            "en": "Normal"
+          }
+        },
+        {
+          "id": "overpressure",
+          "title": {
+            "en": "Overpressure"
+          }
+        },
+        {
+          "id": "boost",
+          "title": {
+            "en": "Boost"
+          }
+        },
+        {
+          "id": "away",
+          "title": {
+            "en": "Away"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": true
+    },
+    "meter_filter_timer": {
+      "title": {
+        "en": "Filter days left"
+      },
+      "desc": {
+        "en": "Filter days left"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": ""
+          },
+          "example": {
+            "en": 44
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "icon": "/assets/icons/filter-days.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_humidity_relative": {
+      "title": {
+        "en": "Relative humidity"
+      },
+      "desc": {
+        "en": "Relative humidity"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "%"
+          },
+          "example": {
+            "en": 44
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "%"
+      },
+      "icon": "/assets/icons/humidity.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_power_extract": {
+      "title": {
+        "en": "Extract fan power"
+      },
+      "desc": {
+        "en": "Extract fan power"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "%"
+          },
+          "example": {
+            "en": 50
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "%"
+      },
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "icon": "/assets/icons/speedometer.svg",
+      "insights": true
+    },
+    "meter_power_heating": {
+      "title": {
+        "en": "Heating power"
+      },
+      "desc": {
+        "en": "Heating power"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "%"
+          },
+          "example": {
+            "en": 50
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "%"
+      },
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "icon": "/assets/icons/heating.svg",
+      "insights": true
+    },
+    "meter_power_supply": {
+      "title": {
+        "en": "Supply fan power"
+      },
+      "desc": {
+        "en": "Supply fan power"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "%"
+          },
+          "example": {
+            "en": 50
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "%"
+      },
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "icon": "/assets/icons/speedometer.svg",
+      "insights": true
+    },
+    "meter_pressure_extract": {
+      "title": {
+        "en": "Extract pressure"
+      },
+      "desc": {
+        "en": "Extract pressure"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "Pa"
+          },
+          "example": {
+            "en": 44
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "Pa"
+      },
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "icon": "/assets/icons/gauge.svg",
+      "insights": true
+    },
+    "meter_pressure_supply": {
+      "title": {
+        "en": "Supply pressure"
+      },
+      "desc": {
+        "en": "Supply pressure"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "Pa"
+          },
+          "example": {
+            "en": 44
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "Pa"
+      },
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "icon": "/assets/icons/gauge.svg",
+      "insights": true
+    },
+    "meter_rpm_extract": {
+      "title": {
+        "en": "Extract fan RPM"
+      },
+      "desc": {
+        "en": "Extract fan RPM"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "RPM"
+          },
+          "example": {
+            "en": 2560
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "RPM"
+      },
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "icon": "/assets/icons/speedometer.svg",
+      "insights": true
+    },
+    "meter_rpm_supply": {
+      "title": {
+        "en": "Supply fan RPM"
+      },
+      "desc": {
+        "en": "Supply fan RPM"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "RPM"
+          },
+          "example": {
+            "en": 2560
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "RPM"
+      },
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "icon": "/assets/icons/speedometer.svg",
+      "insights": true
+    },
+    "meter_temperature_extract_air": {
+      "title": {
+        "en": "Extract air temperature"
+      },
+      "desc": {
+        "en": "Extract air temperature"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "°C"
+          },
+          "example": {
+            "en": 20
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/icons/extract-air.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_temperature_heat_recovery_wheel": {
+      "title": {
+        "en": "Heat recovery wheel temperature"
+      },
+      "desc": {
+        "en": "Heat recovery wheel temperature"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "°C"
+          },
+          "example": {
+            "en": 20
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/icons/rotor.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_temperature_outdoor_air": {
+      "title": {
+        "en": "Outdoor air temperature"
+      },
+      "desc": {
+        "en": "Outdoor air temperature"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "°C"
+          },
+          "example": {
+            "en": 20
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/icons/outdoor-air.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_temperature_room": {
+      "title": {
+        "en": "Room temperature"
+      },
+      "desc": {
+        "en": "Room temperature"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "°C"
+          },
+          "example": {
+            "en": 20
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/icons/room.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_temperature_supply_air": {
+      "title": {
+        "en": "Supply air temperature"
+      },
+      "desc": {
+        "en": "Supply air temperature"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "°C"
+          },
+          "example": {
+            "en": 20
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/icons/supply-air.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_temperature_waste_air": {
+      "title": {
+        "en": "Waste air temperature"
+      },
+      "desc": {
+        "en": "Waste air temperature"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "°C"
+          },
+          "example": {
+            "en": 20
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/icons/waste-air.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_temperature_water": {
+      "title": {
+        "en": "Water temperature"
+      },
+      "desc": {
+        "en": "Water temperature"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "°C"
+          },
+          "example": {
+            "en": 20
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/icons/water.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "regulation_mode_gen3": {
+      "type": "enum",
+      "title": {
+        "en": "Regulation mode"
+      },
+      "desc": {
+        "en": "Regulation mode"
+      },
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "supply",
+          "title": {
+            "en": "Supply air"
+          }
+        },
+        {
+          "id": "extract",
+          "title": {
+            "en": "Extract air"
+          }
+        },
+        {
+          "id": "room",
+          "title": {
+            "en": "Room"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": true
+    },
+    "regulation_mode_iqc": {
+      "type": "enum",
+      "title": {
+        "en": "Regulation mode"
+      },
+      "desc": {
+        "en": "Regulation mode"
+      },
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "supply",
+          "title": {
+            "en": "Supply air"
+          }
+        },
+        {
+          "id": "extract",
+          "title": {
+            "en": "Extract air"
+          }
+        },
+        {
+          "id": "room",
+          "title": {
+            "en": "Room"
+          }
+        },
+        {
+          "id": "extract_sw",
+          "title": {
+            "en": "Extract S/W"
+          }
+        },
+        {
+          "id": "room_sw",
+          "title": {
+            "en": "Room S/W"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": true
+    }
+  }
+}

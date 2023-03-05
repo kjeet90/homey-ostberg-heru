@@ -1,0 +1,26 @@
+{
+    "title": {
+        "en": "Filter days left"
+    },
+    "desc": {
+        "en": "Filter days left"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": ""
+            },
+            "example": {
+                "en": 44
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "icon": "/assets/icons/filter-days.svg",
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "insights": true
+}

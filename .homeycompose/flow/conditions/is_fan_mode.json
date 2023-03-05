@@ -1,0 +1,30 @@
+{
+    "id": "is_fan_mode",
+    "title": {
+        "en": "Is fan mode !{{|not}} active"
+    },
+    "titleFormatted": {
+        "en": "Fan mode is !{{|not}} [[mode]]"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+        },
+        {
+            "name": "mode",
+            "type": "dropdown",
+            "title": { "en": "Mode" },
+            "required": false,
+            "values": [
+                { "id": "off", "label": { "en": "Off" } },
+                { "id": "normal", "label": { "en": "Normal" } },
+                { "id": "overpressure", "label": { "en": "Overpressure" } },
+                { "id": "boost", "label": { "en": "Boost" } },
+                { "id": "away", "label": { "en": "Away" } }
+            ]
+        }
+    ]
+}

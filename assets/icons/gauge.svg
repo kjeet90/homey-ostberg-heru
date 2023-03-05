@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="gauge.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="28.416667"
+     inkscape:cx="11.718475"
+     inkscape:cy="11.982405"
+     inkscape:window-width="1920"
+     inkscape:window-height="1029"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M 12,0 A 12,12 0 0 0 0,12 12,12 0 0 0 12,24 12,12 0 0 0 24,12 12,12 0 0 0 12,0 m 0,2.4 a 9.6,9.6 0 0 1 9.6,9.6 c 0,2.88 -1.2,5.4 -3.24,7.2 C 16.68,17.64 14.4,16.8 12,16.8 9.6,16.8 7.44,17.64 5.64,19.2 3.6,17.4 2.4,14.88 2.4,12 A 9.6,9.6 0 0 1 12,2.4 m 2.4,2.268 C 13.944,4.68 13.512,4.98 13.32,5.448 L 11.772,9.324 11.652,9.6 c -0.852,0.156 -1.56,0.72 -1.884,1.512 -0.492,1.236 0.108,2.628 1.344,3.12 1.236,0.492 2.628,-0.108 3.12,-1.344 0.312,-0.792 0.168,-1.704 -0.348,-2.376 L 14.004,10.2 15.552,6.348 15.564,6.312 C 15.804,5.7 15.504,5.004 14.892,4.752 14.736,4.692 14.58,4.668 14.4,4.668 M 9.6,4.8 A 1.2,1.2 0 0 0 8.4,6 1.2,1.2 0 0 0 9.6,7.2 1.2,1.2 0 0 0 10.8,6 1.2,1.2 0 0 0 9.6,4.8 M 6,8.4 A 1.2,1.2 0 0 0 4.8,9.6 1.2,1.2 0 0 0 6,10.8 1.2,1.2 0 0 0 7.2,9.6 1.2,1.2 0 0 0 6,8.4 m 12,0 A 1.2,1.2 0 0 0 16.8,9.6 1.2,1.2 0 0 0 18,10.8 1.2,1.2 0 0 0 19.2,9.6 1.2,1.2 0 0 0 18,8.4 Z"
+     id="path2"
+     style="stroke-width:1.20001" />
+</svg>

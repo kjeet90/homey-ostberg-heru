@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "Heat recovery wheel temperature"
+    },
+    "desc": {
+        "en": "Heat recovery wheel temperature"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "°C"
+            },
+            "example": {
+                "en": 20
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "°C"
+    },
+    "icon": "/assets/icons/rotor.svg",
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "insights": true
+}

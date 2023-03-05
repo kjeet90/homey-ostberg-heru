@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "Relative humidity"
+    },
+    "desc": {
+        "en": "Relative humidity"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "%"
+            },
+            "example": {
+                "en": 44
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "%"
+    },
+    "icon": "/assets/icons/humidity.svg",
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "insights": true
+}

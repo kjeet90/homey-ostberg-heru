@@ -1,0 +1,121 @@
+[
+    {
+        "type": "group",
+        "label": {
+            "en": "General"
+        },
+        "children": [
+            {
+                "$extends": "ip",
+                "id": "ip"
+            },
+            {
+                "$extends": "port",
+                "id": "port"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Add/remove capabilities"
+        },
+        "children": [
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_temperature_room",
+                "label": {
+                    "en": "Room temperature"
+                },
+                "hint": {
+                    "en": "Do not remove if you use Regulation mode Room or Room S/W."
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_humidity_relative",
+                "label": {
+                    "en": "Relative humidity"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_temperature_water",
+                "label": {
+                    "en": "Water temperature"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_pressure_supply",
+                "label": {
+                    "en": "Supply pressure"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_pressure_extract",
+                "label": {
+                    "en": "Extract pressure"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_temperature_heat_recovery_wheel",
+                "label": {
+                    "en": "Heat recovery wheel temperature"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_power_supply",
+                "label": {
+                    "en": "Supply power"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_power_extract",
+                "label": {
+                    "en": "Extract power"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_power_heating",
+                "label": {
+                    "en": "Heating power"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_rpm_supply",
+                "label": {
+                    "en": "Supply RPM"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_rpm_extract",
+                "label": {
+                    "en": "Extract RPM"
+                }
+            },
+
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_alarm_active_alarms",
+                "label": {
+                    "en": "Active alarms"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_filter_timer",
+                "label": {
+                    "en": "Filter days left"
+                }
+            }
+        ]
+    }
+]

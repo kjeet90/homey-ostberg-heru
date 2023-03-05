@@ -1,0 +1,14 @@
+{
+    "icon": "{{driverAssetsPath}}/icon.svg",
+    "images": {
+        "large": "{{driverAssetsPath}}/images/large.png",
+        "small": "{{driverAssetsPath}}/images/small.png"
+    },
+    "class": "thermostat",
+    "pair": [
+        {
+            "id": "ip_address"
+        }
+    ],
+    "platforms": ["local"]
+}

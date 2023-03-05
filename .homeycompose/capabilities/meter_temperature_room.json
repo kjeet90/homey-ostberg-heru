@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "Room temperature"
+    },
+    "desc": {
+        "en": "Room temperature"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "°C"
+            },
+            "example": {
+                "en": 20
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "°C"
+    },
+    "icon": "/assets/icons/room.svg",
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "insights": true
+}

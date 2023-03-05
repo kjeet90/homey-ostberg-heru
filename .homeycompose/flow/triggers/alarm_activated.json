@@ -1,0 +1,31 @@
+{
+    "id": "alarm_activated",
+    "title": {
+        "en": "An alarm became active"
+    },
+    "titleFormatted": {
+        "en": "An alarm became active"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+        }
+    ],
+    "tokens": [
+        {
+            "name": "name",
+            "title": "New alarm",
+            "example": "Fire alarm",
+            "type": "string"
+        },
+        {
+            "name": "allActive",
+            "title": "Active alarms",
+            "example": "Fire alarm, Supply fan alarm",
+            "type": "string"
+        }
+    ]
+}

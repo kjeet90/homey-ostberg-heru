@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "Supply pressure"
+    },
+    "desc": {
+        "en": "Supply pressure"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "Pa"
+            },
+            "example": {
+                "en": 44
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "Pa"
+    },
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "icon": "/assets/icons/gauge.svg",
+    "insights": true
+}

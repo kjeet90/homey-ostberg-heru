@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "Heating power"
+    },
+    "desc": {
+        "en": "Heating power"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "%"
+            },
+            "example": {
+                "en": 50
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "%"
+    },
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "icon": "/assets/icons/heating.svg",
+    "insights": true
+}

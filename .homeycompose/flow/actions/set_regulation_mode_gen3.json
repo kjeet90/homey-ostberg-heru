@@ -1,0 +1,31 @@
+{
+    "id": "set_regulation_mode_gen3",
+    "title": {
+        "en": "Set regulation mode"
+    },
+    "hint": {
+        "en": "Before selecting e.g. Room, make sure this sensor is installed in your system."
+    },
+    "titleFormatted": {
+        "en": "Set regulation mode to [[mode]]"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        },
+        {
+            "name": "mode",
+            "type": "dropdown",
+            "title": { "en": "Mode" },
+            "required": false,
+            "values": [
+                { "id": "supply", "label": { "en": "Supply air" } },
+                { "id": "extract", "label": { "en": "Extract air" } },
+                { "id": "room", "label": { "en": "Room" } }
+            ]
+        }
+    ]
+}

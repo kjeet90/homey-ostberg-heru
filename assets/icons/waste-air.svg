@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="waste-air.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="14.208333"
+     inkscape:cx="6.8269795"
+     inkscape:cy="13.337243"
+     inkscape:window-width="1920"
+     inkscape:window-height="1029"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="m 24,13.264706 -4.173913,4.705882 v -3.529412 h -9.391305 v -2.352941 h 9.391305 V 8.558824 L 24,13.264706 M 3.1304348,21.5 V 12.088235 H 0 L 10.434782,1.5 17.73913,8.911765 V 9.735294 H 15.433043 L 10.434782,4.6647059 5.2173913,9.958824 v 9.188235 H 15.652174 V 16.794118 H 17.73913 V 21.5 Z"
+     id="path2"
+     style="stroke-width:1.10798" />
+</svg>

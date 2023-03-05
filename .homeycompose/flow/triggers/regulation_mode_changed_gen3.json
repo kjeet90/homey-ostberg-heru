@@ -1,0 +1,22 @@
+{
+    "id": "regulation_mode_changed_gen3",
+    "title": {
+        "en": "Regulation mode changed"
+    },
+    "highlight": true,
+    "tokens": [
+        {
+            "name": "mode",
+            "type": "string",
+            "title": { "en": "Mode" },
+            "example": "Supply air"
+        }
+    ],
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "Waste air temperature"
+    },
+    "desc": {
+        "en": "Waste air temperature"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "°C"
+            },
+            "example": {
+                "en": 20
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "°C"
+    },
+    "icon": "/assets/icons/waste-air.svg",
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "insights": true
+}

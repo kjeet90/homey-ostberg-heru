@@ -1,0 +1,44 @@
+{
+    "type": "enum",
+    "title": {
+        "en": "Regulation mode"
+    },
+    "desc": {
+        "en": "Regulation mode"
+    },
+    "uiComponent": "picker",
+    "values": [
+        {
+            "id": "supply",
+            "title": {
+                "en": "Supply air"
+            }
+        },
+        {
+            "id": "extract",
+            "title": {
+                "en": "Extract air"
+            }
+        },
+        {
+            "id": "room",
+            "title": {
+                "en": "Room"
+            }
+        },
+        {
+            "id": "extract_sw",
+            "title": {
+                "en": "Extract S/W"
+            }
+        },
+        {
+            "id": "room_sw",
+            "title": {
+                "en": "Room S/W"
+            }
+        }
+    ],
+    "getable": true,
+    "setable": true
+}

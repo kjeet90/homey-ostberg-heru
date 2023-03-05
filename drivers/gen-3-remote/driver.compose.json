@@ -1,0 +1,39 @@
+{
+    "name": {
+        "en": "Gen 3 Remote"
+    },
+    "$extends": ["defaults"],
+    "capabilities": [
+        "measure_temperature",
+        "target_temperature",
+        "fan_mode",
+        "regulation_mode_gen3",
+        "meter_temperature_outdoor_air",
+        "meter_temperature_supply_air",
+        "meter_temperature_waste_air",
+        "meter_temperature_extract_air",
+        "meter_temperature_heat_recovery_wheel",
+        "meter_temperature_room",
+        "meter_temperature_water",
+        "meter_humidity_relative",
+        "meter_rpm_supply",
+        "meter_rpm_extract",
+        "meter_power_supply",
+        "meter_power_extract",
+        "meter_pressure_supply",
+        "meter_pressure_extract",
+        "meter_power_heating",
+        "alarm_active_alarms",
+        "meter_filter_timer"
+    ],
+    "capabilitiesOptions": {
+        "target_temperature": {
+            "title": {
+                "en": "Target temperature"
+            },
+            "min": 15,
+            "max": 40,
+            "step": 1
+        }
+    }
+}

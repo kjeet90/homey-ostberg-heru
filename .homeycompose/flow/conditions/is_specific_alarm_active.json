@@ -1,0 +1,38 @@
+{
+    "id": "is_specific_alarm_active",
+    "title": {
+        "en": "Is alarm !{{|not}} active"
+    },
+    "titleFormatted": {
+        "en": "[[alarm]] is !{{|not}} active"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote|iqc-touch"
+        },
+        {
+            "name": "alarm",
+            "type": "dropdown",
+            "title": { "en": "Alarm" },
+            "required": false,
+            "values": [
+                { "id": "fire_alarm", "label": { "en": "Fire alarm" } },
+                { "id": "rotor_alarm", "label": { "en": "Rotor alarm" } },
+                { "id": "freeze_alarm", "label": { "en": "Freeze alarm" } },
+                { "id": "low_supply_alarm", "label": { "en": "Low supply alarm" } },
+                { "id": "low_rotor_temperature_alarm", "label": { "en": "Low rotor temperature alarm" } },
+                { "id": "temp_sensor_open_circuit_alarm", "label": { "en": "Temp. sensor open circuit alarm" } },
+                { "id": "temp_sensor_short_circut_alarm", "label": { "en": "Temp. sensor short circuit alarm" } },
+                { "id": "pulser_alarm", "label": { "en": "Pulser alarm" } },
+                { "id": "supply_fan_alarm", "label": { "en": "Supply fan alarm" } },
+                { "id": "extract_fan_alarm", "label": { "en": "Extract fan alarm" } },
+                { "id": "supply_filter_alarm", "label": { "en": "Supply filter alarm" } },
+                { "id": "extract_filter_alarm", "label": { "en": "Extract filter alarm" } },
+                { "id": "filter_timer_alarm", "label": { "en": "Filter timer alarm" } }
+            ]
+        }
+    ]
+}

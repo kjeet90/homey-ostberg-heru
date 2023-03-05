@@ -1,0 +1,44 @@
+{
+    "type": "enum",
+    "title": {
+        "en": "Fan mode"
+    },
+    "desc": {
+        "en": "Fan mode"
+    },
+    "uiComponent": "picker",
+    "values": [
+        {
+            "id": "off",
+            "title": {
+                "en": "Off"
+            }
+        },
+        {
+            "id": "normal",
+            "title": {
+                "en": "Normal"
+            }
+        },
+        {
+            "id": "overpressure",
+            "title": {
+                "en": "Overpressure"
+            }
+        },
+        {
+            "id": "boost",
+            "title": {
+                "en": "Boost"
+            }
+        },
+        {
+            "id": "away",
+            "title": {
+                "en": "Away"
+            }
+        }
+    ],
+    "getable": true,
+    "setable": true
+}
