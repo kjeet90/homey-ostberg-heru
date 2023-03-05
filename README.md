@@ -47,7 +47,7 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
-## 1.0.0 - Work in progress
+## 1.0.0
 
 ### Feature
 
