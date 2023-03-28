@@ -47,6 +47,12 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
+## 1.0.1
+
+### Bug fix
+
+-   Fixed issue where negative numbers would not display correctly.
+
 ## 1.0.0
 
 ### Feature
