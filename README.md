@@ -14,6 +14,8 @@ Control your Östberg Heru ventilation system with Homey Pro.
 
 ## How
 
+### Gen 3 with Modbus Remote
+
 You need a TCP/IP to RS485 converter to connect to your Heru unit. I have personally confirmed it working with two different types:
 
 -   Moxa NPORT 5232I
@@ -27,6 +29,10 @@ I am using the following on my system (Heru 100T EC, Gen 3 with remote):
 -   Data bits: 8
 -   Parity: none
 -   Stop bit: 1
+
+### IQC Touch
+
+TCP/IP directly towards the Heru unit (preferred), or through a TCP/IP to RS485 converter (I have not confirmed that the newer generation have the serial interface still, but the support for it is currently there to be sure).
 
 ## General info
 

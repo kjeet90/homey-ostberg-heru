@@ -27,7 +27,7 @@ class IQCTouchDriver extends Homey.Driver {
 
     async onPair(session: any) {
         await session.showView('ip_address');
-        session.setHandler('ip_submitted', async (data: { ip: string; port: number }) => {
+        session.setHandler('ip_submitted', async (data: { ip: string; port: number; tcp: boolean }) => {
             const devices = [
                 {
                     name: 'IQC Touch',
@@ -36,7 +36,8 @@ class IQCTouchDriver extends Homey.Driver {
                     },
                     settings: {
                         ip: data.ip,
-                        port: data.port
+                        port: data.port,
+                        tcp: data.tcp
                     }
                 }
             ];

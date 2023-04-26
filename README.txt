@@ -1,4 +1,4 @@
-Control your Östberg Heru ventilation system with Homey through a TCP/IP to RS485 converter. 
+Control your Östberg Heru ventilation system with Homey. 
 
 For more information and support see the community forum linked in the section below.
 
