@@ -53,34 +53,45 @@ export class HeruAPI {
         this.timer = setTimeout(() => {
             this.pollVentilationSystem();
         }, this.POLLING_INTERVAL);
-        this.reconnect(this.device?.getSetting('ip'), this.device?.getSetting('port'));
+        this.reconnect(this.device?.getSetting('ip'), this.device?.getSetting('port'), !!this.device?.getSetting('tcp'));
     }
 
-    connect(ip: string, port: number) {
-        this.client
-            .connectTelnet(ip, { port })
-            .then(() => {
-                this.isConnected = true;
-                this.device?.log(`Connected to ${this.device?.getSettings().ip}:${this.device?.getSettings().port}`);
-            })
-            .catch((err) => {
-                this.isConnected = false;
-                this.device?.log(`Unable to connect to ${this.device?.getSettings().ip}:${this.device?.getSettings().port} --> ${err}`);
-                this.device?.setUnavailable(`Unable to connect to ${this.device?.getSettings().ip}:${this.device?.getSettings().port}`);
-            });
+    connect(ip: string, port: number, tcpConnection = false) {
+        if (tcpConnection) {
+            this.client
+                .connectTCP(ip, { port })
+                .then(() => this.onConnected())
+                .catch((err) => this.onFailedToConnect(err));
+        } else {
+            this.client
+                .connectTelnet(ip, { port })
+                .then(() => this.onConnected())
+                .catch((err) => this.onFailedToConnect(err));
+        }
     }
 
-    reconnect(ip: string, port: number) {
+    onConnected() {
+        this.isConnected = true;
+        this.device?.log(`Connected to ${this.device?.getSettings().ip}:${this.device?.getSettings().port}`);
+    }
+
+    onFailedToConnect(err: string) {
+        this.isConnected = false;
+        this.device?.log(`Unable to connect to ${this.device?.getSettings().ip}:${this.device?.getSettings().port} --> ${err}`);
+        this.device?.setUnavailable(`Unable to connect to ${this.device?.getSettings().ip}:${this.device?.getSettings().port}`);
+    }
+
+    reconnect(ip: string, port: number, tcpConnection = false) {
         this.reconnectCounter = 0;
         this.client.close(() => {
             this.device?.log('Reconnecting...');
         });
-        this.connect(ip, port);
+        this.connect(ip, port, tcpConnection);
     }
 
     checkConnection() {
         if (this.reconnectCounter > 5) {
-            this.reconnect(this.device?.getSetting('ip'), this.device?.getSetting('port'));
+            this.reconnect(this.device?.getSetting('ip'), this.device?.getSetting('port'), !!this.device?.getSetting('tcp'));
         } else {
             this.reconnectCounter += 1;
         }

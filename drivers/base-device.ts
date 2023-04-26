@@ -173,7 +173,8 @@ abstract class BaseDevice extends Homey.Device {
                     this.setCapabilityValue('meter_rpm_extract', this.checkNegativeNumber(results.inputRegisters[BaseRegisters.inputRegisters.EXHAUST_FAN_SPEED])).catch(this.error);
                 if (this.hasCapability('meter_power_heating'))
                     this.setCapabilityValue('meter_power_heating', (this.checkNegativeNumber(results.inputRegisters[BaseRegisters.inputRegisters.HEATING_POWER]) / 255) * 100).catch(this.error);
-                if (this.hasCapability('meter_filter_timer')) this.setCapabilityValue('meter_filter_timer', this.checkNegativeNumber(results.inputRegisters[BaseRegisters.inputRegisters.FILTER_DAYS_LEFT])).catch(this.error);
+                if (this.hasCapability('meter_filter_timer'))
+                    this.setCapabilityValue('meter_filter_timer', this.checkNegativeNumber(results.inputRegisters[BaseRegisters.inputRegisters.FILTER_DAYS_LEFT])).catch(this.error);
             }
         // Holding registers
         if (results.holdingRegisters.length) {
@@ -184,7 +185,9 @@ abstract class BaseDevice extends Homey.Device {
     async onSettings(event: { oldSettings: { [index: string]: any }; newSettings: { [index: string]: any }; changedKeys: string[] }): Promise<string | void> {
         this.log(`${this.getName()} settings where changed: ${event.changedKeys}`);
         this.addOrRemoveCapabilities(event.newSettings);
-        if (event.changedKeys.includes('port') || event.changedKeys.includes('ip')) this.api?.reconnect(event.newSettings.ip, event.newSettings.port);
+        if (event.changedKeys.includes('port') || event.changedKeys.includes('ip') || event.changedKeys.includes('tcp')) {
+            this.api?.reconnect(event.newSettings.ip, event.newSettings.port, !!event.newSettings.tcp);
+        }
     }
 
     async addOrRemoveCapabilities(newSettings?: { [index: string]: any }): Promise<void> {

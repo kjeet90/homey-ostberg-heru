@@ -1,0 +1,11 @@
+{
+    "id": "port",
+    "type": "checkbox",
+    "label": {
+        "en": "TCP/IP"
+    },
+    "hint": {
+        "en": "TCP/IP connection to Heru unit instead of RS485 serial interface"
+    },
+    "value": false
+}
