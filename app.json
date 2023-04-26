@@ -1022,7 +1022,7 @@
                 "en": "TCP/IP"
               },
               "hint": {
-                "en": "Enable to connect directly to the Heru Unit instead of using a TCP/IP to RS485 gateway"
+                "en": "TCP/IP connection to Heru unit instead of RS485 serial interface"
               },
               "value": false
             }
