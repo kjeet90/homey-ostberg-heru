@@ -14,25 +14,7 @@ Control your Östberg Heru ventilation system with Homey Pro.
 
 ## How
 
-### Gen 3 with Modbus Remote
-
-You need a TCP/IP to RS485 converter to connect to your Heru unit. I have personally confirmed it working with two different types:
-
--   Moxa NPORT 5232I
--   Ebyte 810-DTU V2 (By far the cheapest, about $20 on ebay)
-
-You need to configure this converter with a IP and a port that this app will connect to. Connect the three wires (D-/A,D+/B,0/GND) to your ventilation systems Modbus interface port. Make sure the settings on the TCP/IP to RS485 converter matches your ventilation system serial settings.
-
-I am using the following on my system (Heru 100T EC, Gen 3 with remote):
-
--   Baud rate: 9600
--   Data bits: 8
--   Parity: none
--   Stop bit: 1
-
-### IQC Touch
-
-TCP/IP directly towards the Heru unit (preferred), or through a TCP/IP to RS485 converter (I have not confirmed that the newer generation have the serial interface still, but the support for it is currently there to be sure).
+stat
 
 ## General info
 
@@ -52,6 +34,12 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 -   I take no responsibility for any damages caused by the use of this app.
 
 # Changelog
+
+## 1.1.0
+
+### Feature
+
+-   Added support for direct TCP/IP connection for IQC Touch unit
 
 ## 1.0.1
 
