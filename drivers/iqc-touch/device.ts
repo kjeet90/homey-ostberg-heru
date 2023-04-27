@@ -119,6 +119,11 @@ class IQCTouch extends BaseDevice {
         if (previousRegulationMode !== newRegulationMode) this.triggerRegulationModeChanged(newRegulationMode);
     }
 
+    processResults(results: { coils: boolean[]; discreteInputs: boolean[]; inputRegisters: number[]; holdingRegisters: number[] }): void {
+        super.processResults(results);
+        this.setCapabilityValue('target_temperature.eco', results.holdingRegisters[IQCRegisters.holdingRegisters.SETPOINT_TEMPERATURE_ECONOMY]);
+    }
+
     async processAlarms(discreteInputs: boolean[]): Promise<void> {
         const previousAlarms: { [index: string]: boolean } = this.getStoreValue('alarms') || {};
         const currentAlarms: { [index: string]: boolean } = {} as { [index: string]: boolean };

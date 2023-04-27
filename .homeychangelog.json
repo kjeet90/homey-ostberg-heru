@@ -1,4 +1,7 @@
 {
+    "1.1.2": {
+        "en": "Fixed issue where ECO setpoint was not updated for IQC Touch"
+    },
     "1.1.1": {
         "en": "Fixed issue with trigger of Fan mode changed for IQC Touch"
     },
