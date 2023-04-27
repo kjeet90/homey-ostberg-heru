@@ -35,6 +35,12 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
+## 1.1.2
+
+### Bug fix
+
+-   Fixed issue where ECO setpoint was not updated for IQC Touch
+
 ## 1.1.1
 
 ### Bug fix
