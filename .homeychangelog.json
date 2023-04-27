@@ -1,4 +1,7 @@
 {
+    "1.1.1": {
+        "en": "Fixed issue with trigger of Fan mode changed for IQC Touch"
+    },
     "1.1.0": {
         "en": "Added support for direct TCP/IP connection for IQC Touch units"
     },
