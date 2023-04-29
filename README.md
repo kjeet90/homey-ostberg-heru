@@ -14,7 +14,27 @@ Control your Östberg Heru ventilation system with Homey Pro.
 
 ## How
 
-stat
+### Gen 3 with Remote
+
+Make sure you system first has modbus enabled from the remote by going to the _Service menu_ and log in with the code 1199. If you don't see a setting for Modbus it means you have to first buy a new remote with modbus and pair it to your ventilation system to enable the modbus.
+
+When modbus is enabled you need a TCP/IP to RS485 converter to connect to your Heru unit. I have personally confirmed it working with two different types:
+
+-   Moxa NPORT 5232I
+-   Ebyte 810-DTU V2 (By far the cheapest, about $20 on ebay)
+
+You need to configure this converter with a IP and a ort that this app will connect to. Connect the three wires (D-/A,D+/B,0/GND) to your ventilation systems Modbus interface port. Make sure the settings on the TCP/IP to RS485 converter matches your ventilation system serial settings.
+
+I am using the following on my system (Heru 100T EC, Gen 3 with the modbus remote):
+
+-   Baud rate: 9600
+-   Data bits: 8
+-   Parity: none
+-   Stop bit: 1
+
+### IQC Touch
+
+TCP/IP directly towards the Heru unit (preferred), or through a TCP/IP to RS485 converter (I have not confirmed that the newer generation have the serial interface still, but the support for it is currently there to be sure).
 
 ## General info
 
