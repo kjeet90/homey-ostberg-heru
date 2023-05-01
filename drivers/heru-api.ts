@@ -78,7 +78,7 @@ export class HeruAPI {
     onFailedToConnect(err: string) {
         this.isConnected = false;
         this.device?.log(`Unable to connect to ${this.device?.getSettings().ip}:${this.device?.getSettings().port} --> ${err}`);
-        this.device?.setUnavailable(`Unable to connect to ${this.device?.getSettings().ip}:${this.device?.getSettings().port}`);
+        this.device?.setUnavailable(`Unable to connect to ${this.device?.getSettings().ip}:${this.device?.getSettings().port}`).catch((err) => this.device?.error(`Failed to set unavailable: ${err}`));
     }
 
     reconnect(ip: string, port: number, tcpConnection = false) {
@@ -132,11 +132,13 @@ export class HeruAPI {
                     try {
                         const results = await this.readRegisters(this.client);
                         this.reconnectCounter = 0;
-                        this.device?.setAvailable();
+                        this.device?.setAvailable().catch((e) => this.device?.error(`Failed to set available: ${e}`));
                         if (!this.ignoreNextRead) this.device?.processResults(results);
                         else this.device?.log('Ignored read results');
                     } catch (err) {
-                        this.device?.setUnavailable(`Connected to ${this.device?.getSetting('ip')}:${this.device.getSetting('port')}, but got error: "${err}"`);
+                        this.device
+                            ?.setUnavailable(`Connected to ${this.device?.getSetting('ip')}:${this.device.getSetting('port')}, but got error: "${err}"`)
+                            .catch((e) => this.device?.error(`Failed to set unavailable: ${e}`));
                         this.device?.error(err);
                     }
                 } else this.device?.log('Ignored read');
