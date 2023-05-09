@@ -54,7 +54,7 @@ export class HeruAPI {
         this.timer = setTimeout(() => {
             this.pollVentilationSystem();
         }, this.POLLING_INTERVAL);
-        this.reconnect(this.device?.getSetting('ip'), this.device?.getSetting('port'), !!this.device?.getSetting('tcp'));
+        this.connect(this.device?.getSetting('ip'), this.device?.getSetting('port'), !!this.device?.getSetting('tcp'));
     }
 
     connect(ip: string, port: number, tcpConnection = false) {
