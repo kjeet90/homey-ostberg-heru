@@ -55,6 +55,16 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
+## 1.2.0 (In development)
+
+### Feature
+
+-   Option to select polling interval. Modbus timeout will be half of this value.
+
+### Bug fix
+
+-   IQC Touch: Fixed issue where reading ECO temperature didn't update until setting a new target temperature.
+
 ## 1.1.3
 
 ### Bug fix

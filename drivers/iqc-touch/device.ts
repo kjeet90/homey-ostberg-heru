@@ -6,7 +6,8 @@ import { alarms, registers, SetRegulationModeIQC, RegulationModeIQC } from './co
 class IQCTouch extends BaseDevice {
     async onInit() {
         super.onInit();
-        this.api = new HeruAPI(this, registers);
+
+        this.api = new HeruAPI(this, registers, this.getSetting('interval') ?? 2000);
         this.log(`${this.getName()} has been initialized`);
         this.registerCapabilityListener('regulation_mode_iqc', async (value: SetRegulationModeIQC) => {
             this.setRegulationMode(value);
@@ -96,25 +97,31 @@ class IQCTouch extends BaseDevice {
             case RegulationModeIQC.EXTRACT_SW:
                 await this.setCapabilityValue('regulation_mode_iqc', 'extract_sw').catch(this.error);
                 this.setCapabilityValue('measure_temperature', this.getCapabilityValue('meter_temperature_extract_air')).catch(this.error);
+                this.setCapabilityValue('measure_temperature.eco', this.getCapabilityValue('meter_temperature_extract_air')).catch(this.error);
                 break;
             case RegulationModeIQC.ROOM_SW:
                 await this.setCapabilityValue('regulation_mode_iqc', 'room_sw').catch(this.error);
                 this.setCapabilityValue('measure_temperature', this.getCapabilityValue('meter_temperature_room')).catch(this.error);
+                this.setCapabilityValue('measure_temperature.eco', this.getCapabilityValue('meter_temperature_room')).catch(this.error);
                 break;
             case RegulationModeIQC.SUPPLY:
                 await this.setCapabilityValue('regulation_mode_iqc', 'supply').catch(this.error);
                 this.setCapabilityValue('measure_temperature', this.getCapabilityValue('meter_temperature_supply_air')).catch(this.error);
+                this.setCapabilityValue('measure_temperature.eco', this.getCapabilityValue('meter_temperature_supply_air')).catch(this.error);
                 break;
             case RegulationModeIQC.EXTRACT:
                 await this.setCapabilityValue('regulation_mode_iqc', 'extract').catch(this.error);
                 this.setCapabilityValue('measure_temperature', this.getCapabilityValue('meter_temperature_extract_air')).catch(this.error);
+                this.setCapabilityValue('measure_temperature.eco', this.getCapabilityValue('meter_temperature_extract_air')).catch(this.error);
                 break;
             case RegulationModeIQC.ROOM:
                 await this.setCapabilityValue('regulation_mode_iqc', 'room').catch(this.error);
                 this.setCapabilityValue('measure_temperature', this.getCapabilityValue('meter_temperature_room')).catch(this.error);
+                this.setCapabilityValue('measure_temperature.eco', this.getCapabilityValue('meter_temperature_room')).catch(this.error);
                 break;
         }
         this.setCapabilityValue('target_temperature', targetTemperature).catch(this.error);
+
         const newRegulationMode: SetRegulationModeIQC = this.getCapabilityValue('regulation_mode_iqc');
         if (previousRegulationMode !== newRegulationMode) this.triggerRegulationModeChanged(newRegulationMode);
     }

@@ -12,6 +12,10 @@
             {
                 "$extends": "port",
                 "id": "port"
+            },
+            {
+                "$extends": "interval",
+                "id": "interval"
             }
         ]
     },

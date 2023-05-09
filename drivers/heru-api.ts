@@ -44,7 +44,8 @@ export class HeruAPI {
         }
     };
 
-    constructor(device: BaseDevice, registers: ModbusRegisters) {
+    constructor(device: BaseDevice, registers: ModbusRegisters, interval: number) {
+        this.POLLING_INTERVAL = interval;
         this.device = device;
         this.registers = registers;
         this.client = new ModbusRTU();
@@ -165,7 +166,7 @@ export class HeruAPI {
 
             const timeout = setTimeout(() => {
                 reject('Modbus timeout');
-            }, this.POLLING_INTERVAL / 2);
+            }, Math.floor(this.POLLING_INTERVAL / 2));
             try {
                 coilStatus = await client.readCoils(this.registers.coils.start, this.registers.coils.count);
                 discreteInputs = await client.readDiscreteInputs(this.registers.discreteInputs.start, this.registers.discreteInputs.count);
@@ -217,5 +218,10 @@ export class HeruAPI {
         this.client?.close(() => {
             this.device?.log('Destroyed. Closing connection to client.');
         });
+    }
+
+    setPollingInterval(interval: number) {
+        this.device?.log(`Polling interval set to: ${interval}ms`);
+        this.POLLING_INTERVAL = interval;
     }
 }

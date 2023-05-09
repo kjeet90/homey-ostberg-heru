@@ -5,7 +5,7 @@ import { alarms, registers, RegulationModeGen3, SetRegulationModeGen3 } from './
 export class Gen3Remote extends BaseDevice {
     async onInit() {
         super.onInit();
-        this.api = new HeruAPI(this, registers);
+        this.api = new HeruAPI(this, registers, this.getSetting('interval') || 2000);
         this.log(`${this.getName()} has been initialized`);
 
         this.registerCapabilityListener('regulation_mode_gen3', async (value: SetRegulationModeGen3) => {

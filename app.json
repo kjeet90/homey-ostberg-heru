@@ -810,6 +810,21 @@
                 "en": "Port"
               },
               "value": 502
+            },
+            {
+              "id": "interval",
+              "type": "number",
+              "label": {
+                "en": "Polling interval"
+              },
+              "hint": {
+                "en": "How long between each poll to the unit. Default 2000 should work in most cases."
+              },
+              "min": 2000,
+              "units": {
+                "en": "milliseconds"
+              },
+              "value": 2000
             }
           ]
         },
@@ -1014,6 +1029,21 @@
                 "en": "Port"
               },
               "value": 502
+            },
+            {
+              "id": "interval",
+              "type": "number",
+              "label": {
+                "en": "Polling interval"
+              },
+              "hint": {
+                "en": "How long between each poll to the unit. Default 2000 should work in most cases."
+              },
+              "min": 2000,
+              "units": {
+                "en": "milliseconds"
+              },
+              "value": 2000
             },
             {
               "id": "tcp",

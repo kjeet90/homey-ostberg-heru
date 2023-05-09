@@ -188,6 +188,9 @@ abstract class BaseDevice extends Homey.Device {
         if (event.changedKeys.includes('port') || event.changedKeys.includes('ip') || event.changedKeys.includes('tcp')) {
             this.api?.reconnect(event.newSettings.ip, event.newSettings.port, !!event.newSettings.tcp);
         }
+        if (event.changedKeys.includes('interval') && !isNaN(event.newSettings.interval)) {
+            this.api?.setPollingInterval(event.newSettings.interval);
+        }
     }
 
     async addOrRemoveCapabilities(newSettings?: { [index: string]: any }): Promise<void> {
