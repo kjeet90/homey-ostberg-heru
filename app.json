@@ -942,6 +942,157 @@
               "value": true
             }
           ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Trigger alarms on low/high. Unchecked = trigger on high (default behavior)"
+          },
+          "children": [
+            {
+              "id": "alarm_trigger_low_fire_alarm",
+              "label": {
+                "en": "Fire alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_rotor_alarm",
+              "label": {
+                "en": "Rotor alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_freeze_alarm",
+              "label": {
+                "en": "Freeze alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_low_supply_alarm",
+              "label": {
+                "en": "Low Supply alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_low_rotor_temperature_alarm",
+              "label": {
+                "en": "Low rotor temperature alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_temp_sensor_open_circuit_alarm",
+              "label": {
+                "en": "Temp Sensor Open alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_temp_sensor_short_circut_alarm",
+              "label": {
+                "en": "Temp Sensor Short Circuit alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_pulser_alarm",
+              "label": {
+                "en": "Pulser alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_supply_fan_alarm",
+              "label": {
+                "en": "Supply Fan alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_extract_fan_alarm",
+              "label": {
+                "en": "Extract Fan alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_supply_filter_alarm",
+              "label": {
+                "en": "Supply Filter alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_extract_filter_alarm",
+              "label": {
+                "en": "Extract Filter alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_filter_timer_alarm",
+              "label": {
+                "en": "Filter timer alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            }
+          ]
         }
       ]
     },
@@ -1170,6 +1321,179 @@
               },
               "type": "checkbox",
               "value": true
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Alarms trigger on high/low. Checked box means they trigger on low"
+          },
+          "children": [
+            {
+              "id": "alarm_trigger_low_fire_alarm",
+              "label": {
+                "en": "Fire alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_rotor_alarm",
+              "label": {
+                "en": "Rotor alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_freeze_alarm",
+              "label": {
+                "en": "Freeze alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_low_supply_alarm",
+              "label": {
+                "en": "Low Supply alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_low_rotor_temperature_alarm",
+              "label": {
+                "en": "Low rotor temperature alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_temp_sensor_open_circuit_alarm",
+              "label": {
+                "en": "Temp Sensor Open alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_temp_sensor_short_circut_alarm",
+              "label": {
+                "en": "Temp Sensor Short Circuit alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_pulser_alarm",
+              "label": {
+                "en": "Pulser alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_supply_fan_alarm",
+              "label": {
+                "en": "Supply Fan alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_extract_fan_alarm",
+              "label": {
+                "en": "Extract Fan alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_supply_filter_alarm",
+              "label": {
+                "en": "Supply Filter alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_extract_filter_alarm",
+              "label": {
+                "en": "Extract Filter alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_filter_timer_alarm",
+              "label": {
+                "en": "Filter timer alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_pump_alarm_heating",
+              "label": {
+                "en": "Pump Heating alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
+            },
+            {
+              "id": "alarm_trigger_low_pump_alarm_cooling",
+              "label": {
+                "en": "Pump Cooling alarm"
+              },
+              "hint": {
+                "en": "Enabled = alarm on low, disabled = alarm on high"
+              },
+              "type": "checkbox",
+              "value": false
             }
           ]
         }

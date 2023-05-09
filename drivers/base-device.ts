@@ -1,6 +1,6 @@
 import Homey from 'homey';
 import { HeruAPI } from './heru-api';
-import { SetRegulationModeGen3, RegulationModeGen3 } from './gen-3-remote/constants';
+import { SetRegulationModeGen3, RegulationModeGen3, alarms } from './gen-3-remote/constants';
 import { SetRegulationModeIQC, RegulationModeIQC } from './iqc-touch/constants';
 import { BaseRegisters } from './registers';
 
@@ -94,14 +94,20 @@ abstract class BaseDevice extends Homey.Device {
 
     isAnyAlarmActive() {
         const currentAlarms = this.getStoreValue('alarms');
-        return !!Object.values(currentAlarms).find((alarm) => alarm === true);
+        return !!Object.keys(currentAlarms).some((k) => {
+            const triggerOnLow = !!this.getSetting('alarm_trigger_low_' + k);
+            return (currentAlarms[k] && !triggerOnLow) || (!currentAlarms[k] && triggerOnLow);
+        });
     }
 
     abstract listActiveAlarms(): { allActive: string };
 
     getActiveAlarmsString(alarmStates: { [index: string]: boolean }, alarmNames: { [index: string]: string }): string {
         return Object.keys(alarmStates)
-            .filter((id: string) => !!alarmStates[id])
+            .filter((id: string) => {
+                const triggerOnLow = !!this.getSetting('alarm_trigger_low_' + id);
+                return (alarmStates[id] && !triggerOnLow) || (!alarmStates[id] && triggerOnLow);
+            })
             .map((id: string) => alarmNames[id])
             .join(', ');
     }
@@ -111,14 +117,16 @@ abstract class BaseDevice extends Homey.Device {
         Object.keys(currentAlarms).forEach((k) => {
             if (currentAlarms[k] !== previousAlarms[k]) {
                 this.log(`Alarm changed: ${k}, previous: ${previousAlarms[k]}, new: ${currentAlarms[k]}`);
-                if (currentAlarms[k]) {
+                const triggerOnLow = !!this.getSetting('alarm_trigger_low_' + k);
+                const alarmActive = (currentAlarms[k] && !triggerOnLow) || (!currentAlarms[k] && triggerOnLow);
+                if (alarmActive) {
                     this.homey.flow.getDeviceTriggerCard('specific_alarm_activated').trigger(this, { alarm: k, name: alarmNames[k] }, { id: k }).catch(this.error);
                     this.homey.flow.getDeviceTriggerCard('alarm_activated').trigger(this, { name: alarmNames[k], allActive: activeAlarms }).catch(this.error);
-                    this.log(`Alarm activated: key: ${k}, name: ${alarmNames[k]}`);
+                    this.log(`Alarm activated: key: ${k}, name: ${alarmNames[k]}, trigger on low: ${triggerOnLow}`);
                 } else {
                     this.homey.flow.getDeviceTriggerCard('specific_alarm_reset').trigger(this, { alarm: k, name: alarmNames[k] }, { id: k }).catch(this.error);
                     this.homey.flow.getDeviceTriggerCard('alarm_reset').trigger(this, { name: alarmNames[k], allActive: activeAlarms }).catch(this.error);
-                    this.log(`Alarm reset: key: ${k}, name: ${alarmNames[k]}`);
+                    this.log(`Alarm reset: key: ${k}, name: ${alarmNames[k]}, trigger on low: ${triggerOnLow}`);
                 }
             }
         });
@@ -190,6 +198,15 @@ abstract class BaseDevice extends Homey.Device {
         }
         if (event.changedKeys.includes('interval') && !isNaN(event.newSettings.interval)) {
             this.api?.setPollingInterval(event.newSettings.interval);
+        }
+        if (event.changedKeys.some((s) => s.startsWith('alarm_trigger_low_'))) {
+            const toggledAlerts = event.changedKeys.filter((s) => s.startsWith('alarm_trigger_low_'));
+            const currentAlarms = this.getStoreValue('alarms');
+            toggledAlerts.forEach((a) => {
+                const k = a.replace('alarm_trigger_low_', '');
+                currentAlarms[k] = !currentAlarms[k];
+            });
+            await this.setStoreValue('alarms', currentAlarms);
         }
     }
 
