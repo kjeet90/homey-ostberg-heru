@@ -55,12 +55,12 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
-## 1.2.0 (In development)
+## 1.2.0
 
 ### Feature
 
--   Select polling interval. Modbus timeout will be half of this value.
--   Choose if alarms should be triggered on low/high.
+-   Adjustable polling interval. Modbus timeout will be half of this value.
+-   Alarms can be inverted.
 
 ### Bug fix
 

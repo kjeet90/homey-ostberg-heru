@@ -1,4 +1,7 @@
 {
+    "1.2.0": {
+        "en": "Alarms can be inverted. Adjustable polling interval."
+    },
     "1.1.3": {
         "en": "Improved error handling"
     },

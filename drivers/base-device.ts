@@ -95,7 +95,7 @@ abstract class BaseDevice extends Homey.Device {
     isAnyAlarmActive() {
         const currentAlarms = this.getStoreValue('alarms');
         return !!Object.keys(currentAlarms).some((k) => {
-            const triggerOnLow = !!this.getSetting('alarm_trigger_low_' + k);
+            const triggerOnLow = !!this.getSetting('alarm_invert_' + k);
             return (currentAlarms[k] && !triggerOnLow) || (!currentAlarms[k] && triggerOnLow);
         });
     }
@@ -105,7 +105,7 @@ abstract class BaseDevice extends Homey.Device {
     getActiveAlarmsString(alarmStates: { [index: string]: boolean }, alarmNames: { [index: string]: string }): string {
         return Object.keys(alarmStates)
             .filter((id: string) => {
-                const triggerOnLow = !!this.getSetting('alarm_trigger_low_' + id);
+                const triggerOnLow = !!this.getSetting('alarm_invert_' + id);
                 return (alarmStates[id] && !triggerOnLow) || (!alarmStates[id] && triggerOnLow);
             })
             .map((id: string) => alarmNames[id])
@@ -117,7 +117,7 @@ abstract class BaseDevice extends Homey.Device {
         Object.keys(currentAlarms).forEach((k) => {
             if (currentAlarms[k] !== previousAlarms[k]) {
                 this.log(`Alarm changed: ${k}, previous: ${previousAlarms[k]}, new: ${currentAlarms[k]}`);
-                const triggerOnLow = !!this.getSetting('alarm_trigger_low_' + k);
+                const triggerOnLow = !!this.getSetting('alarm_invert_' + k);
                 const alarmActive = (currentAlarms[k] && !triggerOnLow) || (!currentAlarms[k] && triggerOnLow);
                 if (alarmActive) {
                     this.homey.flow.getDeviceTriggerCard('specific_alarm_activated').trigger(this, { alarm: k, name: alarmNames[k] }, { id: k }).catch(this.error);
@@ -199,11 +199,11 @@ abstract class BaseDevice extends Homey.Device {
         if (event.changedKeys.includes('interval') && !isNaN(event.newSettings.interval)) {
             this.api?.setPollingInterval(event.newSettings.interval);
         }
-        if (event.changedKeys.some((s) => s.startsWith('alarm_trigger_low_'))) {
-            const toggledAlerts = event.changedKeys.filter((s) => s.startsWith('alarm_trigger_low_'));
+        if (event.changedKeys.some((s) => s.startsWith('alarm_invert_'))) {
+            const toggledAlerts = event.changedKeys.filter((s) => s.startsWith('alarm_invert_'));
             const currentAlarms = this.getStoreValue('alarms');
             toggledAlerts.forEach((a) => {
-                const k = a.replace('alarm_trigger_low_', '');
+                const k = a.replace('alarm_invert_', '');
                 currentAlarms[k] = !currentAlarms[k];
             });
             await this.setStoreValue('alarms', currentAlarms);

@@ -1,8 +1,0 @@
-{
-    "id": "alarm_trigger_low",
-    "type": "checkbox",
-    "label": {
-        "en": "Trigger alarm on low input"
-    },
-    "value": false
-}

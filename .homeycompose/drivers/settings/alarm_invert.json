@@ -1,0 +1,8 @@
+{
+    "id": "alarm_invert",
+    "type": "checkbox",
+    "label": {
+        "en": "Invert alarm"
+    },
+    "value": false
+}
