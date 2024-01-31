@@ -1,0 +1,16 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Heater enabled"
+    },
+    "desc": {
+        "en": "Heater enabled"
+    },
+    "uiComponent": "button",
+    "getable": true,
+    "setable": true,
+    "icon": "/assets/icons/heating.svg",
+    "insights": true,
+    "insightsTitleTrue": "Heater enabled",
+    "insightsTitleFalse": "Heater disabled"
+}

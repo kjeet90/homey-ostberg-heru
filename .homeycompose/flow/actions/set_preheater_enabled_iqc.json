@@ -1,0 +1,26 @@
+{
+    "id": "set_preheater_enabled_iqc",
+    "title": {
+        "en": "Set preheater"
+    },
+    "titleFormatted": {
+        "en": "Set preheater to [[state]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        },
+        {
+            "name": "state",
+            "type": "dropdown",
+            "title": { "en": "State" },
+            "required": false,
+            "values": [
+                { "id": "0", "label": { "en": "Disabled" } },
+                { "id": "1", "label": { "en": "Enabled" } }
+            ]
+        }
+    ]
+}

@@ -89,6 +89,7 @@ enum IQCInputRegisters {
 
 enum IQCHoldingRegisters {
     SETPOINT_TEMPERATURE_ECONOMY,
+    PREHEATER_ENABLED = 63,
     HEATER_ENABLED = 66
 }
 

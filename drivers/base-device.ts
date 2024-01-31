@@ -1,6 +1,6 @@
 import Homey from 'homey';
 import { HeruAPI } from './heru-api';
-import { SetRegulationModeGen3, RegulationModeGen3, alarms } from './gen-3-remote/constants';
+import { SetRegulationModeGen3, RegulationModeGen3 } from './gen-3-remote/constants';
 import { SetRegulationModeIQC, RegulationModeIQC } from './iqc-touch/constants';
 import { BaseRegisters } from './registers';
 

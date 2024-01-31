@@ -1,0 +1,16 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Preheater enabled"
+    },
+    "desc": {
+        "en": "Preheater enabled"
+    },
+    "uiComponent": "button",
+    "getable": true,
+    "setable": true,
+    "icon": "/assets/icons/heating.svg",
+    "insights": true,
+    "insightsTitleTrue": "Preheater enabled",
+    "insightsTitleFalse": "Preheater disabled"
+}

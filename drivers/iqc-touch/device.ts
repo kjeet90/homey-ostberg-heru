@@ -6,8 +6,11 @@ import { alarms, registers, SetRegulationModeIQC, RegulationModeIQC } from './co
 class IQCTouch extends BaseDevice {
     async onInit() {
         super.onInit();
+        await this.upgradeExistingDevice();
 
-        this.api = new HeruAPI(this, registers, this.getSetting('interval') ?? 2000);
+        const iqcRegisters: ModbusRegisters = { ...registers, holdingRegisters: { start: 0, count: 67 } };
+
+        this.api = new HeruAPI(this, iqcRegisters, this.getSetting('interval') ?? 2000);
         this.log(`${this.getName()} has been initialized`);
         this.registerCapabilityListener('regulation_mode_iqc', async (value: SetRegulationModeIQC) => {
             this.setRegulationMode(value);
@@ -19,11 +22,30 @@ class IQCTouch extends BaseDevice {
         this.registerCapabilityListener('target_temperature.eco', async (value) => {
             this.setTargetTemperature(value, true);
         });
+        this.registerCapabilityListener('heater_enabled_iqc', async (value) => {
+            this.setHeaterEnabled(value);
+        });
+        this.registerCapabilityListener('preheater_enabled_iqc', async (value) => {
+            this.setPreheaterEnabled(value);
+        });
+    }
+
+    async upgradeExistingDevice() {
+        if (!this.hasCapability('preheater_enabled_iqc')) await this.addCapability('preheater_enabled_iqc');
+        if (!this.hasCapability('heater_enabled_iqc')) await this.addCapability('heater_enabled_iqc');
     }
 
     async setTargetTemperature(target: number, eco: boolean) {
         if (eco) this.api?.writeRegister(IQCRegisters.holdingRegisters.SETPOINT_TEMPERATURE_ECONOMY, target);
         else this.api?.writeRegister(IQCRegisters.holdingRegisters.SETPOINT_TEMPERATURE, target);
+    }
+
+    async setHeaterEnabled(value: boolean) {
+        this.api?.writeRegister(IQCRegisters.holdingRegisters.HEATER_ENABLED, value ? 1 : 0);
+    }
+
+    async setPreheaterEnabled(value: boolean) {
+        this.api?.writeRegister(IQCRegisters.holdingRegisters.PREHEATER_ENABLED, value ? 1 : 0);
     }
 
     async onAdded() {
@@ -129,6 +151,8 @@ class IQCTouch extends BaseDevice {
     processResults(results: { coils: boolean[]; discreteInputs: boolean[]; inputRegisters: number[]; holdingRegisters: number[] }): void {
         super.processResults(results);
         this.setCapabilityValue('target_temperature.eco', results.holdingRegisters[IQCRegisters.holdingRegisters.SETPOINT_TEMPERATURE_ECONOMY]);
+        this.setCapabilityValue('heater_enabled_iqc', !!results.holdingRegisters[IQCRegisters.holdingRegisters.HEATER_ENABLED]);
+        this.setCapabilityValue('preheater_enabled_iqc', !!results.holdingRegisters[IQCRegisters.holdingRegisters.PREHEATER_ENABLED]);
     }
 
     async processAlarms(discreteInputs: boolean[]): Promise<void> {

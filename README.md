@@ -55,6 +55,11 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
+## 1.3.0
+
+### Feature
+-   Added heater and preheater enabled/disabled functionality for IQC Touch
+
 ## 1.2.0
 
 ### Feature
