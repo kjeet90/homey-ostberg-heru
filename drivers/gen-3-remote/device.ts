@@ -1,7 +1,7 @@
 import BaseDevice from '../base-device';
 import { HeruAPI } from '../heru-api';
 import { Gen3Registers } from '../registers';
-import { alarms, registers, RegulationModeGen3, SetRegulationModeGen3 } from './constants';
+import { alarms, registers, RegulationModeGen3, SetRegulationModeGen3, FanSpeedGen3, SetFanSpeedGen3 } from './constants';
 export class Gen3Remote extends BaseDevice {
     async onInit() {
         super.onInit();
@@ -15,6 +15,11 @@ export class Gen3Remote extends BaseDevice {
 
         this.registerCapabilityListener('target_temperature', async (value) => {
             this.setTargetTemperature(value);
+        });
+
+        this.registerCapabilityListener('fan_speed_gen3', async (value: SetFanSpeedGen3) => {
+            this.setFanSpeed(value);
+            this.triggerFanSpeedChanged(value);
         });
     }
 
@@ -87,6 +92,84 @@ export class Gen3Remote extends BaseDevice {
         this.setCapabilityValue('target_temperature', targetTemperature).catch(this.error);
         const newRegulationMode: SetRegulationModeGen3 = this.getCapabilityValue('regulation_mode_gen3');
         if (previousRegulationMode !== newRegulationMode) this.triggerRegulationModeChanged(newRegulationMode);
+    }
+
+    triggerFanSpeedChanged(value: SetFanSpeedGen3) {
+        let speed = 'Unknown';
+        switch (value) {
+            case SetFanSpeedGen3.OFF:
+                speed = 'Off';
+                break;
+            case SetFanSpeedGen3.MIN:
+                speed = 'Minimum';
+                break;
+            case SetFanSpeedGen3.STD:
+                speed = 'Standard';
+                break;
+            case SetFanSpeedGen3.MOD:
+                speed = 'Medium';
+                break;
+            case SetFanSpeedGen3.MAX:
+                speed = 'Maximum';
+                break;
+        }
+        this.homey.flow.getDeviceTriggerCard('fan_speed_changed_gen3').trigger(this, { speed });
+    }
+
+    isFanSpeed(value: SetFanSpeedGen3) {
+        return this.getCapabilityValue('fan_speed_gen3') === value;
+    }
+
+    setFanSpeed(value: SetFanSpeedGen3) {
+        switch (value) {
+            case SetFanSpeedGen3.OFF:
+                this.api?.writeRegister(Gen3Registers.holdingRegisters.USER_FAN_SPEED, FanSpeedGen3.OFF);
+                this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.OFF).catch(this.error);
+                break;
+            case SetFanSpeedGen3.MIN:
+                this.api?.writeRegister(Gen3Registers.holdingRegisters.USER_FAN_SPEED, FanSpeedGen3.MIN);
+                this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.MIN).catch(this.error);
+                break;
+            case SetFanSpeedGen3.STD:
+                this.api?.writeRegister(Gen3Registers.holdingRegisters.USER_FAN_SPEED, FanSpeedGen3.STD);
+                this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.STD).catch(this.error);
+                break;
+            case SetFanSpeedGen3.MOD:
+                this.api?.writeRegister(Gen3Registers.holdingRegisters.USER_FAN_SPEED, FanSpeedGen3.MOD);
+                this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.MOD).catch(this.error);
+                break;
+            case SetFanSpeedGen3.MAX:
+                this.api?.writeRegister(Gen3Registers.holdingRegisters.USER_FAN_SPEED, FanSpeedGen3.MAX);
+                this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.MAX).catch(this.error);
+                break;
+        }
+    }
+
+    async processFanSpeed(fanSpeed: FanSpeedGen3) {
+        const previousFanSpeed: SetFanSpeedGen3 = this.getCapabilityValue('fan_speed_gen3');
+        switch (fanSpeed) {
+            case FanSpeedGen3.OFF:
+                await this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.OFF).catch(this.error);
+                break;
+            case FanSpeedGen3.STD:
+                await this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.STD).catch(this.error);
+                break;
+            case FanSpeedGen3.MOD:
+                await this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.MOD).catch(this.error);
+                break;
+            case FanSpeedGen3.MAX:
+                await this.setCapabilityValue('fan_speed_gen3', SetFanSpeedGen3.MAX).catch(this.error);
+                break;
+        }
+        const newFanSpeed: SetFanSpeedGen3 = this.getCapabilityValue('fan_speed_gen3');
+        if (previousFanSpeed !== newFanSpeed) this.triggerFanSpeedChanged(newFanSpeed);
+    }
+
+    processResults(results: { coils: boolean[]; discreteInputs: boolean[]; inputRegisters: number[]; holdingRegisters: number[] }): void {
+        super.processResults(results);
+        if (results.holdingRegisters.length) {
+            this.processFanSpeed(results.holdingRegisters[Gen3Registers.holdingRegisters.USER_FAN_SPEED]);
+        }
     }
 
     async processAlarms(discreteInputs: boolean[]): Promise<void> {

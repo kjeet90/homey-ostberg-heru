@@ -7,6 +7,7 @@
         "measure_temperature",
         "target_temperature",
         "fan_mode",
+        "fan_speed_gen3",
         "regulation_mode_gen3",
         "meter_temperature_outdoor_air",
         "meter_temperature_supply_air",

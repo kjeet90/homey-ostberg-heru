@@ -1,0 +1,30 @@
+{
+    "id": "set_fan_speed_gen3",
+    "title": {
+        "en": "Set fan speed"
+    },
+    "titleFormatted": {
+        "en": "Set fan speed to [[speed]]"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        },
+        {
+            "name": "speed",
+            "type": "dropdown",
+            "title": { "en": "Speed" },
+            "required": false,
+            "values": [
+                { "id": "off", "label": { "en": "Off" } },
+                { "id": "minimum", "label": { "en": "Minimum" } },
+                { "id": "standard", "label": { "en": "Standard" } },
+                { "id": "medium", "label": { "en": "Medium" } },
+                { "id": "maximum", "label": { "en": "Maximum" } }
+            ]
+        }
+    ]
+}

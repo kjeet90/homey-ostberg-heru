@@ -1,0 +1,44 @@
+{
+    "type": "enum",
+    "title": {
+        "en": "Fan speed"
+    },
+    "desc": {
+        "en": "Fan speed"
+    },
+    "uiComponent": "picker",
+    "values": [
+        {
+            "id": "off",
+            "title": {
+                "en": "Off"
+            }
+        },
+        {
+            "id": "minimum",
+            "title": {
+                "en": "Minimum"
+            }
+        },
+        {
+            "id": "standard",
+            "title": {
+                "en": "Standard"
+            }
+        },
+        {
+            "id": "medium",
+            "title": {
+                "en": "Medium"
+            }
+        },
+        {
+            "id": "maximum",
+            "title": {
+                "en": "Maximum"
+            }
+        }
+    ],
+    "getable": true,
+    "setable": true
+}

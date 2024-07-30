@@ -1,0 +1,22 @@
+{
+    "id": "fan_speed_changed_gen3",
+    "title": {
+        "en": "Fan speed changed"
+    },
+    "highlight": true,
+    "tokens": [
+        {
+            "name": "speed",
+            "type": "string",
+            "title": { "en": "Speed" },
+            "example": "Standard"
+        }
+    ],
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        }
+    ]
+}
