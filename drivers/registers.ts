@@ -80,7 +80,8 @@ enum Gen3InputRegisters {
 }
 
 enum Gen3HoldingRegisters {
-    USER_FAN_SPEED
+    USER_FAN_SPEED,
+    HEATER_ENABLED = 50
 }
 
 enum IQCInputRegisters {

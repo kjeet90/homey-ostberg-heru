@@ -332,7 +332,7 @@
         ]
       },
       {
-        "id": "is_heater_enabled_iqc",
+        "id": "is_heater_enabled",
         "title": {
           "en": "Heater !{{enabled|disabled}} enabled"
         },
@@ -344,7 +344,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=iqc-touch"
+            "filter": "driver_id=gen-3-remote|iqc-touch"
           }
         ]
       },
@@ -660,7 +660,7 @@
         ]
       },
       {
-        "id": "set_heater_enabled_iqc",
+        "id": "set_heater_enabled",
         "title": {
           "en": "Set heater"
         },
@@ -671,7 +671,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=iqc-touch"
+            "filter": "driver_id=gen-3-remote|iqc-touch"
           },
           {
             "name": "state",
@@ -885,7 +885,8 @@
         "meter_pressure_extract",
         "meter_power_heating",
         "alarm_active_alarms",
-        "meter_filter_timer"
+        "meter_filter_timer",
+        "heater_enabled"
       ],
       "capabilitiesOptions": {
         "target_temperature": {
@@ -1210,7 +1211,7 @@
         "alarm_active_alarms",
         "meter_filter_timer",
         "preheater_enabled_iqc",
-        "heater_enabled_iqc"
+        "heater_enabled"
       ],
       "capabilitiesOptions": {
         "target_temperature": {
@@ -1588,7 +1589,7 @@
       "getable": true,
       "setable": true
     },
-    "heater_enabled_iqc": {
+    "heater_enabled": {
       "type": "boolean",
       "title": {
         "en": "Heater enabled"

@@ -1,5 +1,5 @@
 {
-    "id": "set_heater_enabled_iqc",
+    "id": "set_heater_enabled",
     "title": {
         "en": "Set heater"
     },
@@ -10,7 +10,7 @@
         {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=iqc-touch"
+            "filter": "driver_id=gen-3-remote|iqc-touch"
         },
         {
             "name": "state",
