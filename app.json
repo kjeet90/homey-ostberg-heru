@@ -332,7 +332,7 @@
         ]
       },
       {
-        "id": "is_heater_enabled",
+        "id": "is_heater_enabled_gen3",
         "title": {
           "en": "Heater !{{enabled|disabled}} enabled"
         },
@@ -344,7 +344,24 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=gen-3-remote|iqc-touch"
+            "filter": "driver_id=gen-3-remote"
+          }
+        ]
+      },
+      {
+        "id": "is_heater_enabled_iqc",
+        "title": {
+          "en": "Heater !{{enabled|disabled}} enabled"
+        },
+        "titleFormatted": {
+          "en": "Heater is !{{enabled|disabled}}"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
           }
         ]
       },
@@ -660,7 +677,7 @@
         ]
       },
       {
-        "id": "set_heater_enabled",
+        "id": "set_heater_enabled_gen3",
         "title": {
           "en": "Set heater"
         },
@@ -671,7 +688,45 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=gen-3-remote|iqc-touch"
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_heater_enabled_iqc",
+        "title": {
+          "en": "Set heater"
+        },
+        "titleFormatted": {
+          "en": "Set heater to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
           },
           {
             "name": "state",
@@ -886,7 +941,7 @@
         "meter_power_heating",
         "alarm_active_alarms",
         "meter_filter_timer",
-        "heater_enabled"
+        "heater_enabled_gen3"
       ],
       "capabilitiesOptions": {
         "target_temperature": {
@@ -1211,7 +1266,7 @@
         "alarm_active_alarms",
         "meter_filter_timer",
         "preheater_enabled_iqc",
-        "heater_enabled"
+        "heater_enabled_iqc"
       ],
       "capabilitiesOptions": {
         "target_temperature": {
@@ -1589,7 +1644,23 @@
       "getable": true,
       "setable": true
     },
-    "heater_enabled": {
+    "heater_enabled_gen3": {
+      "type": "boolean",
+      "title": {
+        "en": "Heater enabled"
+      },
+      "desc": {
+        "en": "Heater enabled"
+      },
+      "uiComponent": "button",
+      "getable": true,
+      "setable": true,
+      "icon": "/assets/icons/heating.svg",
+      "insights": true,
+      "insightsTitleTrue": "Heater enabled",
+      "insightsTitleFalse": "Heater disabled"
+    },
+    "heater_enabled_iqc": {
       "type": "boolean",
       "title": {
         "en": "Heater enabled"

@@ -1,5 +1,5 @@
 {
-    "id": "is_heater_enabled",
+    "id": "is_heater_enabled_iqc",
     "title": {
         "en": "Heater !{{enabled|disabled}} enabled"
     },
@@ -11,7 +11,7 @@
         {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=gen-3-remote|iqc-touch"
+            "filter": "driver_id=iqc-touch"
         }
     ]
 }

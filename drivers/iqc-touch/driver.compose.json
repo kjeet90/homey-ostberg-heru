@@ -28,7 +28,7 @@
         "alarm_active_alarms",
         "meter_filter_timer",
         "preheater_enabled_iqc",
-        "heater_enabled"
+        "heater_enabled_iqc"
     ],
     "capabilitiesOptions": {
         "target_temperature": {
