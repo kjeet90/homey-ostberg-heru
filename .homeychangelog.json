@@ -1,4 +1,7 @@
 {
+    "1.4.0": {
+        "en": "Added heater enabled/disabled for Gen3 Remote"
+    },
     "1.3.0": {
         "en": "Added heater and preheater enabled/disabled for IQC Touch"
     },
