@@ -24,7 +24,8 @@
         "meter_pressure_extract",
         "meter_power_heating",
         "alarm_active_alarms",
-        "meter_filter_timer"
+        "meter_filter_timer",
+        "heater_enabled_gen3"
     ],
     "capabilitiesOptions": {
         "target_temperature": {

@@ -1,0 +1,26 @@
+{
+    "id": "set_heater_enabled_gen3",
+    "title": {
+        "en": "Set heater"
+    },
+    "titleFormatted": {
+        "en": "Set heater to [[state]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        },
+        {
+            "name": "state",
+            "type": "dropdown",
+            "title": { "en": "State" },
+            "required": false,
+            "values": [
+                { "id": "0", "label": { "en": "Disabled" } },
+                { "id": "1", "label": { "en": "Enabled" } }
+            ]
+        }
+    ]
+}

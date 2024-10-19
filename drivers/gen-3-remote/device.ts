@@ -16,6 +16,14 @@ export class Gen3Remote extends BaseDevice {
         this.registerCapabilityListener('target_temperature', async (value) => {
             this.setTargetTemperature(value);
         });
+
+        this.registerCapabilityListener('heater_enabled_gen3', async (value) => {
+            this.setHeaterEnabled(value);
+        });
+    }
+
+    async setHeaterEnabled(value: boolean) {
+        this.api?.writeRegister(Gen3Registers.holdingRegisters.HEATER_ENABLED, value ? 1 : 0);
     }
 
     setTargetTemperature(target: number) {
@@ -116,6 +124,11 @@ export class Gen3Remote extends BaseDevice {
         return {
             allActive: this.getActiveAlarmsString(currentAlarms, alarms)
         };
+    }
+
+    processResults(results: { coils: boolean[]; discreteInputs: boolean[]; inputRegisters: number[]; holdingRegisters: number[] }): void {
+        super.processResults(results);
+        this.setCapabilityValue('heater_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.HEATER_ENABLED]);
     }
 }
 
