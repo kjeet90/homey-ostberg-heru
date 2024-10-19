@@ -29,7 +29,7 @@ export const registers: ModbusRegisters = {
     },
     holdingRegisters: {
         start: 0,
-        count: 43
+        count: 51
     }
 };
 

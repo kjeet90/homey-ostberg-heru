@@ -5,6 +5,7 @@ import { alarms, registers, RegulationModeGen3, SetRegulationModeGen3 } from './
 export class Gen3Remote extends BaseDevice {
     async onInit() {
         super.onInit();
+        await this.upgradeExistingDevice();
         this.api = new HeruAPI(this, registers, this.getSetting('interval') || 2000);
         this.log(`${this.getName()} has been initialized`);
 
@@ -21,6 +22,11 @@ export class Gen3Remote extends BaseDevice {
             this.setHeaterEnabled(value);
         });
     }
+
+    async upgradeExistingDevice() {
+        if (!this.hasCapability('heater_enabled_gen3')) await this.addCapability('heater_enabled_gen3');
+    }
+
 
     async setHeaterEnabled(value: boolean) {
         this.api?.writeRegister(Gen3Registers.holdingRegisters.HEATER_ENABLED, value ? 1 : 0);
