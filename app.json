@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "no.kjeet90.ostbergheru",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "compatibility": ">=8.1.0",
   "sdk": 3,
   "platforms": [
@@ -941,7 +941,9 @@
         "meter_power_heating",
         "alarm_active_alarms",
         "meter_filter_timer",
-        "heater_enabled_gen3"
+        "heater_enabled_gen3",
+        "meter_power",
+        "measure_power"
       ],
       "capabilitiesOptions": {
         "target_temperature": {
@@ -951,6 +953,12 @@
           "min": 15,
           "max": 40,
           "step": 1
+        },
+        "meter_power": {
+          "approximated": true
+        },
+        "measure_power": {
+          "approximated": true
         }
       },
       "id": "gen-3-remote",
@@ -1106,6 +1114,28 @@
               },
               "type": "checkbox",
               "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power",
+              "label": {
+                "en": "Meter power"
+              },
+              "hint": {
+                "en": "This is only a approximated value based on the settings for fan rated power and the reported fan speed percentage"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_measure_power",
+              "label": {
+                "en": "Measure power"
+              },
+              "hint": {
+                "en": "This is only a approximated value based on the settings for heating element rated power and the reported heating percentage"
+              },
+              "type": "checkbox",
+              "value": true
             }
           ]
         },
@@ -1220,6 +1250,88 @@
               "value": false
             }
           ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Rated power (Watt)"
+          },
+          "children": [
+            {
+              "id": "rated_power_heating_element",
+              "label": {
+                "en": "Heating element"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Rated power in watt"
+              },
+              "value": 0
+            },
+            {
+              "id": "rated_power_fan",
+              "label": {
+                "en": "Fans"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Rated power in watt"
+              },
+              "value": 0
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Adjust power (Watt)"
+          },
+          "children": [
+            {
+              "id": "adjust_power_normal",
+              "label": {
+                "en": "Normal"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Add or subtract value to the approximated value"
+              },
+              "value": 0
+            },
+            {
+              "id": "adjust_power_overpressure",
+              "label": {
+                "en": "Overpressure"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Add or subtract value to the approximated value"
+              },
+              "value": 0
+            },
+            {
+              "id": "adjust_power_boost",
+              "label": {
+                "en": "Boost"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Add or subtract value to the approximated value"
+              },
+              "value": 0
+            },
+            {
+              "id": "adjust_power_away",
+              "label": {
+                "en": "Away"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Add or subtract value to the approximated value"
+              },
+              "value": 0
+            }
+          ]
         }
       ]
     },
@@ -1266,7 +1378,9 @@
         "alarm_active_alarms",
         "meter_filter_timer",
         "preheater_enabled_iqc",
-        "heater_enabled_iqc"
+        "heater_enabled_iqc",
+        "meter_power",
+        "measure_power"
       ],
       "capabilitiesOptions": {
         "target_temperature": {
@@ -1284,6 +1398,12 @@
           "min": 15,
           "max": 39,
           "step": 1
+        },
+        "meter_power": {
+          "approximated": true
+        },
+        "measure_power": {
+          "approximated": true
         }
       },
       "id": "iqc-touch",
@@ -1450,6 +1570,28 @@
               },
               "type": "checkbox",
               "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power",
+              "label": {
+                "en": "Meter power"
+              },
+              "hint": {
+                "en": "This is only a approximated value based on the settings for fan rated power and the reported fan speed percentage"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_measure_power",
+              "label": {
+                "en": "Measure power"
+              },
+              "hint": {
+                "en": "This is only a approximated value based on the settings for fan rated power and the reported fan speed percentage"
+              },
+              "type": "checkbox",
+              "value": true
             }
           ]
         },
@@ -1578,6 +1720,88 @@
               },
               "type": "checkbox",
               "value": false
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Rated power (Watt)"
+          },
+          "children": [
+            {
+              "id": "rated_power_heating_element",
+              "label": {
+                "en": "Heating element"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Rated power in watt"
+              },
+              "value": 0
+            },
+            {
+              "id": "rated_power_fan",
+              "label": {
+                "en": "Fans"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Rated power in watt"
+              },
+              "value": 0
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Adjust power (Watt)"
+          },
+          "children": [
+            {
+              "id": "adjust_power_normal",
+              "label": {
+                "en": "Normal"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Add or subtract value to the approximated value"
+              },
+              "value": 0
+            },
+            {
+              "id": "adjust_power_overpressure",
+              "label": {
+                "en": "Overpressure"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Add or subtract value to the approximated value"
+              },
+              "value": 0
+            },
+            {
+              "id": "adjust_power_boost",
+              "label": {
+                "en": "Boost"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Add or subtract value to the approximated value"
+              },
+              "value": 0
+            },
+            {
+              "id": "adjust_power_away",
+              "label": {
+                "en": "Away"
+              },
+              "type": "number",
+              "hint": {
+                "en": "Add or subtract value to the approximated value"
+              },
+              "value": 0
             }
           ]
         }

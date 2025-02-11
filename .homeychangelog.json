@@ -1,4 +1,7 @@
 {
+    "1.5.0": {
+        "en": "Added power and energy approximation"
+    },
     "1.4.0": {
         "en": "Added heater enabled/disabled for Gen3 Remote"
     },

@@ -15,6 +15,7 @@ export class HeruAPI {
     client: ModbusRTU;
 
     isConnected = false;
+    consecutiveFailedRead = 0;
     reconnectCounter = 0;
     POLLING_INTERVAL = 2000;
     timer: NodeJS.Timeout | null = null;
@@ -94,7 +95,7 @@ export class HeruAPI {
         if (this.reconnectCounter > 5) {
             this.reconnect(this.device?.getSetting('ip'), this.device?.getSetting('port'), !!this.device?.getSetting('tcp'));
         } else {
-            this.reconnectCounter += 1;
+            this.reconnectCounter++;
         }
     }
 
@@ -133,13 +134,18 @@ export class HeruAPI {
                     try {
                         const results = await this.readRegisters(this.client);
                         this.reconnectCounter = 0;
+                        this.consecutiveFailedRead = 0;
                         this.device?.setAvailable().catch((e) => this.device?.error(`Failed to set available: ${e}`));
                         if (!this.ignoreNextRead) this.device?.processResults(results);
                         else this.device?.log('Ignored read results');
                     } catch (err) {
-                        this.device
-                            ?.setUnavailable(`Connected to ${this.device?.getSetting('ip')}:${this.device.getSetting('port')}, but got error: "${err}"`)
-                            .catch((e) => this.device?.error(`Failed to set unavailable: ${e}`));
+                        if (this.consecutiveFailedRead < 2) {
+                            this.consecutiveFailedRead++;
+                        } else {
+                            this.device
+                                ?.setUnavailable(`Connected to ${this.device?.getSetting('ip')}:${this.device.getSetting('port')}, but got error: "${err}"`)
+                                .catch((e) => this.device?.error(`Failed to set unavailable: ${e}`));
+                        }
                         this.device?.error(err);
                     }
                 } else this.device?.log('Ignored read');

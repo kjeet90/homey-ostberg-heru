@@ -2,7 +2,9 @@
     "name": {
         "en": "Gen 3 Remote"
     },
-    "$extends": ["defaults"],
+    "$extends": [
+        "defaults"
+    ],
     "capabilities": [
         "measure_temperature",
         "target_temperature",
@@ -25,7 +27,9 @@
         "meter_power_heating",
         "alarm_active_alarms",
         "meter_filter_timer",
-        "heater_enabled_gen3"
+        "heater_enabled_gen3",
+        "meter_power",
+        "measure_power"
     ],
     "capabilitiesOptions": {
         "target_temperature": {
@@ -35,6 +39,12 @@
             "min": 15,
             "max": 40,
             "step": 1
+        },
+        "meter_power": {
+            "approximated": true
+        },
+        "measure_power": {
+            "approximated": true
         }
     }
 }

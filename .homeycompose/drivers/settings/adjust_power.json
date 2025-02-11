@@ -1,0 +1,11 @@
+{
+    "id": "adjust_power",
+    "type": "number",
+    "label": {
+        "en": "Adjusted power"
+    },
+    "hint": {
+        "en": "Add or subtract value to the approximated value"
+    },
+    "value": 0
+}

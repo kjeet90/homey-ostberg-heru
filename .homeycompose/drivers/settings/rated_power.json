@@ -1,0 +1,11 @@
+{
+    "id": "rated_power",
+    "type": "number",
+    "label": {
+        "en": "Rated power"
+    },
+    "hint": {
+        "en": "Rated power in watt"
+    },
+    "value": 0
+}

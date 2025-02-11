@@ -109,7 +109,6 @@
                     "en": "Extract RPM"
                 }
             },
-
             {
                 "$extends": "capability_enabled",
                 "id": "capability_enabled_alarm_active_alarms",
@@ -122,6 +121,26 @@
                 "id": "capability_enabled_meter_filter_timer",
                 "label": {
                     "en": "Filter days left"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_meter_power",
+                "label": {
+                    "en": "Meter power"
+                },
+                "hint": {
+                    "en": "This is only a approximated value based on the settings for fan rated power and the reported fan speed percentage"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
+                "id": "capability_enabled_measure_power",
+                "label": {
+                    "en": "Measure power"
+                },
+                "hint": {
+                    "en": "This is only a approximated value based on the settings for fan rated power and the reported fan speed percentage"
                 }
             }
         ]
@@ -188,7 +207,6 @@
                     "en": "Pulser alarm"
                 }
             },
-
             {
                 "$extends": "alarm_invert",
                 "id": "alarm_invert_supply_fan_alarm",
@@ -236,6 +254,64 @@
                 "id": "alarm_invert_pump_alarm_cooling",
                 "label": {
                     "en": "Pump Cooling alarm"
+                }
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Rated power (Watt)"
+        },
+        "children": [
+            {
+                "$extends": "rated_power",
+                "id": "rated_power_heating_element",
+                "label": {
+                    "en": "Heating element"
+                }
+            },
+            {
+                "$extends": "rated_power",
+                "id": "rated_power_fan",
+                "label": {
+                    "en": "Fans"
+                }
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Adjust power (Watt)"
+        },
+        "children": [
+            {
+                "$extends": "adjust_power",
+                "id": "adjust_power_normal",
+                "label": {
+                    "en": "Normal"
+                }
+            },
+            {
+                "$extends": "adjust_power",
+                "id": "adjust_power_overpressure",
+                "label": {
+                    "en": "Overpressure"
+                }
+            },
+            {
+                "$extends": "adjust_power",
+                "id": "adjust_power_boost",
+                "label": {
+                    "en": "Boost"
+                }
+            },
+            {
+                "$extends": "adjust_power",
+                "id": "adjust_power_away",
+                "label": {
+                    "en": "Away"
                 }
             }
         ]

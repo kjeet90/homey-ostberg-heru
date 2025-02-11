@@ -136,6 +136,39 @@ abstract class BaseDevice extends Homey.Device {
 
     abstract processAlarms(discreteInputs: boolean[]): void;
 
+    approximateMeasurePower(exhaustFanPercent: number, supplyFanPercent: number, heatingPercent: number) {
+        const ratedPowerFan = this.getSetting('rated_power_fan')
+        const ratedPowerHeatingElement = this.getSetting('rated_power_heating_element');
+        const exhaustFanWatt = (exhaustFanPercent / 100) * (ratedPowerFan / 2);
+        const supplyFanWatt = (supplyFanPercent / 100) * (ratedPowerFan / 2);
+        const heatingElementWatt = ((heatingPercent / 100) * ratedPowerHeatingElement);
+        let totalWatt = exhaustFanWatt + supplyFanWatt + heatingElementWatt;
+
+        if (!this.getCapabilityValue(FanMode.OFF) && this.api) {
+            switch (this.getCapabilityValue('fan_mode')) {
+                case FanMode.NORMAL:
+                    totalWatt += this.getSetting('adjust_power_normal');
+                    break;
+                case FanMode.OVERPRESSURE:
+                    totalWatt += this.getSetting('adjust_power_overpressure');
+                    break;
+                case FanMode.BOOST:
+                    totalWatt += this.getSetting('adjust_power_boost');
+                    break;
+                case FanMode.AWAY:
+                    totalWatt += this.getSetting('adjust_power_away');
+                    break;
+            }
+
+            const timeSeconds = this.api.POLLING_INTERVAL / 1000;
+            const energyKWh = (totalWatt * timeSeconds) / (1000 * 3600);
+            if (this.hasCapability('measure_power')) this.setCapabilityValue('measure_power', totalWatt).catch(this.error);
+            if (this.hasCapability('meter_power')) this.setCapabilityValue('meter_power', this.getCapabilityValue("meter_power") + energyKWh).catch(this.error);
+        } else {
+            if (this.hasCapability('meter_power')) this.setCapabilityValue('measure_power', 0).catch(this.error);
+        }
+    }
+
     processResults(results: { coils: boolean[]; discreteInputs: boolean[]; inputRegisters: number[]; holdingRegisters: number[] }) {
         // Coils
         if (results.coils.length) {
@@ -188,6 +221,8 @@ abstract class BaseDevice extends Homey.Device {
         if (results.holdingRegisters.length) {
             this.processRegulationMode(results.holdingRegisters[BaseRegisters.holdingRegisters.REGULATION_MODE], results.holdingRegisters[BaseRegisters.holdingRegisters.SETPOINT_TEMPERATURE]);
         }
+
+        this.approximateMeasurePower(results.inputRegisters[BaseRegisters.inputRegisters.EXHAUST_FAN_POWER], results.inputRegisters[BaseRegisters.inputRegisters.SUPPLY_FAN_POWER], ((results.inputRegisters[BaseRegisters.inputRegisters.HEATING_POWER]) / 255) * 100);
     }
 
     async onSettings(event: { oldSettings: { [index: string]: any }; newSettings: { [index: string]: any }; changedKeys: string[] }): Promise<string | void> {
@@ -212,6 +247,7 @@ abstract class BaseDevice extends Homey.Device {
 
     async addOrRemoveCapabilities(newSettings?: { [index: string]: any }): Promise<void> {
         const settings = newSettings ?? this.getSettings();
+        console.log(settings);
         Object.keys(settings).forEach((k: string) => {
             if (k.includes('capability_enabled_')) {
                 const capability = k.replace('capability_enabled_', '');

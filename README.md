@@ -55,6 +55,16 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
+## 1.5.0
+
+### Feature
+
+ - Added power and energy approximation
+
+### Bug fix
+
+- Does not set device unavailable after a single read error.
+
 ## 1.4.0
 
 ### Feature

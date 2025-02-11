@@ -2,7 +2,9 @@
     "name": {
         "en": "IQC Touch"
     },
-    "$extends": ["defaults"],
+    "$extends": [
+        "defaults"
+    ],
     "capabilities": [
         "measure_temperature",
         "target_temperature",
@@ -28,7 +30,9 @@
         "alarm_active_alarms",
         "meter_filter_timer",
         "preheater_enabled_iqc",
-        "heater_enabled_iqc"
+        "heater_enabled_iqc",
+        "meter_power",
+        "measure_power"
     ],
     "capabilitiesOptions": {
         "target_temperature": {
@@ -46,6 +50,12 @@
             "min": 15,
             "max": 39,
             "step": 1
+        },
+        "meter_power": {
+            "approximated": true
+        },
+        "measure_power": {
+            "approximated": true
         }
     }
 }
