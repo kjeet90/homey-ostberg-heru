@@ -247,7 +247,6 @@ abstract class BaseDevice extends Homey.Device {
 
     async addOrRemoveCapabilities(newSettings?: { [index: string]: any }): Promise<void> {
         const settings = newSettings ?? this.getSettings();
-        console.log(settings);
         Object.keys(settings).forEach((k: string) => {
             if (k.includes('capability_enabled_')) {
                 const capability = k.replace('capability_enabled_', '');
