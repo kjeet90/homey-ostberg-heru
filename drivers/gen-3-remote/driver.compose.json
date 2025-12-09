@@ -10,6 +10,7 @@
         "target_temperature",
         "fan_mode",
         "regulation_mode_gen3",
+        "meter_carbondioxide_gen3",
         "meter_temperature_outdoor_air",
         "meter_temperature_supply_air",
         "meter_temperature_waste_air",

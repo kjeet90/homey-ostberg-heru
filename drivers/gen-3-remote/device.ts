@@ -134,6 +134,17 @@ export class Gen3Remote extends BaseDevice {
 
     processResults(results: { coils: boolean[]; discreteInputs: boolean[]; inputRegisters: number[]; holdingRegisters: number[] }): void {
         super.processResults(results);
+
+        if (results) {
+            if (results.inputRegisters.length) {
+                // Inputs Registers
+                if (this.hasCapability('meter_carbondioxide_gen3')) {
+                    this.setCapabilityValue('meter_carbondioxide_gen3', results.inputRegisters[Gen3Registers.inputRegisters.CARBON_DIOXIDE]).catch(this.error);
+                }
+            }
+        }
+
+        // Holding Registers
         this.setCapabilityValue('heater_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.HEATER_ENABLED]);
     }
 }

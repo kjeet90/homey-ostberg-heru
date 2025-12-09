@@ -1,0 +1,29 @@
+{
+    "title": {
+        "en": "CO₂"
+    },
+    "desc": {
+        "en": "CO₂ level from external sensor"
+    },
+    "tokens": [
+        {
+            "name": "value",
+            "title": {
+                "en": "PPM"
+            },
+            "example": {
+                "en": 800
+            }
+        }
+    ],
+    "type": "number",
+    "decimals": 0,
+    "units": {
+        "en": "PPM"
+    },
+    "icon": "/assets/icons/co2.svg",
+    "getable": true,
+    "setable": false,
+    "greyout": true,
+    "insights": true
+}

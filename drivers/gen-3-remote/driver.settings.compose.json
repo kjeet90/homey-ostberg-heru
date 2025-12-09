@@ -36,6 +36,13 @@
                 }
             },
             {
+              "$extends": "capability_enabled",
+              "id": "capability_enabled_meter_carbondioxide_gen3",
+              "label": {
+                "en": "CO₂"
+              }
+            },
+            {
                 "$extends": "capability_enabled",
                 "id": "capability_enabled_meter_humidity_relative",
                 "label": {
