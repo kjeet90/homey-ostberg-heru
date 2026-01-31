@@ -7,15 +7,15 @@
         "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
     },
     "devDependencies": {
-        "@tsconfig/node12": "^12.1.4",
+        "@tsconfig/node12": "^12.1.7",
         "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.10",
         "@types/node": "^22.13.1",
-        "@typescript-eslint/eslint-plugin": "^8.23.0",
-        "eslint": "^9.19.0",
-        "typescript": "^5.7.3"
+        "@typescript-eslint/eslint-plugin": "^8.54.0",
+        "eslint": "^9.39.2",
+        "typescript": "^5.9.3"
     },
     "dependencies": {
-        "modbus-serial": "8.0.5-no-serial-port",
+        "modbus-serial": "8.0.23-no-serial-port",
         "uuid": "^11.0.5"
     }
 }

@@ -1,7 +1,9 @@
 import BaseDevice from '../base-device';
 import { HeruAPI } from '../heru-api';
-import { Gen3Registers } from '../registers';
+import { Gen3HoldingRegisters, Gen3Registers } from '../registers';
 import { alarms, registers, RegulationModeGen3, SetRegulationModeGen3 } from './constants';
+import { convertArrayOfBooleansToNumber, convertNumberToArrayOfBooleans } from './utils';
+
 export class Gen3Remote extends BaseDevice {
     async onInit() {
         super.onInit();
@@ -33,6 +35,16 @@ export class Gen3Remote extends BaseDevice {
 
     async setWeekTimerEnabled(value: boolean) {
         this.api?.writeRegister(Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED, value ? 1 : 0);
+    }
+
+    async updateWeekProgram(program: number, weekdays: number, onHour:number, onMinute: number, offHour: number, offMinute: number, temperature: number, fanSpeed: number) {
+        this.api?.writeRegister(Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_WEEKDAYS` as keyof typeof Gen3HoldingRegisters], weekdays);
+        this.api?.writeRegister(Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_START_HOUR` as keyof typeof Gen3HoldingRegisters], onHour);
+        this.api?.writeRegister(Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_START_MINUTE` as keyof typeof Gen3HoldingRegisters], onMinute);
+        this.api?.writeRegister(Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_END_HOUR` as keyof typeof Gen3HoldingRegisters], offHour);
+        this.api?.writeRegister(Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_END_MINUTE` as keyof typeof Gen3HoldingRegisters], offMinute);
+        this.api?.writeRegister(Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_FAN_SPEED` as keyof typeof Gen3HoldingRegisters], fanSpeed);
+        this.api?.writeRegister(Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_TEMPERATURE` as keyof typeof Gen3HoldingRegisters], temperature);
     }
 
     setTargetTemperature(target: number) {
@@ -146,6 +158,30 @@ export class Gen3Remote extends BaseDevice {
         if (event.changedKeys.includes('week_timer_enabled')) {
             this.setWeekTimerEnabled(event.newSettings['week_timer_enabled']);
         }
+
+        [...Array(5)].forEach((_, key) => {
+            const program = key+1;
+            if (event.changedKeys.some((item) => item.includes(`program_${program}`))) {
+                this.updateWeekProgram(
+                    program,
+                    convertArrayOfBooleansToNumber([
+                        event.newSettings[`program_${program}_sunday`],
+                        event.newSettings[`program_${program}_saturday`],
+                        event.newSettings[`program_${program}_friday`],
+                        event.newSettings[`program_${program}_thursday`],
+                        event.newSettings[`program_${program}_wednesday`],
+                        event.newSettings[`program_${program}_tuesday`],
+                        event.newSettings[`program_${program}_monday`]
+                    ]),
+                    event.newSettings[`program_${program}_start_hour`],
+                    event.newSettings[`program_${program}_start_minute`],
+                    event.newSettings[`program_${program}_end_hour`],
+                    event.newSettings[`program_${program}_end_minute`],
+                    event.newSettings[`program_${program}_temperature`],
+                    event.newSettings[`program_${program}_fan_speed`])
+            }
+        })
+
     }
 
     processResults(results: { coils: boolean[]; discreteInputs: boolean[]; inputRegisters: number[]; holdingRegisters: number[] }): void {
@@ -158,14 +194,39 @@ export class Gen3Remote extends BaseDevice {
                     this.setCapabilityValue('meter_carbondioxide_gen3', results.inputRegisters[Gen3Registers.inputRegisters.CARBON_DIOXIDE]).catch(this.error);
                 }
             }
+
+            if (results.holdingRegisters.length) {
+                // Holding Registers
+                this.setCapabilityValue('heater_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.HEATER_ENABLED]);
+                const programSettings = Array.from({ length: 5 }).map((_, i) => {
+                    const program = i+1;
+                    const weekdays = convertNumberToArrayOfBooleans(results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_WEEKDAYS` as keyof typeof Gen3HoldingRegisters]], 7);
+
+                    return {
+                        [`program_${program}_monday`]: weekdays[6],
+                        [`program_${program}_tuesday`]: weekdays[5],
+                        [`program_${program}_wednesday`]: weekdays[4],
+                        [`program_${program}_thursday`]: weekdays[3],
+                        [`program_${program}_friday`]: weekdays[2],
+                        [`program_${program}_saturday`]: weekdays[1],
+                        [`program_${program}_sunday`]: weekdays[0],
+                        [`program_${program}_start_hour`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_START_HOUR` as keyof typeof Gen3HoldingRegisters]],
+                        [`program_${program}_start_minute`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_START_MINUTE` as keyof typeof Gen3HoldingRegisters]],
+                        [`program_${program}_end_hour`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_END_HOUR` as keyof typeof Gen3HoldingRegisters]],
+                        [`program_${program}_end_minute`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_END_MINUTE` as keyof typeof Gen3HoldingRegisters]],
+                        [`program_${program}_temperature`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_TEMPERATURE` as keyof typeof Gen3HoldingRegisters]],
+                        [`program_${program}_fan_speed`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_FAN_SPEED` as keyof typeof Gen3HoldingRegisters]].toString(10)
+                    }
+                }).reduce((acc, current) => {
+                    return Object.assign(acc, current);
+                }, {})
+
+                this.setSettings({
+                    'week_timer_enabled': !!results.holdingRegisters[Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED],
+                    ...programSettings
+                } );
+            }
         }
-
-        // Holding Registers
-        this.setCapabilityValue('heater_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.HEATER_ENABLED]);
-
-        this.setSettings({
-            'week_timer_enabled': !!results.holdingRegisters[Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED]
-        } );
 
     }
 }
