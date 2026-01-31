@@ -24,6 +24,7 @@ class Gen3RemoteDriver extends Homey.Driver {
                 Object.keys(Gen3Alarms).forEach((k) => results.push({ id: k, name: Gen3Alarms[k] }));
                 return results.filter((result) => result.name.toLowerCase().includes(query.toLowerCase()));
             });
+        this.homey.flow.getActionCard('set_week_timer_enabled_gen3').registerRunListener((args, _state) => args.device.setWeekTimerEnabled(args.state === '1' ? true : false));
         this.log('Gen3RemoteDriver driver has been initialized');
     }
 

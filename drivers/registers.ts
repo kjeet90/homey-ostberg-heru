@@ -81,7 +81,8 @@ enum Gen3InputRegisters {
 
 enum Gen3HoldingRegisters {
     USER_FAN_SPEED,
-    HEATER_ENABLED = 50
+    HEATER_ENABLED = 50,
+    WEEK_TIMER_ENABLED = 68
 }
 
 enum IQCInputRegisters {

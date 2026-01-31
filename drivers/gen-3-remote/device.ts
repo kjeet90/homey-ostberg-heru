@@ -27,9 +27,12 @@ export class Gen3Remote extends BaseDevice {
         if (!this.hasCapability('heater_enabled_gen3')) await this.addCapability('heater_enabled_gen3');
     }
 
-
     async setHeaterEnabled(value: boolean) {
         this.api?.writeRegister(Gen3Registers.holdingRegisters.HEATER_ENABLED, value ? 1 : 0);
+    }
+
+    async setWeekTimerEnabled(value: boolean) {
+        this.api?.writeRegister(Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED, value ? 1 : 0);
     }
 
     setTargetTemperature(target: number) {
@@ -133,6 +136,18 @@ export class Gen3Remote extends BaseDevice {
         };
     }
 
+    async onSettings(event: {
+        oldSettings: { [p: string]: any };
+        newSettings: { [p: string]: any };
+        changedKeys: string[]
+    }): Promise<string | void> {
+        super.onSettings(event);
+
+        if (event.changedKeys.includes('week_timer_enabled')) {
+            this.setWeekTimerEnabled(event.newSettings['week_timer_enabled']);
+        }
+    }
+
     processResults(results: { coils: boolean[]; discreteInputs: boolean[]; inputRegisters: number[]; holdingRegisters: number[] }): void {
         super.processResults(results);
 
@@ -147,6 +162,11 @@ export class Gen3Remote extends BaseDevice {
 
         // Holding Registers
         this.setCapabilityValue('heater_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.HEATER_ENABLED]);
+
+        this.setSettings({
+            'week_timer_enabled': !!results.holdingRegisters[Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED]
+        } );
+
     }
 }
 

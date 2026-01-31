@@ -304,5 +304,17 @@
                 }
             }
         ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Week Timer"
+        },
+        "children": [
+            {
+                "$extends": "week_timer_enabled",
+                "id": "week_timer_enabled"
+            }
+        ]
     }
 ]

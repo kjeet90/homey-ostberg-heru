@@ -897,6 +897,44 @@
             ]
           }
         ]
+      },
+      {
+        "id": "set_week_timer_enabled_gen3",
+        "title": {
+          "en": "Set week timer"
+        },
+        "titleFormatted": {
+          "en": "Set week timer to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": false,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1339,6 +1377,22 @@
                 "en": "Add or subtract value to the approximated value"
               },
               "value": 0
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Week Timer"
+          },
+          "children": [
+            {
+              "id": "week_timer_enabled",
+              "type": "checkbox",
+              "label": {
+                "en": "Weekly Timer enabled"
+              },
+              "value": false
             }
           ]
         }
