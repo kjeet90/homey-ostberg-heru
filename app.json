@@ -1289,19 +1289,19 @@
             "required": true,
             "values": [
               {
-                "id": "0",
+                "id": "6",
                 "label": {
                   "en": "Monday"
                 }
               },
               {
-                "id": "1",
+                "id": "5",
                 "label": {
                   "en": "Tuesday"
                 }
               },
               {
-                "id": "2",
+                "id": "4",
                 "label": {
                   "en": "Wednesday"
                 }
@@ -1313,19 +1313,19 @@
                 }
               },
               {
-                "id": "4",
+                "id": "2",
                 "label": {
                   "en": "Friday"
                 }
               },
               {
-                "id": "5",
+                "id": "1",
                 "label": {
                   "en": "Saturday"
                 }
               },
               {
-                "id": "6",
+                "id": "0",
                 "label": {
                   "en": "Sunday"
                 }
