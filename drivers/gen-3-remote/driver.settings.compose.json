@@ -322,43 +322,43 @@
                 },
                 "children": [
                     {
-                        "id": "program_1_monday",
+                        "id": "program_1_week_day_monday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Monday" }
                     },
                     {
-                        "id": "program_1_tuesday",
+                        "id": "program_1_week_day_tuesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Tuesday" }
                     },
                     {
-                        "id": "program_1_wednesday",
+                        "id": "program_1_week_day_wednesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Wednesday" }
                     },
                     {
-                        "id": "program_1_thursday",
+                        "id": "program_1_week_day_thursday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Thursday" }
                     },
                     {
-                        "id": "program_1_friday",
+                        "id": "program_1_week_day_friday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Friday" }
                     },
                     {
-                        "id": "program_1_saturday",
+                        "id": "program_1_week_day_saturday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Saturday" }
                     },
                     {
-                        "id": "program_1_sunday",
+                        "id": "program_1_week_day_sunday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Sunday" }
@@ -445,43 +445,43 @@
                 },
                 "children": [
                     {
-                        "id": "program_2_monday",
+                        "id": "program_2_week_day_monday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Monday" }
                     },
                     {
-                        "id": "program_2_tuesday",
+                        "id": "program_2_week_day_tuesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Tuesday" }
                     },
                     {
-                        "id": "program_2_wednesday",
+                        "id": "program_2_week_day_wednesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Wednesday" }
                     },
                     {
-                        "id": "program_2_thursday",
+                        "id": "program_2_week_day_thursday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Thursday" }
                     },
                     {
-                        "id": "program_2_friday",
+                        "id": "program_2_week_day_friday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Friday" }
                     },
                     {
-                        "id": "program_2_saturday",
+                        "id": "program_2_week_day_saturday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Saturday" }
                     },
                     {
-                        "id": "program_2_sunday",
+                        "id": "program_2_week_day_sunday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Sunday" }
@@ -568,43 +568,43 @@
                 },
                 "children": [
                     {
-                        "id": "program_3_monday",
+                        "id": "program_3_week_day_monday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Monday" }
                     },
                     {
-                        "id": "program_3_tuesday",
+                        "id": "program_3_week_day_tuesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Tuesday" }
                     },
                     {
-                        "id": "program_3_wednesday",
+                        "id": "program_3_week_day_wednesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Wednesday" }
                     },
                     {
-                        "id": "program_3_thursday",
+                        "id": "program_3_week_day_thursday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Thursday" }
                     },
                     {
-                        "id": "program_3_friday",
+                        "id": "program_3_week_day_friday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Friday" }
                     },
                     {
-                        "id": "program_3_saturday",
+                        "id": "program_3_week_day_saturday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Saturday" }
                     },
                     {
-                        "id": "program_3_sunday",
+                        "id": "program_3_week_day_sunday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Sunday" }
@@ -691,43 +691,43 @@
                 },
                 "children": [
                     {
-                        "id": "program_4_monday",
+                        "id": "program_4_week_day_monday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Monday" }
                     },
                     {
-                        "id": "program_4_tuesday",
+                        "id": "program_4_week_day_tuesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Tuesday" }
                     },
                     {
-                        "id": "program_4_wednesday",
+                        "id": "program_4_week_day_wednesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Wednesday" }
                     },
                     {
-                        "id": "program_4_thursday",
+                        "id": "program_4_week_day_thursday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Thursday" }
                     },
                     {
-                        "id": "program_4_friday",
+                        "id": "program_4_week_day_friday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Friday" }
                     },
                     {
-                        "id": "program_4_saturday",
+                        "id": "program_4_week_day_saturday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Saturday" }
                     },
                     {
-                        "id": "program_4_sunday",
+                        "id": "program_4_week_day_sunday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Sunday" }
@@ -814,43 +814,43 @@
                 },
                 "children": [
                     {
-                        "id": "program_5_monday",
+                        "id": "program_5_week_day_monday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Monday" }
                     },
                     {
-                        "id": "program_5_tuesday",
+                        "id": "program_5_week_day_tuesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Tuesday" }
                     },
                     {
-                        "id": "program_5_wednesday",
+                        "id": "program_5_week_day_wednesday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Wednesday" }
                     },
                     {
-                        "id": "program_5_thursday",
+                        "id": "program_5_week_day_thursday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Thursday" }
                     },
                     {
-                        "id": "program_5_friday",
+                        "id": "program_5_week_day_friday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Friday" }
                     },
                     {
-                        "id": "program_5_saturday",
+                        "id": "program_5_week_day_saturday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Saturday" }
                     },
                     {
-                        "id": "program_5_sunday",
+                        "id": "program_5_week_day_sunday",
                         "type": "checkbox",
                         "value": false,
                         "label": { "en": "Enabled on Sunday" }

@@ -16,7 +16,7 @@
             "name": "state",
             "type": "dropdown",
             "title": { "en": "State" },
-            "required": false,
+            "required": true,
             "values": [
                 { "id": "0", "label": { "en": "Disabled" } },
                 { "id": "1", "label": { "en": "Enabled" } }

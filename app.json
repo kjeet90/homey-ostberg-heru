@@ -918,7 +918,427 @@
             "title": {
               "en": "State"
             },
-            "required": false,
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_week_timer_program_end_time_gen3",
+        "title": {
+          "en": "Set week timer program end time"
+        },
+        "titleFormatted": {
+          "en": "Set week timer program [[program]] end time to [[time]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "time",
+            "type": "time",
+            "title": {
+              "en": "Time"
+            },
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "set_week_timer_program_fan_speed_gen3",
+        "title": {
+          "en": "Set week timer program fan speed"
+        },
+        "titleFormatted": {
+          "en": "Set week timer program [[program]] fan speed to [[fan_speed]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "fan_speed",
+            "type": "dropdown",
+            "title": {
+              "en": "Fan speed"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Off"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Minimum"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Standard"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Medium"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Maximum"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_week_timer_program_start_time_gen3",
+        "title": {
+          "en": "Set week timer program start time"
+        },
+        "titleFormatted": {
+          "en": "Set week timer program [[program]] start time to [[time]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "time",
+            "type": "time",
+            "title": {
+              "en": "Time"
+            },
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "set_week_timer_program_temperature_gen3",
+        "title": {
+          "en": "Set week timer program temperature"
+        },
+        "titleFormatted": {
+          "en": "Set week timer program [[program]] temperature to [[temperature]]°C"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "title": {
+              "en": "Temperature"
+            },
+            "required": true,
+            "min": 15,
+            "max": 40
+          }
+        ]
+      },
+      {
+        "id": "set_week_timer_program_week_day_gen3",
+        "title": {
+          "en": "Set week timer program weekday"
+        },
+        "titleFormatted": {
+          "en": "Set week timer program [[program]] weekday [[week_day]] to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "week_day",
+            "type": "dropdown",
+            "title": {
+              "en": "Weekday"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Monday"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Tuesday"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Wednesday"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Thursday"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Friday"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Saturday"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "Sunday"
+                }
+              }
+            ]
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": true,
             "values": [
               {
                 "id": "0",
@@ -1401,7 +1821,7 @@
               },
               "children": [
                 {
-                  "id": "program_1_monday",
+                  "id": "program_1_week_day_monday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1409,7 +1829,7 @@
                   }
                 },
                 {
-                  "id": "program_1_tuesday",
+                  "id": "program_1_week_day_tuesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1417,7 +1837,7 @@
                   }
                 },
                 {
-                  "id": "program_1_wednesday",
+                  "id": "program_1_week_day_wednesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1425,7 +1845,7 @@
                   }
                 },
                 {
-                  "id": "program_1_thursday",
+                  "id": "program_1_week_day_thursday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1433,7 +1853,7 @@
                   }
                 },
                 {
-                  "id": "program_1_friday",
+                  "id": "program_1_week_day_friday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1441,7 +1861,7 @@
                   }
                 },
                 {
-                  "id": "program_1_saturday",
+                  "id": "program_1_week_day_saturday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1449,7 +1869,7 @@
                   }
                 },
                 {
-                  "id": "program_1_sunday",
+                  "id": "program_1_week_day_sunday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1570,7 +1990,7 @@
               },
               "children": [
                 {
-                  "id": "program_2_monday",
+                  "id": "program_2_week_day_monday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1578,7 +1998,7 @@
                   }
                 },
                 {
-                  "id": "program_2_tuesday",
+                  "id": "program_2_week_day_tuesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1586,7 +2006,7 @@
                   }
                 },
                 {
-                  "id": "program_2_wednesday",
+                  "id": "program_2_week_day_wednesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1594,7 +2014,7 @@
                   }
                 },
                 {
-                  "id": "program_2_thursday",
+                  "id": "program_2_week_day_thursday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1602,7 +2022,7 @@
                   }
                 },
                 {
-                  "id": "program_2_friday",
+                  "id": "program_2_week_day_friday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1610,7 +2030,7 @@
                   }
                 },
                 {
-                  "id": "program_2_saturday",
+                  "id": "program_2_week_day_saturday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1618,7 +2038,7 @@
                   }
                 },
                 {
-                  "id": "program_2_sunday",
+                  "id": "program_2_week_day_sunday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1739,7 +2159,7 @@
               },
               "children": [
                 {
-                  "id": "program_3_monday",
+                  "id": "program_3_week_day_monday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1747,7 +2167,7 @@
                   }
                 },
                 {
-                  "id": "program_3_tuesday",
+                  "id": "program_3_week_day_tuesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1755,7 +2175,7 @@
                   }
                 },
                 {
-                  "id": "program_3_wednesday",
+                  "id": "program_3_week_day_wednesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1763,7 +2183,7 @@
                   }
                 },
                 {
-                  "id": "program_3_thursday",
+                  "id": "program_3_week_day_thursday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1771,7 +2191,7 @@
                   }
                 },
                 {
-                  "id": "program_3_friday",
+                  "id": "program_3_week_day_friday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1779,7 +2199,7 @@
                   }
                 },
                 {
-                  "id": "program_3_saturday",
+                  "id": "program_3_week_day_saturday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1787,7 +2207,7 @@
                   }
                 },
                 {
-                  "id": "program_3_sunday",
+                  "id": "program_3_week_day_sunday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1908,7 +2328,7 @@
               },
               "children": [
                 {
-                  "id": "program_4_monday",
+                  "id": "program_4_week_day_monday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1916,7 +2336,7 @@
                   }
                 },
                 {
-                  "id": "program_4_tuesday",
+                  "id": "program_4_week_day_tuesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1924,7 +2344,7 @@
                   }
                 },
                 {
-                  "id": "program_4_wednesday",
+                  "id": "program_4_week_day_wednesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1932,7 +2352,7 @@
                   }
                 },
                 {
-                  "id": "program_4_thursday",
+                  "id": "program_4_week_day_thursday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1940,7 +2360,7 @@
                   }
                 },
                 {
-                  "id": "program_4_friday",
+                  "id": "program_4_week_day_friday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1948,7 +2368,7 @@
                   }
                 },
                 {
-                  "id": "program_4_saturday",
+                  "id": "program_4_week_day_saturday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -1956,7 +2376,7 @@
                   }
                 },
                 {
-                  "id": "program_4_sunday",
+                  "id": "program_4_week_day_sunday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -2077,7 +2497,7 @@
               },
               "children": [
                 {
-                  "id": "program_5_monday",
+                  "id": "program_5_week_day_monday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -2085,7 +2505,7 @@
                   }
                 },
                 {
-                  "id": "program_5_tuesday",
+                  "id": "program_5_week_day_tuesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -2093,7 +2513,7 @@
                   }
                 },
                 {
-                  "id": "program_5_wednesday",
+                  "id": "program_5_week_day_wednesday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -2101,7 +2521,7 @@
                   }
                 },
                 {
-                  "id": "program_5_thursday",
+                  "id": "program_5_week_day_thursday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -2109,7 +2529,7 @@
                   }
                 },
                 {
-                  "id": "program_5_friday",
+                  "id": "program_5_week_day_friday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -2117,7 +2537,7 @@
                   }
                 },
                 {
-                  "id": "program_5_saturday",
+                  "id": "program_5_week_day_saturday",
                   "type": "checkbox",
                   "value": false,
                   "label": {
@@ -2125,7 +2545,7 @@
                   }
                 },
                 {
-                  "id": "program_5_sunday",
+                  "id": "program_5_week_day_sunday",
                   "type": "checkbox",
                   "value": false,
                   "label": {

@@ -1,0 +1,37 @@
+{
+    "id": "set_week_timer_program_temperature_gen3",
+    "title": {
+        "en": "Set week timer program temperature"
+    },
+    "titleFormatted": {
+        "en": "Set week timer program [[program]] temperature to [[temperature]]°C"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": { "en": "Program" },
+            "required": true,
+            "values": [
+                { "id": "1", "label": { "en": "1" } },
+                { "id": "2", "label": { "en": "2" } },
+                { "id": "3", "label": { "en": "3" } },
+                { "id": "4", "label": { "en": "4" } },
+                { "id": "5", "label": { "en": "5" } }
+            ]
+        },
+        {
+            "name": "temperature",
+            "type": "number",
+            "title": { "en": "Temperature" },
+            "required": true,
+            "min": 15,
+            "max": 40
+        }
+    ]
+}
