@@ -1,7 +1,5 @@
 import Homey from 'homey';
 
-require('inspector').open(9229, '0.0.0.0');
-
 class OstbergHeru extends Homey.App {
     /**
      * onInit is called when the app is initialized.
