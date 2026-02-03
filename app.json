@@ -1382,7 +1382,7 @@
         "target_temperature",
         "fan_mode",
         "regulation_mode_gen3",
-        "meter_carbondioxide_gen3",
+        "measure_co2",
         "meter_temperature_outdoor_air",
         "meter_temperature_supply_air",
         "meter_temperature_waste_air",
@@ -1479,7 +1479,7 @@
               "value": true
             },
             {
-              "id": "capability_enabled_meter_carbondioxide_gen3",
+              "id": "capability_enabled_measure_co2",
               "label": {
                 "en": "CO₂"
               },
@@ -3227,35 +3227,6 @@
       "insights": true,
       "insightsTitleTrue": "Heater enabled",
       "insightsTitleFalse": "Heater disabled"
-    },
-    "meter_carbondioxide_gen3": {
-      "title": {
-        "en": "CO₂"
-      },
-      "desc": {
-        "en": "CO₂ level from external sensor"
-      },
-      "tokens": [
-        {
-          "name": "value",
-          "title": {
-            "en": "PPM"
-          },
-          "example": {
-            "en": 800
-          }
-        }
-      ],
-      "type": "number",
-      "decimals": 0,
-      "units": {
-        "en": "PPM"
-      },
-      "icon": "/assets/icons/co2.svg",
-      "getable": true,
-      "setable": false,
-      "greyout": true,
-      "insights": true
     },
     "meter_filter_timer": {
       "title": {

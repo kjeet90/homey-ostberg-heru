@@ -225,8 +225,8 @@ export class Gen3Remote extends BaseDevice {
 
         // Inputs Registers
         if (results.inputRegisters.length) {
-            if (this.hasCapability('meter_carbondioxide_gen3')) {
-                this.setCapabilityValue('meter_carbondioxide_gen3', results.inputRegisters[Gen3Registers.inputRegisters.CARBON_DIOXIDE]).catch(this.error);
+            if (this.hasCapability('measure_co2')) {
+                this.setCapabilityValue('measure_co2', results.inputRegisters[Gen3Registers.inputRegisters.CARBON_DIOXIDE]).catch(this.error);
             }
         }
 
