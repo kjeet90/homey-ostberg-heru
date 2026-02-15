@@ -17,6 +17,7 @@
         "meter_temperature_extract_air",
         "meter_temperature_heat_recovery_wheel",
         "meter_temperature_room",
+        "meter_thermal_efficiency",
         "meter_temperature_water",
         "meter_humidity_relative",
         "meter_rpm_supply",

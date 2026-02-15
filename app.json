@@ -1389,6 +1389,7 @@
         "meter_temperature_extract_air",
         "meter_temperature_heat_recovery_wheel",
         "meter_temperature_room",
+        "meter_thermal_efficiency",
         "meter_temperature_water",
         "meter_humidity_relative",
         "meter_rpm_supply",
@@ -2694,6 +2695,7 @@
         "meter_temperature_extract_air",
         "meter_temperature_heat_recovery_wheel",
         "meter_temperature_room",
+        "meter_thermal_efficiency",
         "meter_temperature_water",
         "meter_humidity_relative",
         "meter_rpm_supply",
@@ -3505,7 +3507,7 @@
         }
       ],
       "type": "number",
-      "decimals": 0,
+      "decimals": 1,
       "units": {
         "en": "°C"
       },
@@ -3534,7 +3536,7 @@
         }
       ],
       "type": "number",
-      "decimals": 0,
+      "decimals": 1,
       "units": {
         "en": "°C"
       },
@@ -3563,7 +3565,7 @@
         }
       ],
       "type": "number",
-      "decimals": 0,
+      "decimals": 1,
       "units": {
         "en": "°C"
       },
@@ -3592,7 +3594,7 @@
         }
       ],
       "type": "number",
-      "decimals": 0,
+      "decimals": 1,
       "units": {
         "en": "°C"
       },
@@ -3621,7 +3623,7 @@
         }
       ],
       "type": "number",
-      "decimals": 0,
+      "decimals": 1,
       "units": {
         "en": "°C"
       },
@@ -3650,7 +3652,7 @@
         }
       ],
       "type": "number",
-      "decimals": 0,
+      "decimals": 1,
       "units": {
         "en": "°C"
       },
@@ -3679,11 +3681,40 @@
         }
       ],
       "type": "number",
-      "decimals": 0,
+      "decimals": 1,
       "units": {
         "en": "°C"
       },
       "icon": "/assets/icons/water.svg",
+      "getable": true,
+      "setable": false,
+      "greyout": true,
+      "insights": true
+    },
+    "meter_thermal_efficiency": {
+      "title": {
+        "en": "Thermal Efficiency"
+      },
+      "desc": {
+        "en": "Thermal Efficiency"
+      },
+      "tokens": [
+        {
+          "name": "value",
+          "title": {
+            "en": "%"
+          },
+          "example": {
+            "en": 80
+          }
+        }
+      ],
+      "type": "number",
+      "decimals": 0,
+      "units": {
+        "en": "%"
+      },
+      "icon": "/assets/icons/recovery.svg",
       "getable": true,
       "setable": false,
       "greyout": true,

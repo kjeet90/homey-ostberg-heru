@@ -33,6 +33,7 @@ class IQCTouch extends BaseDevice {
     async upgradeExistingDevice() {
         if (!this.hasCapability('preheater_enabled_iqc')) await this.addCapability('preheater_enabled_iqc');
         if (!this.hasCapability('heater_enabled_iqc')) await this.addCapability('heater_enabled_iqc');
+        if (!this.hasCapability('meter_thermal_efficiency')) await this.addCapability('meter_thermal_efficiency');
     }
 
     async setTargetTemperature(target: number, eco: boolean) {

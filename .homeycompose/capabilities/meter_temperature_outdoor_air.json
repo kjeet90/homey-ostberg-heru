@@ -17,7 +17,7 @@
         }
     ],
     "type": "number",
-    "decimals": 0,
+    "decimals": 1,
     "units": {
         "en": "°C"
     },

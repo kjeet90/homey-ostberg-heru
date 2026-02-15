@@ -163,7 +163,7 @@ abstract class BaseDevice extends Homey.Device {
             const timeSeconds = this.api.POLLING_INTERVAL / 1000;
             const energyKWh = (totalWatt * timeSeconds) / (1000 * 3600);
             if (this.hasCapability('measure_power')) this.setCapabilityValue('measure_power', totalWatt).catch(this.error);
-            if (this.hasCapability('meter_power')) this.setCapabilityValue('meter_power', this.getCapabilityValue("meter_power") + energyKWh).catch(this.error);
+            if (this.hasCapability('meter_power')) this.setCapabilityValue('meter_power', this.getCapabilityValue('meter_power') + energyKWh).catch(this.error);
         } else {
             if (this.hasCapability('meter_power')) this.setCapabilityValue('measure_power', 0).catch(this.error);
         }
@@ -187,18 +187,23 @@ abstract class BaseDevice extends Homey.Device {
 
         // Inputs Registers
         if (results.inputRegisters.length) {
-            this.setCapabilityValue('meter_temperature_outdoor_air', this.removeDecimal(results.inputRegisters[BaseRegisters.inputRegisters.OUTDOOR_TEMPERATURE])).catch(this.error);
-            this.setCapabilityValue('meter_temperature_supply_air', this.removeDecimal(results.inputRegisters[BaseRegisters.inputRegisters.SUPPLY_AIR_TEMPERATURE])).catch(this.error);
-            this.setCapabilityValue('meter_temperature_extract_air', this.removeDecimal(results.inputRegisters[BaseRegisters.inputRegisters.EXTRACT_AIR_TEMPERATURE])).catch(this.error);
-            this.setCapabilityValue('meter_temperature_waste_air', this.removeDecimal(results.inputRegisters[BaseRegisters.inputRegisters.EXHAUST_AIR_TEMPERATURE])).catch(this.error);
+            this.setCapabilityValue('meter_temperature_outdoor_air', this.roundToOneDecimal(results.inputRegisters[BaseRegisters.inputRegisters.OUTDOOR_TEMPERATURE])).catch(this.error);
+            this.setCapabilityValue('meter_temperature_supply_air', this.roundToOneDecimal(results.inputRegisters[BaseRegisters.inputRegisters.SUPPLY_AIR_TEMPERATURE])).catch(this.error);
+            this.setCapabilityValue('meter_temperature_extract_air', this.roundToOneDecimal(results.inputRegisters[BaseRegisters.inputRegisters.EXTRACT_AIR_TEMPERATURE])).catch(this.error);
+            this.setCapabilityValue('meter_temperature_waste_air', this.roundToOneDecimal(results.inputRegisters[BaseRegisters.inputRegisters.EXHAUST_AIR_TEMPERATURE])).catch(this.error);
+            this.setCapabilityValue('meter_thermal_efficiency', this.calculateThermalEfficiency(
+                results.inputRegisters[BaseRegisters.inputRegisters.OUTDOOR_TEMPERATURE],
+                results.inputRegisters[BaseRegisters.inputRegisters.HEAT_RECOVERY_TEMPERATURE],
+                results.inputRegisters[BaseRegisters.inputRegisters.EXTRACT_AIR_TEMPERATURE],
+            )).catch(this.error);
             if (this.hasCapability('meter_temperature_water'))
-                this.setCapabilityValue('meter_temperature_water', this.removeDecimal(results.inputRegisters[BaseRegisters.inputRegisters.WATER_TEMPERATURE])).catch(this.error);
+                this.setCapabilityValue('meter_temperature_water', this.roundToOneDecimal(results.inputRegisters[BaseRegisters.inputRegisters.WATER_TEMPERATURE])).catch(this.error);
             if (this.hasCapability('meter_temperature_heat_recovery_wheel'))
-                this.setCapabilityValue('meter_temperature_heat_recovery_wheel', this.removeDecimal(results.inputRegisters[BaseRegisters.inputRegisters.HEAT_RECOVERY_TEMPERATURE])).catch(
+                this.setCapabilityValue('meter_temperature_heat_recovery_wheel', this.roundToOneDecimal(results.inputRegisters[BaseRegisters.inputRegisters.HEAT_RECOVERY_TEMPERATURE])).catch(
                     this.error
                 );
             if (this.hasCapability('meter_temperature_room'))
-                this.setCapabilityValue('meter_temperature_room', this.removeDecimal(results.inputRegisters[BaseRegisters.inputRegisters.ROOM_TEMPERATURE])).catch(this.error);
+                this.setCapabilityValue('meter_temperature_room', this.roundToOneDecimal(results.inputRegisters[BaseRegisters.inputRegisters.ROOM_TEMPERATURE])).catch(this.error);
             if (this.hasCapability('meter_pressure_supply'))
                 this.setCapabilityValue('meter_pressure_supply', this.checkNegativeNumber(results.inputRegisters[BaseRegisters.inputRegisters.SUPPLY_PRESSURE])).catch(this.error); // TODO: Check conversion. x0.1Pa
             if (this.hasCapability('meter_pressure_extract'))
@@ -257,9 +262,16 @@ abstract class BaseDevice extends Homey.Device {
         });
     }
 
-    removeDecimal(value: number) {
+    roundToOneDecimal(value: number) {
         const negativeChecked = this.checkNegativeNumber(value);
-        return Math.round(negativeChecked / 10);
+        return negativeChecked / 10;
+    }
+
+    calculateThermalEfficiency(outDoorTemp: number, supplyTemp: number, extractTemp: number) {
+        const negativeCheckedOutDoorTem = this.checkNegativeNumber(outDoorTemp);
+        const negativeCheckedSupplyTem = this.checkNegativeNumber(supplyTemp);
+        const negativeCheckedExtractTem = this.checkNegativeNumber(extractTemp);
+        return ((negativeCheckedSupplyTem - negativeCheckedOutDoorTem)/(negativeCheckedExtractTem - negativeCheckedOutDoorTem))*100;
     }
 
     checkNegativeNumber(modbusValue: number) {

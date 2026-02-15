@@ -27,6 +27,7 @@ export class Gen3Remote extends BaseDevice {
 
     async upgradeExistingDevice() {
         if (!this.hasCapability('heater_enabled_gen3')) await this.addCapability('heater_enabled_gen3');
+        if (!this.hasCapability('meter_thermal_efficiency')) await this.addCapability('meter_thermal_efficiency');
     }
 
     async setHeaterEnabled(value: boolean) {

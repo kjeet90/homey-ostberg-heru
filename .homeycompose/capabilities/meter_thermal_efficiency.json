@@ -1,27 +1,27 @@
 {
     "title": {
-        "en": "Heat recovery wheel temperature"
+        "en": "Thermal Efficiency"
     },
     "desc": {
-        "en": "Heat recovery wheel temperature"
+        "en": "Thermal Efficiency"
     },
     "tokens": [
         {
             "name": "value",
             "title": {
-                "en": "°C"
+                "en": "%"
             },
             "example": {
-                "en": 20
+                "en": 80
             }
         }
     ],
     "type": "number",
-    "decimals": 1,
+    "decimals": 0,
     "units": {
-        "en": "°C"
+        "en": "%"
     },
-    "icon": "/assets/icons/rotor.svg",
+    "icon": "/assets/icons/recovery.svg",
     "getable": true,
     "setable": false,
     "greyout": true,
