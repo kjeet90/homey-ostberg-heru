@@ -23,10 +23,16 @@ export class Gen3Remote extends BaseDevice {
         this.registerCapabilityListener('heater_enabled_gen3', async (value) => {
             this.setHeaterEnabled(value);
         });
+
+        this.registerCapabilityListener('week_timer_enabled_gen3', async (value) => {
+            this.setWeekTimerEnabled(value);
+        });
     }
 
     async upgradeExistingDevice() {
         if (!this.hasCapability('heater_enabled_gen3')) await this.addCapability('heater_enabled_gen3');
+        if (!this.hasCapability('week_timer_enabled_gen3')) await this.addCapability('week_timer_enabled_gen3');
+
     }
 
     async setHeaterEnabled(value: boolean) {
@@ -167,10 +173,6 @@ export class Gen3Remote extends BaseDevice {
     }): Promise<string | void> {
         super.onSettings(event);
 
-        if (event.changedKeys.includes('week_timer_enabled')) {
-            this.setWeekTimerEnabled(event.newSettings['week_timer_enabled']);
-        }
-
         [...Array(5)].forEach((_, key) => {
             const program = key+1;
             if (event.changedKeys.some((item) => item.includes(`program_${program}_week_day`))) {
@@ -255,12 +257,10 @@ export class Gen3Remote extends BaseDevice {
                 return Object.assign(acc, current);
             }, {})
 
-            this.setSettings({
-                'week_timer_enabled': !!results.holdingRegisters[Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED],
-                ...programSettings
-            } );
+            this.setSettings(programSettings);
 
             this.setCapabilityValue('heater_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.HEATER_ENABLED]);
+            this.setCapabilityValue('week_timer_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED]);
         }
 
     }
