@@ -312,10 +312,6 @@
         },
         "children": [
             {
-                "$extends": "week_timer_enabled",
-                "id": "week_timer_enabled"
-            },
-            {
                 "type": "group",
                 "label": {
                     "en": "Program 1"

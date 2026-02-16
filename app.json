@@ -1402,6 +1402,7 @@
         "alarm_active_alarms",
         "meter_filter_timer",
         "heater_enabled_gen3",
+        "week_timer_enabled_gen3",
         "meter_power",
         "measure_power"
       ],
@@ -1807,14 +1808,6 @@
             "en": "Week Timer"
           },
           "children": [
-            {
-              "id": "week_timer_enabled",
-              "type": "checkbox",
-              "label": {
-                "en": "Weekly Timer enabled"
-              },
-              "value": false
-            },
             {
               "type": "group",
               "label": {
@@ -3811,6 +3804,22 @@
       ],
       "getable": true,
       "setable": true
+    },
+    "week_timer_enabled_gen3": {
+      "type": "boolean",
+      "title": {
+        "en": "Week timer enabled"
+      },
+      "desc": {
+        "en": "Week timer enabled - See advanced settings to program the week timer"
+      },
+      "uiComponent": "button",
+      "getable": true,
+      "setable": true,
+      "icon": "/assets/icons/schedule.svg",
+      "insights": true,
+      "insightsTitleTrue": "Heater enabled",
+      "insightsTitleFalse": "Heater disabled"
     }
   }
 }
