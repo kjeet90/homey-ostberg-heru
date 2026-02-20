@@ -32,6 +32,7 @@ export class Gen3Remote extends BaseDevice {
     async upgradeExistingDevice() {
         if (!this.hasCapability('heater_enabled_gen3')) await this.addCapability('heater_enabled_gen3');
         if (!this.hasCapability('week_timer_enabled_gen3')) await this.addCapability('week_timer_enabled_gen3');
+        if (!this.hasCapability('week_timer_current_active_program_gen3')) await this.addCapability('week_timer_current_active_program_gen3');
         if (!this.hasCapability('meter_thermal_efficiency')) await this.addCapability('meter_thermal_efficiency');
     }
 
@@ -229,6 +230,7 @@ export class Gen3Remote extends BaseDevice {
         if (results.inputRegisters.length) {
             if (this.hasCapability('measure_co2')) {
                 this.setCapabilityValue('measure_co2', results.inputRegisters[Gen3Registers.inputRegisters.CARBON_DIOXIDE]).catch(this.error);
+                this.setCapabilityValue('week_timer_current_active_program_gen3', results.inputRegisters[Gen3Registers.inputRegisters.WEEK_TIMER_CURRENT_ACTIVE_PROGRAM].toString(10));
             }
         }
 
@@ -261,6 +263,7 @@ export class Gen3Remote extends BaseDevice {
 
             this.setCapabilityValue('heater_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.HEATER_ENABLED]);
             this.setCapabilityValue('week_timer_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED]);
+
         }
 
     }

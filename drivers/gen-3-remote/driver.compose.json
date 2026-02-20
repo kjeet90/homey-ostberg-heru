@@ -31,6 +31,7 @@
         "meter_filter_timer",
         "heater_enabled_gen3",
         "week_timer_enabled_gen3",
+        "week_timer_current_active_program_gen3",
         "meter_power",
         "measure_power"
     ],

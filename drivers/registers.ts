@@ -76,6 +76,7 @@ enum baseHoldingRegisters {
 enum Gen3InputRegisters {
     RELATIVE_HUMIDITY = 13,
     CARBON_DIOXIDE = 14,
+    WEEK_TIMER_CURRENT_ACTIVE_PROGRAM = 20,
     CURRENT_FAN_SPEED = 21
 }
 
