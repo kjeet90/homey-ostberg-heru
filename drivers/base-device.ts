@@ -195,6 +195,7 @@ abstract class BaseDevice extends Homey.Device {
                 results.inputRegisters[BaseRegisters.inputRegisters.OUTDOOR_TEMPERATURE],
                 results.inputRegisters[BaseRegisters.inputRegisters.HEAT_RECOVERY_TEMPERATURE],
                 results.inputRegisters[BaseRegisters.inputRegisters.EXTRACT_AIR_TEMPERATURE],
+                results.inputRegisters[BaseRegisters.inputRegisters.EXHAUST_AIR_TEMPERATURE],
             )).catch(this.error);
             if (this.hasCapability('meter_temperature_water'))
                 this.setCapabilityValue('meter_temperature_water', this.roundToOneDecimal(results.inputRegisters[BaseRegisters.inputRegisters.WATER_TEMPERATURE])).catch(this.error);
@@ -267,11 +268,16 @@ abstract class BaseDevice extends Homey.Device {
         return negativeChecked / 10;
     }
 
-    calculateThermalEfficiency(outDoorTemp: number, supplyTemp: number, extractTemp: number) {
-        const negativeCheckedOutDoorTem = this.checkNegativeNumber(outDoorTemp);
-        const negativeCheckedSupplyTem = this.checkNegativeNumber(supplyTemp);
-        const negativeCheckedExtractTem = this.checkNegativeNumber(extractTemp);
-        return ((negativeCheckedSupplyTem - negativeCheckedOutDoorTem)/(negativeCheckedExtractTem - negativeCheckedOutDoorTem))*100;
+    calculateThermalEfficiency(outDoorTemp: number, supplyTemp: number, extractTemp: number, exhaustTemp: number) {
+        const negativeCheckedOutDoorTemp = this.checkNegativeNumber(outDoorTemp);
+        const negativeCheckedSupplyTemp = this.checkNegativeNumber(supplyTemp);
+        const negativeCheckedExtractTemp = this.checkNegativeNumber(extractTemp);
+        const negativeCheckedExhaustTemp = this.checkNegativeNumber(exhaustTemp);
+        const isPHI = this.getSetting('use_phi_algorithm_for_thermal_efficiency');
+
+        return isPHI
+            ? ((negativeCheckedExtractTemp - negativeCheckedExhaustTemp)/(negativeCheckedExtractTemp - negativeCheckedOutDoorTemp))*100
+            : ((negativeCheckedSupplyTemp - negativeCheckedOutDoorTemp)/(negativeCheckedExtractTemp - negativeCheckedOutDoorTemp))*100;
     }
 
     checkNegativeNumber(modbusValue: number) {

@@ -1805,6 +1805,25 @@
         {
           "type": "group",
           "label": {
+            "en": "Thermal Efficiency"
+          },
+          "children": [
+            {
+              "id": "use_phi_algorithm_for_thermal_efficiency",
+              "type": "checkbox",
+              "label": {
+                "en": "Use the Phi algorithm to calculate the thermal efficiency"
+              },
+              "hint": {
+                "en": "Ostberg is using the Eurovent standards to calculate the thermal efficiency based on the outdoor temperature, the supply temperature and the extract temperature. This algorithm can lead to overly optimistic results where lower end and leaky units are rewarded. The PHI (PassifHaus Institute) uses a more accurate algorithm based on the extract temperature, the exhaust temperature and the outdoor temperature. Enabling this option might cause the thermal efficiency to be lower than the reading on the remote"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
             "en": "Week Timer"
           },
           "children": [
@@ -3125,6 +3144,25 @@
                 "en": "Add or subtract value to the approximated value"
               },
               "value": 0
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Thermal Efficiency"
+          },
+          "children": [
+            {
+              "id": "use_phi_algorithm_for_thermal_efficiency",
+              "type": "checkbox",
+              "label": {
+                "en": "Use the Phi algorithm to calculate the thermal efficiency"
+              },
+              "hint": {
+                "en": "Ostberg is using the Eurovent standards to calculate the thermal efficiency based on the outdoor temperature, the supply temperature and the extract temperature. This algorithm can lead to overly optimistic results where lower end and leaky units are rewarded. The PHI (PassifHaus Institute) uses a more accurate algorithm based on the extract temperature, the exhaust temperature and the outdoor temperature. Enabling this option might cause the thermal efficiency to be lower than the reading on the remote"
+              },
+              "value": false
             }
           ]
         }
