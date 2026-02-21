@@ -1,0 +1,35 @@
+{
+    "id": "set_week_timer_program_end_time_gen3",
+    "title": {
+        "en": "Set week timer program end time"
+    },
+    "titleFormatted": {
+        "en": "Set week timer program [[program]] end time to [[time]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": { "en": "Program" },
+            "required": true,
+            "values": [
+                { "id": "1", "label": { "en": "1" } },
+                { "id": "2", "label": { "en": "2" } },
+                { "id": "3", "label": { "en": "3" } },
+                { "id": "4", "label": { "en": "4" } },
+                { "id": "5", "label": { "en": "5" } }
+            ]
+        },
+        {
+            "name": "time",
+            "type": "time",
+            "title": { "en": "Time" },
+            "required": true
+        }
+    ]
+}

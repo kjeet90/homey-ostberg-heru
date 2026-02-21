@@ -1,0 +1,57 @@
+{
+    "id": "set_week_timer_program_fan_speed_gen3",
+    "title": {
+        "en": "Set week timer program fan speed"
+    },
+    "titleFormatted": {
+        "en": "Set week timer program [[program]] fan speed to [[fan_speed]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": { "en": "Program" },
+            "required": true,
+            "values": [
+                { "id": "1", "label": { "en": "1" } },
+                { "id": "2", "label": { "en": "2" } },
+                { "id": "3", "label": { "en": "3" } },
+                { "id": "4", "label": { "en": "4" } },
+                { "id": "5", "label": { "en": "5" } }
+            ]
+        },
+        {
+            "name": "fan_speed",
+            "type": "dropdown",
+            "title": { "en": "Fan speed" },
+            "required": true,
+            "values": [
+                {
+                    "id": "0",
+                    "label": { "en": "Off" }
+                },
+                {
+                    "id": "1",
+                    "label": { "en": "Minimum" }
+                },
+                {
+                    "id": "2",
+                    "label": { "en": "Standard" }
+                },
+                {
+                    "id": "3",
+                    "label": { "en": "Medium" }
+                },
+                {
+                    "id": "4",
+                    "label": { "en": "Maximum" }
+                }
+            ]
+        }
+    ]
+}

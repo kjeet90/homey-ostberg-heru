@@ -25,7 +25,6 @@ class OstbergHeru extends Homey.App {
         this.homey.flow.getConditionCard('is_any_alarm_active').registerRunListener((args, _state) => args.device.isAnyAlarmActive());
 
         // ########## Triggers ##########
-
         this.homey.flow.getDeviceTriggerCard('alarm_activated').registerRunListener(async (_args, state) => {
             return { name: state.name, allActive: state.allActive };
         });

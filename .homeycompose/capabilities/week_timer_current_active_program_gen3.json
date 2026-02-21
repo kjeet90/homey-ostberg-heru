@@ -1,0 +1,52 @@
+{
+    "type": "enum",
+    "title": {
+        "en": "Current active week timer program"
+    },
+    "desc": {
+        "en": "Current active week timer program"
+    },
+    "insights": true,
+    "greyout": true,
+    "icon": "/assets/icons/schedule.svg",
+    "getable": true,
+    "setable": false,
+    "values": [
+        {
+            "id": "0",
+            "title": {
+                "en": "None"
+            }
+        },
+        {
+            "id": "1",
+            "title": {
+                "en": "Program 1"
+            }
+        },
+        {
+            "id": "2",
+            "title": {
+                "en": "Program 2"
+            }
+        },
+        {
+            "id": "3",
+            "title": {
+                "en": "Program 3"
+            }
+        },
+        {
+            "id": "4",
+            "title": {
+                "en": "Program 4"
+            }
+        },
+        {
+            "id": "5",
+            "title": {
+                "en": "Program 5"
+            }
+        }
+    ]
+}

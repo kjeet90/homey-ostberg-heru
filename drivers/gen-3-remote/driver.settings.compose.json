@@ -37,6 +37,13 @@
             },
             {
                 "$extends": "capability_enabled",
+                "id": "capability_enabled_measure_co2",
+                "label": {
+                    "en": "CO₂"
+                }
+            },
+            {
+                "$extends": "capability_enabled",
                 "id": "capability_enabled_meter_humidity_relative",
                 "label": {
                     "en": "Relative humidity"
@@ -295,6 +302,641 @@
                 "label": {
                     "en": "Away"
                 }
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Thermal Efficiency"
+        },
+        "children": [
+            {
+                "$extends": "use_phi_algorithm_for_thermal_efficiency",
+                "id": "use_phi_algorithm_for_thermal_efficiency"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Week Timer"
+        },
+        "children": [
+            {
+                "type": "group",
+                "label": {
+                    "en": "Program 1"
+                },
+                "children": [
+                    {
+                        "id": "program_1_week_day_monday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Monday" }
+                    },
+                    {
+                        "id": "program_1_week_day_tuesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Tuesday" }
+                    },
+                    {
+                        "id": "program_1_week_day_wednesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Wednesday" }
+                    },
+                    {
+                        "id": "program_1_week_day_thursday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Thursday" }
+                    },
+                    {
+                        "id": "program_1_week_day_friday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Friday" }
+                    },
+                    {
+                        "id": "program_1_week_day_saturday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Saturday" }
+                    },
+                    {
+                        "id": "program_1_week_day_sunday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Sunday" }
+                    },
+                    {
+                        "id": "program_1_start_hour",
+                        "type": "number",
+                        "label": { "en": "Start Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_1_start_minute",
+                        "type": "number",
+                        "label": { "en": "Start Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_1_end_hour",
+                        "type": "number",
+                        "label": { "en": "End Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_1_end_minute",
+                        "type": "number",
+                        "label": { "en": "End Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_1_temperature",
+                        "type": "number",
+                        "label": { "en": "Temperature" },
+                        "value": 20,
+                        "min": 15,
+                        "max": 40,
+                        "units": { "en": "C" }
+                    },
+                    {
+                        "id": "program_1_fan_speed",
+                        "type": "dropdown",
+                        "label": { "en": "Fan speed" },
+                        "value": "2",
+                        "values": [
+                            {
+                                "id": "0",
+                                "label": { "en": "Off" }
+                            },
+                            {
+                                "id": "1",
+                                "label": { "en": "Minimum" }
+                            },
+                            {
+                                "id": "2",
+                                "label": { "en": "Standard" }
+                            },
+                            {
+                                "id": "3",
+                                "label": { "en": "Medium" }
+                            },
+                            {
+                                "id": "4",
+                                "label": { "en": "Maximum" }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "group",
+                "label": {
+                    "en": "Program 2"
+                },
+                "children": [
+                    {
+                        "id": "program_2_week_day_monday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Monday" }
+                    },
+                    {
+                        "id": "program_2_week_day_tuesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Tuesday" }
+                    },
+                    {
+                        "id": "program_2_week_day_wednesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Wednesday" }
+                    },
+                    {
+                        "id": "program_2_week_day_thursday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Thursday" }
+                    },
+                    {
+                        "id": "program_2_week_day_friday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Friday" }
+                    },
+                    {
+                        "id": "program_2_week_day_saturday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Saturday" }
+                    },
+                    {
+                        "id": "program_2_week_day_sunday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Sunday" }
+                    },
+                    {
+                        "id": "program_2_start_hour",
+                        "type": "number",
+                        "label": { "en": "Start Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_2_start_minute",
+                        "type": "number",
+                        "label": { "en": "Start Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_2_end_hour",
+                        "type": "number",
+                        "label": { "en": "End Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_2_end_minute",
+                        "type": "number",
+                        "label": { "en": "End Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_2_temperature",
+                        "type": "number",
+                        "label": { "en": "Temperature" },
+                        "value": 20,
+                        "min": 15,
+                        "max": 40,
+                        "units": { "en": "C" }
+                    },
+                    {
+                        "id": "program_2_fan_speed",
+                        "type": "dropdown",
+                        "label": { "en": "Fan speed" },
+                        "value": "2",
+                        "values": [
+                            {
+                                "id": "0",
+                                "label": { "en": "Off" }
+                            },
+                            {
+                                "id": "1",
+                                "label": { "en": "Minimum" }
+                            },
+                            {
+                                "id": "2",
+                                "label": { "en": "Standard" }
+                            },
+                            {
+                                "id": "3",
+                                "label": { "en": "Medium" }
+                            },
+                            {
+                                "id": "4",
+                                "label": { "en": "Maximum" }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "group",
+                "label": {
+                    "en": "Program 3"
+                },
+                "children": [
+                    {
+                        "id": "program_3_week_day_monday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Monday" }
+                    },
+                    {
+                        "id": "program_3_week_day_tuesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Tuesday" }
+                    },
+                    {
+                        "id": "program_3_week_day_wednesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Wednesday" }
+                    },
+                    {
+                        "id": "program_3_week_day_thursday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Thursday" }
+                    },
+                    {
+                        "id": "program_3_week_day_friday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Friday" }
+                    },
+                    {
+                        "id": "program_3_week_day_saturday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Saturday" }
+                    },
+                    {
+                        "id": "program_3_week_day_sunday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Sunday" }
+                    },
+                    {
+                        "id": "program_3_start_hour",
+                        "type": "number",
+                        "label": { "en": "Start Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_3_start_minute",
+                        "type": "number",
+                        "label": { "en": "Start Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_3_end_hour",
+                        "type": "number",
+                        "label": { "en": "End Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_3_end_minute",
+                        "type": "number",
+                        "label": { "en": "End Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_3_temperature",
+                        "type": "number",
+                        "label": { "en": "Temperature" },
+                        "value": 20,
+                        "min": 15,
+                        "max": 40,
+                        "units": { "en": "C" }
+                    },
+                    {
+                        "id": "program_3_fan_speed",
+                        "type": "dropdown",
+                        "label": { "en": "Fan speed" },
+                        "value": "2",
+                        "values": [
+                            {
+                                "id": "0",
+                                "label": { "en": "Off" }
+                            },
+                            {
+                                "id": "1",
+                                "label": { "en": "Minimum" }
+                            },
+                            {
+                                "id": "2",
+                                "label": { "en": "Standard" }
+                            },
+                            {
+                                "id": "3",
+                                "label": { "en": "Medium" }
+                            },
+                            {
+                                "id": "4",
+                                "label": { "en": "Maximum" }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "group",
+                "label": {
+                    "en": "Program 4"
+                },
+                "children": [
+                    {
+                        "id": "program_4_week_day_monday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Monday" }
+                    },
+                    {
+                        "id": "program_4_week_day_tuesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Tuesday" }
+                    },
+                    {
+                        "id": "program_4_week_day_wednesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Wednesday" }
+                    },
+                    {
+                        "id": "program_4_week_day_thursday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Thursday" }
+                    },
+                    {
+                        "id": "program_4_week_day_friday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Friday" }
+                    },
+                    {
+                        "id": "program_4_week_day_saturday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Saturday" }
+                    },
+                    {
+                        "id": "program_4_week_day_sunday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Sunday" }
+                    },
+                    {
+                        "id": "program_4_start_hour",
+                        "type": "number",
+                        "label": { "en": "Start Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_4_start_minute",
+                        "type": "number",
+                        "label": { "en": "Start Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_4_end_hour",
+                        "type": "number",
+                        "label": { "en": "End Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_4_end_minute",
+                        "type": "number",
+                        "label": { "en": "End Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_4_temperature",
+                        "type": "number",
+                        "label": { "en": "Temperature" },
+                        "value": 20,
+                        "min": 15,
+                        "max": 40,
+                        "units": { "en": "C" }
+                    },
+                    {
+                        "id": "program_4_fan_speed",
+                        "type": "dropdown",
+                        "label": { "en": "Fan speed" },
+                        "value": "2",
+                        "values": [
+                            {
+                                "id": "0",
+                                "label": { "en": "Off" }
+                            },
+                            {
+                                "id": "1",
+                                "label": { "en": "Minimum" }
+                            },
+                            {
+                                "id": "2",
+                                "label": { "en": "Standard" }
+                            },
+                            {
+                                "id": "3",
+                                "label": { "en": "Medium" }
+                            },
+                            {
+                                "id": "4",
+                                "label": { "en": "Maximum" }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "group",
+                "label": {
+                    "en": "Program 5"
+                },
+                "children": [
+                    {
+                        "id": "program_5_week_day_monday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Monday" }
+                    },
+                    {
+                        "id": "program_5_week_day_tuesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Tuesday" }
+                    },
+                    {
+                        "id": "program_5_week_day_wednesday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Wednesday" }
+                    },
+                    {
+                        "id": "program_5_week_day_thursday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Thursday" }
+                    },
+                    {
+                        "id": "program_5_week_day_friday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Friday" }
+                    },
+                    {
+                        "id": "program_5_week_day_saturday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Saturday" }
+                    },
+                    {
+                        "id": "program_5_week_day_sunday",
+                        "type": "checkbox",
+                        "value": false,
+                        "label": { "en": "Enabled on Sunday" }
+                    },
+                    {
+                        "id": "program_5_start_hour",
+                        "type": "number",
+                        "label": { "en": "Start Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_5_start_minute",
+                        "type": "number",
+                        "label": { "en": "Start Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_5_end_hour",
+                        "type": "number",
+                        "label": { "en": "End Hour" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 23,
+                        "units": { "en": "Hour" }
+                    },
+                    {
+                        "id": "program_5_end_minute",
+                        "type": "number",
+                        "label": { "en": "End Minute" },
+                        "value": 0,
+                        "min": 0,
+                        "max": 59,
+                        "units": { "en": "Minute" }
+                    },
+                    {
+                        "id": "program_5_temperature",
+                        "type": "number",
+                        "label": { "en": "Temperature" },
+                        "value": 20,
+                        "min": 15,
+                        "max": 40,
+                        "units": { "en": "C" }
+                    },
+                    {
+                        "id": "program_5_fan_speed",
+                        "type": "dropdown",
+                        "label": { "en": "Fan speed" },
+                        "value": "2",
+                        "values": [
+                            {
+                                "id": "0",
+                                "label": { "en": "Off" }
+                            },
+                            {
+                                "id": "1",
+                                "label": { "en": "Minimum" }
+                            },
+                            {
+                                "id": "2",
+                                "label": { "en": "Standard" }
+                            },
+                            {
+                                "id": "3",
+                                "label": { "en": "Medium" }
+                            },
+                            {
+                                "id": "4",
+                                "label": { "en": "Maximum" }
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

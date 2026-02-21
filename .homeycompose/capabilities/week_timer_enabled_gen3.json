@@ -1,0 +1,16 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Week timer enabled"
+    },
+    "desc": {
+        "en": "Week timer enabled - See advanced settings to program the week timer"
+    },
+    "uiComponent": "button",
+    "getable": true,
+    "setable": true,
+    "icon": "/assets/icons/schedule.svg",
+    "insights": true,
+    "insightsTitleTrue": "Heater enabled",
+    "insightsTitleFalse": "Heater disabled"
+}

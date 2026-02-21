@@ -315,5 +315,18 @@
                 }
             }
         ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Thermal Efficiency"
+        },
+        "children": [
+            {
+                "$extends": "use_phi_algorithm_for_thermal_efficiency",
+                "id": "use_phi_algorithm_for_thermal_efficiency"
+
+            }
+        ]
     }
 ]

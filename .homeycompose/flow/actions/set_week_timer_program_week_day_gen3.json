@@ -1,0 +1,75 @@
+{
+    "id": "set_week_timer_program_week_day_gen3",
+    "title": {
+        "en": "Set week timer program weekday"
+    },
+    "titleFormatted": {
+        "en": "Set week timer program [[program]] weekday [[week_day]] to [[state]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=gen-3-remote"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": { "en": "Program" },
+            "required": true,
+            "values": [
+                { "id": "1", "label": { "en": "1" } },
+                { "id": "2", "label": { "en": "2" } },
+                { "id": "3", "label": { "en": "3" } },
+                { "id": "4", "label": { "en": "4" } },
+                { "id": "5", "label": { "en": "5" } }
+            ]
+        },
+        {
+            "name": "week_day",
+            "type": "dropdown",
+            "title": { "en": "Weekday" },
+            "required": true,
+            "values": [
+                {
+                    "id": "6",
+                    "label": { "en": "Monday" }
+                },
+                {
+                    "id": "5",
+                    "label": { "en": "Tuesday" }
+                },
+                {
+                    "id": "4",
+                    "label": { "en": "Wednesday" }
+                },
+                {
+                    "id": "3",
+                    "label": { "en": "Thursday" }
+                },
+                {
+                    "id": "2",
+                    "label": { "en": "Friday" }
+                },
+                {
+                    "id": "1",
+                    "label": { "en": "Saturday" }
+                },
+                {
+                    "id": "0",
+                    "label": { "en": "Sunday" }
+                }
+            ]
+        },
+        {
+            "name": "state",
+            "type": "dropdown",
+            "title": { "en": "State" },
+            "required": true,
+            "values": [
+                { "id": "0", "label": { "en": "Disabled" } },
+                { "id": "1", "label": { "en": "Enabled" } }
+            ]
+        }
+    ]
+}

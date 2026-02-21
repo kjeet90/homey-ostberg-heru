@@ -1,0 +1,11 @@
+{
+    "id": "use_phi_algorithm_for_thermal_efficiency",
+    "type": "checkbox",
+    "label": {
+        "en": "Use the PHI algorithm to calculate the thermal efficiency"
+    },
+    "hint": {
+        "en": "Östberg is using the Eurovent standards to calculate the thermal efficiency based on the supply temperature and the extract temperature. This algorithm can lead to overly optimistic results in low-end and leaky units. The PHI (Passivhaus Institut) uses a more accurate algorithm based on the extract temperature and the exhaust temperature. Enabling this option might cause the thermal efficiency to be lower than the readings on the remote."
+    },
+    "value": false
+}
