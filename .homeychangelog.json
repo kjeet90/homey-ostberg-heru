@@ -1,4 +1,7 @@
 {
+    "1.6.0": {
+        "en": "Single decimal instead of zero. Added thermal efficiency capability. Week timer for gen 3"
+    },
     "1.5.0": {
         "en": "Added power and energy approximation"
     },

@@ -55,6 +55,17 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
+## 1.6.0
+
+### Change
+
+- Single decimal instead of zero.
+
+### Feature
+
+- Added thermal efficiency capability - IQC and gen3
+- Added week timer functionality (gen3)
+
 ## 1.5.0
 
 ### Feature
