@@ -32,6 +32,7 @@
         "meter_filter_timer",
         "preheater_enabled_iqc",
         "heater_enabled_iqc",
+        "summer_night_cooling_enabled",
         "meter_power",
         "measure_power"
     ],
