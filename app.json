@@ -588,6 +588,23 @@
             ]
           }
         ]
+      },
+      {
+        "id": "is_summer_night_cooling_enabled",
+        "title": {
+          "en": "Summer night cooling !{{enabled|disabled}} enabled"
+        },
+        "titleFormatted": {
+          "en": "Summer night cooling is !{{enabled|disabled}}"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          }
+        ]
       }
     ],
     "actions": [
@@ -892,6 +909,44 @@
                 "id": "room_sw",
                 "label": {
                   "en": "Room S/W"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_summer_night_cooling_enabled",
+        "title": {
+          "en": "Set summer night cooling"
+        },
+        "titleFormatted": {
+          "en": "Set summer night cooling to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
                 }
               }
             ]
@@ -2722,6 +2777,7 @@
         "meter_filter_timer",
         "preheater_enabled_iqc",
         "heater_enabled_iqc",
+        "summer_night_cooling_enabled",
         "meter_power",
         "measure_power"
       ],
@@ -3843,6 +3899,22 @@
       ],
       "getable": true,
       "setable": true
+    },
+    "summer_night_cooling_enabled": {
+      "type": "boolean",
+      "title": {
+        "en": "Summer night cooling enabled"
+      },
+      "desc": {
+        "en": "Summer night cooling enabled"
+      },
+      "uiComponent": "button",
+      "getable": true,
+      "setable": true,
+      "icon": "/assets/icons/recovery.svg",
+      "insights": true,
+      "insightsTitleTrue": "Summer night cooling enabled",
+      "insightsTitleFalse": "Summer night cooling disabled"
     },
     "week_timer_current_active_program_gen3": {
       "type": "enum",

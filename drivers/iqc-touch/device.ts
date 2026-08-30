@@ -28,11 +28,15 @@ class IQCTouch extends BaseDevice {
         this.registerCapabilityListener('preheater_enabled_iqc', async (value) => {
             this.setPreheaterEnabled(value);
         });
+        this.registerCapabilityListener('summer_night_cooling_enabled', async (value) => {
+            this.setSummerNightCoolingEnabled(value);
+        });
     }
 
     async upgradeExistingDevice() {
         if (!this.hasCapability('preheater_enabled_iqc')) await this.addCapability('preheater_enabled_iqc');
         if (!this.hasCapability('heater_enabled_iqc')) await this.addCapability('heater_enabled_iqc');
+        if (!this.hasCapability('summer_night_cooling_enabled')) await this.addCapability('summer_night_cooling_enabled');
         if (!this.hasCapability('meter_thermal_efficiency')) await this.addCapability('meter_thermal_efficiency');
     }
 
@@ -47,6 +51,10 @@ class IQCTouch extends BaseDevice {
 
     async setPreheaterEnabled(value: boolean) {
         this.api?.writeRegister(IQCRegisters.holdingRegisters.PREHEATER_ENABLED, value ? 1 : 0);
+    }
+
+    async setSummerNightCoolingEnabled(value: boolean) {
+        this.api?.writeRegister(IQCRegisters.holdingRegisters.SUMMER_NIGHT_COOLING_ENABLED, value ? 1 : 0);
     }
 
     async onAdded() {
@@ -154,6 +162,7 @@ class IQCTouch extends BaseDevice {
         this.setCapabilityValue('target_temperature.eco', results.holdingRegisters[IQCRegisters.holdingRegisters.SETPOINT_TEMPERATURE_ECONOMY]);
         this.setCapabilityValue('heater_enabled_iqc', !!results.holdingRegisters[IQCRegisters.holdingRegisters.HEATER_ENABLED]);
         this.setCapabilityValue('preheater_enabled_iqc', !!results.holdingRegisters[IQCRegisters.holdingRegisters.PREHEATER_ENABLED]);
+        this.setCapabilityValue('summer_night_cooling_enabled', !!results.holdingRegisters[IQCRegisters.holdingRegisters.SUMMER_NIGHT_COOLING_ENABLED]);
     }
 
     async processAlarms(discreteInputs: boolean[]): Promise<void> {

@@ -1,0 +1,16 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Summer night cooling enabled"
+    },
+    "desc": {
+        "en": "Summer night cooling enabled"
+    },
+    "uiComponent": "button",
+    "getable": true,
+    "setable": true,
+    "icon": "/assets/icons/recovery.svg",
+    "insights": true,
+    "insightsTitleTrue": "Summer night cooling enabled",
+    "insightsTitleFalse": "Summer night cooling disabled"
+}

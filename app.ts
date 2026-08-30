@@ -14,6 +14,7 @@ class OstbergHeru extends Homey.App {
 
         // ########## Actions ##########
         this.homey.flow.getActionCard('set_fan_mode').registerRunListener((args, _state) => args.device.setFanMode(args.mode));
+        this.homey.flow.getActionCard('set_summer_night_cooling_enabled').registerRunListener((args, _state) => args.device.setSummerNightCoolingEnabled(args.state === '1'));
         this.homey.flow.getActionCard('list_active_alarms').registerRunListener(async (args, _state) => args.device.listActiveAlarms()); // Advanced flow only
         // TODO: This seems to not work on my Gen 3 system. Investigate later. Removed .homeycompose flow actions
         // this.homey.flow.getActionCard('reset_alarms').registerRunListener((args, _state) => args.device.resetAlarms());
@@ -21,6 +22,7 @@ class OstbergHeru extends Homey.App {
 
         // ########## Conditions ##########
         this.homey.flow.getConditionCard('is_fan_mode').registerRunListener((args, _state) => args.device.isFanMode(args.mode));
+        this.homey.flow.getConditionCard('is_summer_night_cooling_enabled').registerRunListener((args, _state) => args.device.getCapabilityValue('summer_night_cooling_enabled'));
         this.homey.flow.getConditionCard('is_specific_alarm_active').registerRunListener((args, _state) => args.device.isSpecificAlarmActive(args.alarm));
         this.homey.flow.getConditionCard('is_any_alarm_active').registerRunListener((args, _state) => args.device.isAnyAlarmActive());
 

@@ -1,0 +1,17 @@
+{
+    "id": "is_summer_night_cooling_enabled",
+    "title": {
+        "en": "Summer night cooling !{{enabled|disabled}} enabled"
+    },
+    "titleFormatted": {
+        "en": "Summer night cooling is !{{enabled|disabled}}"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        }
+    ]
+}
