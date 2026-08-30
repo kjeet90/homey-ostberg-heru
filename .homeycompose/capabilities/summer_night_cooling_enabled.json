@@ -9,7 +9,7 @@
     "uiComponent": "button",
     "getable": true,
     "setable": true,
-    "icon": "/assets/icons/recovery.svg",
+    "icon": "/assets/icons/snowflake-thermometer.svg",
     "insights": true,
     "insightsTitleTrue": "Summer night cooling enabled",
     "insightsTitleFalse": "Summer night cooling disabled"

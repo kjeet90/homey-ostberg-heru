@@ -10,16 +10,28 @@
         {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=iqc-touch"
+            "filter": "driver_id=gen-3-remote|iqc-touch"
         },
         {
             "name": "state",
             "type": "dropdown",
-            "title": { "en": "State" },
+            "title": {
+                "en": "State"
+            },
             "required": true,
             "values": [
-                { "id": "0", "label": { "en": "Disabled" } },
-                { "id": "1", "label": { "en": "Enabled" } }
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Disabled"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Enabled"
+                    }
+                }
             ]
         }
     ]

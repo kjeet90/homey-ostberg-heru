@@ -1,4 +1,7 @@
 {
+    "1.7.0": {
+        "en": "Added Summer Night Cooling enable/disable"
+    },
     "1.6.0": {
         "en": "Single decimal instead of zero. Added thermal efficiency capability. Week timer for gen 3"
     },

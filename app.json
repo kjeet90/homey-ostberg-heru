@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "no.kjeet90.ostbergheru",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "compatibility": ">=8.1.0",
   "sdk": 3,
   "platforms": [
@@ -602,7 +602,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=iqc-touch"
+            "filter": "driver_id=gen-3-remote|iqc-touch"
           }
         ]
       }
@@ -927,7 +927,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=iqc-touch"
+            "filter": "driver_id=gen-3-remote|iqc-touch"
           },
           {
             "name": "state",
@@ -1459,6 +1459,7 @@
         "heater_enabled_gen3",
         "week_timer_enabled_gen3",
         "week_timer_current_active_program_gen3",
+        "summer_night_cooling_enabled",
         "meter_power",
         "measure_power"
       ],
@@ -3911,7 +3912,7 @@
       "uiComponent": "button",
       "getable": true,
       "setable": true,
-      "icon": "/assets/icons/recovery.svg",
+      "icon": "/assets/icons/snowflake-thermometer.svg",
       "insights": true,
       "insightsTitleTrue": "Summer night cooling enabled",
       "insightsTitleFalse": "Summer night cooling disabled"

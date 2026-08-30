@@ -82,6 +82,7 @@ enum Gen3InputRegisters {
 
 export enum Gen3HoldingRegisters {
     USER_FAN_SPEED,
+    SUMMER_NIGHT_COOLING_ENABLED = 15,
     HEATER_ENABLED = 50,
     WEEK_TIMER_ENABLED = 68,
     WEEK_TIMER_PROGRAM_1_START_HOUR,

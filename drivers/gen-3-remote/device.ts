@@ -27,17 +27,25 @@ export class Gen3Remote extends BaseDevice {
         this.registerCapabilityListener('week_timer_enabled_gen3', async (value) => {
             this.setWeekTimerEnabled(value);
         });
+        this.registerCapabilityListener('summer_night_cooling_enabled', async (value) => {
+            this.setSummerNightCoolingEnabled(value);
+        });
     }
 
     async upgradeExistingDevice() {
         if (!this.hasCapability('heater_enabled_gen3')) await this.addCapability('heater_enabled_gen3');
         if (!this.hasCapability('week_timer_enabled_gen3')) await this.addCapability('week_timer_enabled_gen3');
         if (!this.hasCapability('week_timer_current_active_program_gen3')) await this.addCapability('week_timer_current_active_program_gen3');
+        if (!this.hasCapability('summer_night_cooling_enabled')) await this.addCapability('summer_night_cooling_enabled');
         if (!this.hasCapability('meter_thermal_efficiency')) await this.addCapability('meter_thermal_efficiency');
     }
 
     async setHeaterEnabled(value: boolean) {
         this.api?.writeRegister(Gen3Registers.holdingRegisters.HEATER_ENABLED, value ? 1 : 0);
+    }
+
+    async setSummerNightCoolingEnabled(value: boolean) {
+        this.api?.writeRegister(Gen3Registers.holdingRegisters.SUMMER_NIGHT_COOLING_ENABLED, value ? 1 : 0);
     }
 
     async setWeekTimerEnabled(value: boolean) {
@@ -175,7 +183,7 @@ export class Gen3Remote extends BaseDevice {
         super.onSettings(event);
 
         [...Array(5)].forEach((_, key) => {
-            const program = key+1;
+            const program = key + 1;
             if (event.changedKeys.some((item) => item.includes(`program_${program}_week_day`))) {
                 this.updateWeekProgramWeekdays(
                     program,
@@ -237,7 +245,7 @@ export class Gen3Remote extends BaseDevice {
         // Holding Registers
         if (results.holdingRegisters.length) {
             const programSettings = Array.from({ length: 5 }).map((_, i) => {
-                const program = i+1;
+                const program = i + 1;
                 const weekdays = convertNumberToArrayOfBooleans(results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_WEEKDAYS` as keyof typeof Gen3HoldingRegisters]], 7);
 
                 return {
@@ -262,6 +270,7 @@ export class Gen3Remote extends BaseDevice {
             this.setSettings(programSettings);
 
             this.setCapabilityValue('heater_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.HEATER_ENABLED]);
+            this.setCapabilityValue('summer_night_cooling_enabled', !!results.holdingRegisters[Gen3Registers.holdingRegisters.SUMMER_NIGHT_COOLING_ENABLED]);
             this.setCapabilityValue('week_timer_enabled_gen3', !!results.holdingRegisters[Gen3Registers.holdingRegisters.WEEK_TIMER_ENABLED]);
 
         }

@@ -55,6 +55,11 @@ I am also getting alarms on **Supply fan** and **Extract fan** during normal ope
 
 # Changelog
 
+## 1.7.0
+
+### Feature
+- Added Summer Night Cooling enable/disable
+
 ## 1.6.0
 
 ### Change
