@@ -168,21 +168,30 @@ class IQCTouch extends BaseDevice {
     async processAlarms(discreteInputs: boolean[]): Promise<void> {
         const previousAlarms: { [index: string]: boolean } = this.getStoreValue('alarms') || {};
         const currentAlarms: { [index: string]: boolean } = {} as { [index: string]: boolean };
-        currentAlarms['fire_alarm'] = discreteInputs[IQCRegisters.discreteInputs.FIRE_ALARM];
-        currentAlarms['rotor_alarm'] = discreteInputs[IQCRegisters.discreteInputs.ROTOR_ALARM];
-        currentAlarms['freeze_alarm'] = discreteInputs[IQCRegisters.discreteInputs.FREEZE_ALARM];
-        currentAlarms['low_supply_alarm'] = discreteInputs[IQCRegisters.discreteInputs.LOW_SUPPLY_ALARM];
-        currentAlarms['low_rotor_temperature_alarm'] = discreteInputs[IQCRegisters.discreteInputs.LOW_ROTOR_TEMPEARTURE_ALARM];
-        currentAlarms['temp_sensor_open_circuit_alarm'] = discreteInputs[IQCRegisters.discreteInputs.TEMP_SENSOR_OPEN_CIRCUIT_ALARM];
-        currentAlarms['temp_sensor_short_circut_alarm'] = discreteInputs[IQCRegisters.discreteInputs.TEMP_SENSOR_SHORT_CIRCUIT_ALARM];
-        currentAlarms['pulser_alarm'] = discreteInputs[IQCRegisters.discreteInputs.PULSER_ALARM];
-        currentAlarms['supply_fan_alarm'] = discreteInputs[IQCRegisters.discreteInputs.SUPPLY_FAN_ALARM];
-        currentAlarms['extract_fan_alarm'] = discreteInputs[IQCRegisters.discreteInputs.EXHAUST_FAN_ALARM];
-        currentAlarms['supply_filter_alarm'] = discreteInputs[IQCRegisters.discreteInputs.SUPPLY_FILTER_ALARM];
-        currentAlarms['extract_filter_alarm'] = discreteInputs[IQCRegisters.discreteInputs.EXHAUST_FILTER_ALARM];
-        currentAlarms['filter_timer_alarm'] = discreteInputs[IQCRegisters.discreteInputs.FILTER_TIMER_ALARM];
-        currentAlarms['pump_alarm_heating'] = discreteInputs[IQCRegisters.discreteInputs.PUMP_ALARM_HEATING];
-        currentAlarms['pump_alarm_cooling'] = discreteInputs[IQCRegisters.discreteInputs.PUMP_ALARM_COOLING];
+        const getDiscreteInput = (register: number): boolean => {
+            const index = register - registers.discreteInputs.start;
+            if (index < 0 || index >= discreteInputs.length) {
+                this.error(`Discrete input register ${register} is outside configured range`);
+                return false;
+            }
+            return discreteInputs[index];
+        };
+
+        currentAlarms['fire_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.FIRE_ALARM);
+        currentAlarms['rotor_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.ROTOR_ALARM);
+        currentAlarms['freeze_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.FREEZE_ALARM);
+        currentAlarms['low_supply_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.LOW_SUPPLY_ALARM);
+        currentAlarms['low_rotor_temperature_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.LOW_ROTOR_TEMPEARTURE_ALARM);
+        currentAlarms['temp_sensor_open_circuit_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.TEMP_SENSOR_OPEN_CIRCUIT_ALARM);
+        currentAlarms['temp_sensor_short_circut_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.TEMP_SENSOR_SHORT_CIRCUIT_ALARM);
+        currentAlarms['pulser_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.PULSER_ALARM);
+        currentAlarms['supply_fan_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.SUPPLY_FAN_ALARM);
+        currentAlarms['extract_fan_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.EXHAUST_FAN_ALARM);
+        currentAlarms['supply_filter_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.SUPPLY_FILTER_ALARM);
+        currentAlarms['extract_filter_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.EXHAUST_FILTER_ALARM);
+        currentAlarms['filter_timer_alarm'] = getDiscreteInput(IQCRegisters.discreteInputs.FILTER_TIMER_ALARM);
+        currentAlarms['pump_alarm_heating'] = getDiscreteInput(IQCRegisters.discreteInputs.PUMP_ALARM_HEATING);
+        currentAlarms['pump_alarm_cooling'] = getDiscreteInput(IQCRegisters.discreteInputs.PUMP_ALARM_COOLING);
         const activeAlarms = await this.checkAlarmTriggers(currentAlarms, previousAlarms, alarms);
         if (this.hasCapability('alarm_active_alarms')) {
             this.setCapabilityValue('alarm_active_alarms', !!activeAlarms.length).catch(this.error);
