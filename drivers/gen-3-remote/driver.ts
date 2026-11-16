@@ -1,7 +1,7 @@
 import Homey from 'homey';
 import { v4 as uuid } from 'uuid';
 import { alarms as Gen3Alarms } from './constants';
-import { convertArrayOfBooleansToNumber } from './utils';
+import { WEEKDAYS } from '../utils';
 
 class Gen3RemoteDriver extends Homey.Driver {
     async onInit() {
@@ -9,26 +9,10 @@ class Gen3RemoteDriver extends Homey.Driver {
         this.homey.flow.getActionCard('set_regulation_mode_gen3').registerRunListener(({ device, mode }) => device.setRegulationMode(mode));
         this.homey.flow.getActionCard('set_heater_enabled_gen3').registerRunListener(({ device, state }) => device.setHeaterEnabled(state === '1' ? true : false));
         this.homey.flow.getActionCard('set_week_timer_enabled_gen3').registerRunListener(({ device, state }) => device.setWeekTimerEnabled(state === '1' ? true : false));
-        this.homey.flow.getActionCard('set_week_timer_program_week_day_gen3').registerRunListener(({ device, program, week_day, state }) => {
-            const settings = device.getSettings();
-
-            const weekdays = [
-                settings[`program_${program}_week_day_sunday`],
-                settings[`program_${program}_week_day_saturday`],
-                settings[`program_${program}_week_day_friday`],
-                settings[`program_${program}_week_day_thursday`],
-                settings[`program_${program}_week_day_wednesday`],
-                settings[`program_${program}_week_day_tuesday`],
-                settings[`program_${program}_week_day_monday`]
-            ];
-
-            weekdays[parseInt(week_day, 10)] = state === '1';
-
-            return device.updateWeekProgramWeekdays(
-                program,
-                convertArrayOfBooleansToNumber(weekdays)
-            )
-        });
+        // The weekday ids count down from Monday = 6 to Sunday = 0. They stay like that so existing flows keep working.
+        this.homey.flow
+            .getActionCard('set_week_timer_program_week_day_gen3')
+            .registerRunListener(({ device, program, week_day, state }) => device.updateWeekProgramWeekday(program, WEEKDAYS[6 - parseInt(week_day, 10)], state === '1'));
         this.homey.flow.getActionCard('set_week_timer_program_start_time_gen3').registerRunListener(({ program, time, device }) => {
             const [hour, minute] = time.split(':');
             return device.updateWeekProgramStartTime(program, parseInt(hour,10), parseInt(minute, 10));

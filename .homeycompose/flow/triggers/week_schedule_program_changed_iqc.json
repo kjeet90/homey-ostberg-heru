@@ -1,0 +1,26 @@
+{
+    "id": "week_schedule_program_changed_iqc",
+    "title": {
+        "en": "Active week schedule program changed"
+    },
+    "hint": {
+        "en": "The program number is 0 when no program is active."
+    },
+    "tokens": [
+        {
+            "name": "program",
+            "type": "number",
+            "title": {
+                "en": "Program"
+            },
+            "example": 1
+        }
+    ],
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        }
+    ]
+}

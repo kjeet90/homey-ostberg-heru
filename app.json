@@ -140,6 +140,32 @@
         ]
       },
       {
+        "id": "current_fan_speed_changed_iqc",
+        "title": {
+          "en": "Current fan speed changed"
+        },
+        "hint": {
+          "en": "The fan speed set by the user or by the schedules changed."
+        },
+        "tokens": [
+          {
+            "name": "speed",
+            "type": "string",
+            "title": {
+              "en": "Fan speed"
+            },
+            "example": "Standard"
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          }
+        ]
+      },
+      {
         "id": "fan_mode_changed",
         "title": {
           "en": "Fan mode changed"
@@ -214,6 +240,62 @@
         ]
       },
       {
+        "id": "function_started_iqc",
+        "title": {
+          "en": "A function started"
+        },
+        "titleFormatted": {
+          "en": "[[function]] started"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "function",
+            "type": "dropdown",
+            "title": {
+              "en": "Function"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "heating",
+                "label": {
+                  "en": "Heating"
+                }
+              },
+              {
+                "id": "heat_recovery",
+                "label": {
+                  "en": "Heat recovery"
+                }
+              },
+              {
+                "id": "cooling",
+                "label": {
+                  "en": "Cooling"
+                }
+              },
+              {
+                "id": "co2_boost",
+                "label": {
+                  "en": "CO₂ boost"
+                }
+              },
+              {
+                "id": "rh_boost",
+                "label": {
+                  "en": "Humidity boost"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "function_stopped_gen3",
         "title": {
           "en": "A function stopped"
@@ -245,6 +327,62 @@
                 "id": "heat_recovery",
                 "label": {
                   "en": "Heat recovery"
+                }
+              },
+              {
+                "id": "co2_boost",
+                "label": {
+                  "en": "CO₂ boost"
+                }
+              },
+              {
+                "id": "rh_boost",
+                "label": {
+                  "en": "Humidity boost"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "function_stopped_iqc",
+        "title": {
+          "en": "A function stopped"
+        },
+        "titleFormatted": {
+          "en": "[[function]] stopped"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "function",
+            "type": "dropdown",
+            "title": {
+              "en": "Function"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "heating",
+                "label": {
+                  "en": "Heating"
+                }
+              },
+              {
+                "id": "heat_recovery",
+                "label": {
+                  "en": "Heat recovery"
+                }
+              },
+              {
+                "id": "cooling",
+                "label": {
+                  "en": "Cooling"
                 }
               },
               {
@@ -382,6 +520,32 @@
         ]
       },
       {
+        "id": "week_schedule_program_changed_iqc",
+        "title": {
+          "en": "Active week schedule program changed"
+        },
+        "hint": {
+          "en": "The program number is 0 when no program is active."
+        },
+        "tokens": [
+          {
+            "name": "program",
+            "type": "number",
+            "title": {
+              "en": "Program"
+            },
+            "example": 1
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          }
+        ]
+      },
+      {
         "id": "week_timer_program_changed_gen3",
         "title": {
           "en": "Active week timer program changed"
@@ -474,6 +638,56 @@
               },
               {
                 "id": "4",
+                "label": {
+                  "en": "Max"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "is_current_fan_speed_iqc",
+        "title": {
+          "en": "Current fan speed !{{is|isn't}}"
+        },
+        "titleFormatted": {
+          "en": "Current fan speed !{{is|isn't}} [[speed]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "speed",
+            "type": "dropdown",
+            "title": {
+              "en": "Fan speed"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Off"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Min"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Standard"
+                }
+              },
+              {
+                "id": "3",
                 "label": {
                   "en": "Max"
                 }
@@ -590,6 +804,62 @@
         ]
       },
       {
+        "id": "is_function_active_iqc",
+        "title": {
+          "en": "Function !{{is|isn't}} active"
+        },
+        "titleFormatted": {
+          "en": "[[function]] !{{is|isn't}} active"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "function",
+            "type": "dropdown",
+            "title": {
+              "en": "Function"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "heating",
+                "label": {
+                  "en": "Heating"
+                }
+              },
+              {
+                "id": "heat_recovery",
+                "label": {
+                  "en": "Heat recovery"
+                }
+              },
+              {
+                "id": "cooling",
+                "label": {
+                  "en": "Cooling"
+                }
+              },
+              {
+                "id": "co2_boost",
+                "label": {
+                  "en": "CO₂ boost"
+                }
+              },
+              {
+                "id": "rh_boost",
+                "label": {
+                  "en": "Humidity boost"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "is_heater_enabled_gen3",
         "title": {
           "en": "Heater !{{enabled|disabled}} enabled"
@@ -613,6 +883,23 @@
         },
         "titleFormatted": {
           "en": "Heater is !{{enabled|disabled}}"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          }
+        ]
+      },
+      {
+        "id": "is_holiday_schedule_enabled_iqc",
+        "title": {
+          "en": "Holiday schedule !{{enabled|disabled}}"
+        },
+        "titleFormatted": {
+          "en": "Holiday schedule is !{{enabled|disabled}}"
         },
         "highlight": true,
         "args": [
@@ -865,6 +1152,79 @@
         ]
       },
       {
+        "id": "is_week_schedule_enabled_iqc",
+        "title": {
+          "en": "Week schedule !{{enabled|disabled}}"
+        },
+        "titleFormatted": {
+          "en": "Week schedule is !{{enabled|disabled}}"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          }
+        ]
+      },
+      {
+        "id": "is_week_schedule_program_active_iqc",
+        "title": {
+          "en": "Week schedule program !{{is|isn't}} active"
+        },
+        "titleFormatted": {
+          "en": "Week schedule program [[program]] !{{is|isn't}} active"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "is_week_timer_enabled_gen3",
         "title": {
           "en": "Week timer !{{enabled|disabled}}"
@@ -1101,6 +1461,587 @@
         ]
       },
       {
+        "id": "set_holiday_program_enabled_iqc",
+        "title": {
+          "en": "Set holiday program"
+        },
+        "titleFormatted": {
+          "en": "Set holiday program [[program]] to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "6"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "7"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "8"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "9"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "10"
+                }
+              }
+            ]
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_holiday_program_end_iqc",
+        "title": {
+          "en": "Set holiday program end"
+        },
+        "titleFormatted": {
+          "en": "Set holiday program [[program]] end to [[date]] [[time]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "6"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "7"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "8"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "9"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "10"
+                }
+              }
+            ]
+          },
+          {
+            "name": "date",
+            "type": "date",
+            "title": {
+              "en": "Date"
+            },
+            "required": true
+          },
+          {
+            "name": "time",
+            "type": "time",
+            "title": {
+              "en": "Time"
+            },
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "set_holiday_program_fan_speed_iqc",
+        "title": {
+          "en": "Set holiday program fan speed"
+        },
+        "titleFormatted": {
+          "en": "Set holiday program [[program]] fan speed to [[fan_speed]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "6"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "7"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "8"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "9"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "10"
+                }
+              }
+            ]
+          },
+          {
+            "name": "fan_speed",
+            "type": "dropdown",
+            "title": {
+              "en": "Fan speed"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Standby"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Minimum"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Standard"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Maximum"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_holiday_program_start_iqc",
+        "title": {
+          "en": "Set holiday program start"
+        },
+        "titleFormatted": {
+          "en": "Set holiday program [[program]] start to [[date]] [[time]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "6"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "7"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "8"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "9"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "10"
+                }
+              }
+            ]
+          },
+          {
+            "name": "date",
+            "type": "date",
+            "title": {
+              "en": "Date"
+            },
+            "required": true
+          },
+          {
+            "name": "time",
+            "type": "time",
+            "title": {
+              "en": "Time"
+            },
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "set_holiday_program_temperature_mode_iqc",
+        "title": {
+          "en": "Set holiday program temperature mode"
+        },
+        "titleFormatted": {
+          "en": "Set holiday program [[program]] temperature mode to [[mode]]"
+        },
+        "hint": {
+          "en": "Economy is only used when the economy setpoint is enabled on the unit."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "6"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "7"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "8"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "9"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "10"
+                }
+              }
+            ]
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Temperature mode"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Comfort"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Economy"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_holiday_schedule_enabled_iqc",
+        "title": {
+          "en": "Set holiday schedule"
+        },
+        "titleFormatted": {
+          "en": "Set holiday schedule to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "set_preheater_enabled_iqc",
         "title": {
           "en": "Set preheater"
@@ -1259,6 +2200,551 @@
             "name": "device",
             "type": "device",
             "filter": "driver_id=gen-3-remote|iqc-touch"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_week_schedule_enabled_iqc",
+        "title": {
+          "en": "Set week schedule"
+        },
+        "titleFormatted": {
+          "en": "Set week schedule to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_week_schedule_program_enabled_iqc",
+        "title": {
+          "en": "Set week schedule program"
+        },
+        "titleFormatted": {
+          "en": "Set week schedule program [[program]] to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "State"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Disabled"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Enabled"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_week_schedule_program_end_time_iqc",
+        "title": {
+          "en": "Set week schedule program end time"
+        },
+        "titleFormatted": {
+          "en": "Set week schedule program [[program]] end time to [[time]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "time",
+            "type": "time",
+            "title": {
+              "en": "Time"
+            },
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "set_week_schedule_program_fan_speed_iqc",
+        "title": {
+          "en": "Set week schedule program fan speed"
+        },
+        "titleFormatted": {
+          "en": "Set week schedule program [[program]] fan speed to [[fan_speed]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "fan_speed",
+            "type": "dropdown",
+            "title": {
+              "en": "Fan speed"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Standby"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Minimum"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Standard"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Maximum"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_week_schedule_program_start_time_iqc",
+        "title": {
+          "en": "Set week schedule program start time"
+        },
+        "titleFormatted": {
+          "en": "Set week schedule program [[program]] start time to [[time]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "time",
+            "type": "time",
+            "title": {
+              "en": "Time"
+            },
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "set_week_schedule_program_temperature_mode_iqc",
+        "title": {
+          "en": "Set week schedule program temperature mode"
+        },
+        "titleFormatted": {
+          "en": "Set week schedule program [[program]] temperature mode to [[mode]]"
+        },
+        "hint": {
+          "en": "Economy is only used when the economy setpoint is enabled on the unit."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+              "en": "Temperature mode"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Comfort"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Economy"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_week_schedule_program_week_day_iqc",
+        "title": {
+          "en": "Set week schedule program weekday"
+        },
+        "titleFormatted": {
+          "en": "Set week schedule program [[program]] weekday [[week_day]] to [[state]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+          },
+          {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+              "en": "Program"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5"
+                }
+              }
+            ]
+          },
+          {
+            "name": "week_day",
+            "type": "dropdown",
+            "title": {
+              "en": "Weekday"
+            },
+            "required": true,
+            "values": [
+              {
+                "id": "monday",
+                "label": {
+                  "en": "Monday"
+                }
+              },
+              {
+                "id": "tuesday",
+                "label": {
+                  "en": "Tuesday"
+                }
+              },
+              {
+                "id": "wednesday",
+                "label": {
+                  "en": "Wednesday"
+                }
+              },
+              {
+                "id": "thursday",
+                "label": {
+                  "en": "Thursday"
+                }
+              },
+              {
+                "id": "friday",
+                "label": {
+                  "en": "Friday"
+                }
+              },
+              {
+                "id": "saturday",
+                "label": {
+                  "en": "Saturday"
+                }
+              },
+              {
+                "id": "sunday",
+                "label": {
+                  "en": "Sunday"
+                }
+              }
+            ]
           },
           {
             "name": "state",
@@ -1755,6 +3241,22 @@
             "name": "device",
             "type": "device",
             "filter": "driver_id=gen-3-remote"
+          }
+        ]
+      },
+      {
+        "id": "sync_clock_iqc",
+        "title": {
+          "en": "Set the unit's clock to Homey's time"
+        },
+        "hint": {
+          "en": "The week and holiday schedules run on the unit's clock. Use this to correct it, for example after a daylight saving time change."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
           }
         ]
       }
@@ -3166,31 +4668,62 @@
         "target_temperature.eco",
         "fan_mode",
         "regulation_mode_iqc",
+        "current_fan_speed_iqc",
         "meter_temperature_outdoor_air",
         "meter_temperature_supply_air",
         "meter_temperature_waste_air",
         "meter_temperature_extract_air",
-        "meter_temperature_heat_recovery_wheel",
         "meter_temperature_room",
-        "meter_thermal_efficiency",
-        "meter_temperature_water",
+        "measure_co2",
+        "co2_boost_active_iqc",
         "meter_humidity_relative",
+        "rh_boost_active_iqc",
+        "heat_recovery_active_iqc",
+        "meter_power_heat_recovery",
+        "meter_temperature_heat_recovery_wheel",
+        "meter_thermal_efficiency",
+        "preheater_enabled_iqc",
+        "heater_enabled_iqc",
+        "heating_active_iqc",
+        "meter_power_heating",
+        "cooling_active_iqc",
+        "meter_temperature_water",
         "meter_rpm_supply",
         "meter_rpm_extract",
         "meter_power_supply",
         "meter_power_extract",
         "meter_pressure_supply",
         "meter_pressure_extract",
-        "meter_power_heating",
         "alarm_active_alarms",
         "meter_filter_timer",
-        "preheater_enabled_iqc",
-        "heater_enabled_iqc",
+        "button.reset_filter_timer",
+        "button.clear_alarms",
+        "week_schedule_enabled_iqc",
+        "week_schedule_active_program_iqc",
+        "holiday_schedule_enabled_iqc",
         "summer_night_cooling_enabled",
         "meter_power",
         "measure_power"
       ],
       "capabilitiesOptions": {
+        "button.reset_filter_timer": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Reset filter timer"
+          },
+          "desc": {
+            "en": "Starts a new filter period. Do this after replacing the filters, then use Clear alarms to dismiss the filter alarm."
+          }
+        },
+        "button.clear_alarms": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Clear alarms"
+          },
+          "desc": {
+            "en": "Dismisses the active alarms on the unit. An alarm whose cause is still present comes back."
+          }
+        },
         "target_temperature": {
           "title": {
             "en": "Comfort target temperature"
@@ -3263,6 +4796,17 @@
                 "en": "TCP/IP connection to Heru unit instead of RS485 serial interface"
               },
               "value": false
+            },
+            {
+              "id": "sync_clock",
+              "type": "checkbox",
+              "label": {
+                "en": "Keep the unit's clock in sync with Homey"
+              },
+              "hint": {
+                "en": "The week and holiday schedules run on the unit's clock. When enabled, the clock is set to Homey's time whenever it is more than 2 minutes off, for example after a daylight saving time change."
+              },
+              "value": false
             }
           ]
         },
@@ -3284,9 +4828,33 @@
               "value": true
             },
             {
+              "id": "capability_enabled_measure_co2",
+              "label": {
+                "en": "CO₂"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
               "id": "capability_enabled_meter_humidity_relative",
               "label": {
                 "en": "Relative humidity"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_co2_boost_active_iqc",
+              "label": {
+                "en": "CO₂ boost active"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_rh_boost_active_iqc",
+              "label": {
+                "en": "Humidity boost active"
               },
               "type": "checkbox",
               "value": true
@@ -3343,6 +4911,22 @@
               "id": "capability_enabled_meter_power_heating",
               "label": {
                 "en": "Heating power"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_cooling_active_iqc",
+              "label": {
+                "en": "Cooling active"
+              },
+              "type": "checkbox",
+              "value": true
+            },
+            {
+              "id": "capability_enabled_meter_power_heat_recovery",
+              "label": {
+                "en": "Heat recovery power"
               },
               "type": "checkbox",
               "value": true
@@ -3631,6 +5215,2442 @@
               "value": false
             }
           ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Week schedule"
+          },
+          "children": [
+            {
+              "type": "group",
+              "label": {
+                "en": "Week program 1"
+              },
+              "children": [
+                {
+                  "id": "week_program_1_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "week_program_1_week_day_monday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Monday"
+                  }
+                },
+                {
+                  "id": "week_program_1_week_day_tuesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Tuesday"
+                  }
+                },
+                {
+                  "id": "week_program_1_week_day_wednesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Wednesday"
+                  }
+                },
+                {
+                  "id": "week_program_1_week_day_thursday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Thursday"
+                  }
+                },
+                {
+                  "id": "week_program_1_week_day_friday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Friday"
+                  }
+                },
+                {
+                  "id": "week_program_1_week_day_saturday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Saturday"
+                  }
+                },
+                {
+                  "id": "week_program_1_week_day_sunday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Sunday"
+                  }
+                },
+                {
+                  "id": "week_program_1_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "week_program_1_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_1_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  },
+                  "hint": {
+                    "en": "When the end time is before the start time, the program ends the next day."
+                  }
+                },
+                {
+                  "id": "week_program_1_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_1_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "week_program_1_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Week program 2"
+              },
+              "children": [
+                {
+                  "id": "week_program_2_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "week_program_2_week_day_monday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Monday"
+                  }
+                },
+                {
+                  "id": "week_program_2_week_day_tuesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Tuesday"
+                  }
+                },
+                {
+                  "id": "week_program_2_week_day_wednesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Wednesday"
+                  }
+                },
+                {
+                  "id": "week_program_2_week_day_thursday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Thursday"
+                  }
+                },
+                {
+                  "id": "week_program_2_week_day_friday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Friday"
+                  }
+                },
+                {
+                  "id": "week_program_2_week_day_saturday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Saturday"
+                  }
+                },
+                {
+                  "id": "week_program_2_week_day_sunday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Sunday"
+                  }
+                },
+                {
+                  "id": "week_program_2_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "week_program_2_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_2_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  },
+                  "hint": {
+                    "en": "When the end time is before the start time, the program ends the next day."
+                  }
+                },
+                {
+                  "id": "week_program_2_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_2_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "week_program_2_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Week program 3"
+              },
+              "children": [
+                {
+                  "id": "week_program_3_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "week_program_3_week_day_monday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Monday"
+                  }
+                },
+                {
+                  "id": "week_program_3_week_day_tuesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Tuesday"
+                  }
+                },
+                {
+                  "id": "week_program_3_week_day_wednesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Wednesday"
+                  }
+                },
+                {
+                  "id": "week_program_3_week_day_thursday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Thursday"
+                  }
+                },
+                {
+                  "id": "week_program_3_week_day_friday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Friday"
+                  }
+                },
+                {
+                  "id": "week_program_3_week_day_saturday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Saturday"
+                  }
+                },
+                {
+                  "id": "week_program_3_week_day_sunday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Sunday"
+                  }
+                },
+                {
+                  "id": "week_program_3_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "week_program_3_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_3_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  },
+                  "hint": {
+                    "en": "When the end time is before the start time, the program ends the next day."
+                  }
+                },
+                {
+                  "id": "week_program_3_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_3_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "week_program_3_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Week program 4"
+              },
+              "children": [
+                {
+                  "id": "week_program_4_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "week_program_4_week_day_monday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Monday"
+                  }
+                },
+                {
+                  "id": "week_program_4_week_day_tuesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Tuesday"
+                  }
+                },
+                {
+                  "id": "week_program_4_week_day_wednesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Wednesday"
+                  }
+                },
+                {
+                  "id": "week_program_4_week_day_thursday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Thursday"
+                  }
+                },
+                {
+                  "id": "week_program_4_week_day_friday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Friday"
+                  }
+                },
+                {
+                  "id": "week_program_4_week_day_saturday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Saturday"
+                  }
+                },
+                {
+                  "id": "week_program_4_week_day_sunday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Sunday"
+                  }
+                },
+                {
+                  "id": "week_program_4_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "week_program_4_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_4_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  },
+                  "hint": {
+                    "en": "When the end time is before the start time, the program ends the next day."
+                  }
+                },
+                {
+                  "id": "week_program_4_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_4_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "week_program_4_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Week program 5"
+              },
+              "children": [
+                {
+                  "id": "week_program_5_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "week_program_5_week_day_monday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Monday"
+                  }
+                },
+                {
+                  "id": "week_program_5_week_day_tuesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Tuesday"
+                  }
+                },
+                {
+                  "id": "week_program_5_week_day_wednesday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Wednesday"
+                  }
+                },
+                {
+                  "id": "week_program_5_week_day_thursday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Thursday"
+                  }
+                },
+                {
+                  "id": "week_program_5_week_day_friday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Friday"
+                  }
+                },
+                {
+                  "id": "week_program_5_week_day_saturday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Saturday"
+                  }
+                },
+                {
+                  "id": "week_program_5_week_day_sunday",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Starts on Sunday"
+                  }
+                },
+                {
+                  "id": "week_program_5_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "week_program_5_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_5_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  },
+                  "hint": {
+                    "en": "When the end time is before the start time, the program ends the next day."
+                  }
+                },
+                {
+                  "id": "week_program_5_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "week_program_5_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "week_program_5_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Holiday schedule"
+          },
+          "children": [
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 1"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_1_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_1_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_1_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_1_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_1_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_1_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_1_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_1_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_1_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 2"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_2_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_2_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_2_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_2_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_2_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_2_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_2_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_2_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_2_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 3"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_3_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_3_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_3_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_3_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_3_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_3_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_3_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_3_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_3_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 4"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_4_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_4_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_4_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_4_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_4_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_4_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_4_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_4_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_4_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 5"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_5_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_5_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_5_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_5_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_5_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_5_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_5_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_5_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_5_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 6"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_6_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_6_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_6_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_6_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_6_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_6_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_6_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_6_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_6_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 7"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_7_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_7_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_7_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_7_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_7_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_7_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_7_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_7_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_7_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 8"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_8_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_8_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_8_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_8_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_8_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_8_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_8_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_8_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_8_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 9"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_9_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_9_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_9_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_9_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_9_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_9_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_9_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_9_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_9_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Holiday program 10"
+              },
+              "children": [
+                {
+                  "id": "holiday_program_10_enabled",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Program enabled"
+                  }
+                },
+                {
+                  "id": "holiday_program_10_start_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "Start date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2026-12-24"
+                  }
+                },
+                {
+                  "id": "holiday_program_10_start_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "Start hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_10_start_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "Start minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_10_end_date",
+                  "type": "text",
+                  "value": "",
+                  "label": {
+                    "en": "End date"
+                  },
+                  "hint": {
+                    "en": "YYYY-MM-DD, for example 2027-01-02"
+                  }
+                },
+                {
+                  "id": "holiday_program_10_end_hour",
+                  "type": "number",
+                  "label": {
+                    "en": "End hour"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 23,
+                  "units": {
+                    "en": "Hour"
+                  }
+                },
+                {
+                  "id": "holiday_program_10_end_minute",
+                  "type": "number",
+                  "label": {
+                    "en": "End minute"
+                  },
+                  "value": 0,
+                  "min": 0,
+                  "max": 59,
+                  "units": {
+                    "en": "Minute"
+                  }
+                },
+                {
+                  "id": "holiday_program_10_fan_speed",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Fan speed"
+                  },
+                  "value": "2",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Standby"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Minimum"
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "label": {
+                        "en": "Standard"
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "label": {
+                        "en": "Maximum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "holiday_program_10_temperature_mode",
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Temperature mode"
+                  },
+                  "value": "0",
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "Comfort"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "Economy"
+                      }
+                    }
+                  ],
+                  "hint": {
+                    "en": "Economy is only used when the economy setpoint is enabled on the unit, otherwise the comfort setpoint is used."
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -3663,6 +7683,36 @@
       "insightsTitleTrue": "CO₂ boost started",
       "insightsTitleFalse": "CO₂ boost stopped",
       "icon": "/assets/icons/speedometer.svg",
+      "getable": true,
+      "setable": false
+    },
+    "co2_boost_active_iqc": {
+      "type": "boolean",
+      "title": {
+        "en": "CO₂ boost active"
+      },
+      "desc": {
+        "en": "CO₂ boost active"
+      },
+      "insights": true,
+      "insightsTitleTrue": "CO₂ boost started",
+      "insightsTitleFalse": "CO₂ boost stopped",
+      "icon": "/assets/icons/speedometer.svg",
+      "getable": true,
+      "setable": false
+    },
+    "cooling_active_iqc": {
+      "type": "boolean",
+      "title": {
+        "en": "Cooling active"
+      },
+      "desc": {
+        "en": "Cooling active"
+      },
+      "insights": true,
+      "insightsTitleTrue": "Cooling started",
+      "insightsTitleFalse": "Cooling stopped",
+      "icon": "/assets/icons/snowflake-thermometer.svg",
       "getable": true,
       "setable": false
     },
@@ -3707,6 +7757,47 @@
         },
         {
           "id": "4",
+          "title": {
+            "en": "Max"
+          }
+        }
+      ]
+    },
+    "current_fan_speed_iqc": {
+      "type": "enum",
+      "title": {
+        "en": "Current fan speed"
+      },
+      "desc": {
+        "en": "Fan speed set by the user or by the schedules"
+      },
+      "insights": true,
+      "greyout": true,
+      "icon": "/assets/icons/speedometer.svg",
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "values": [
+        {
+          "id": "0",
+          "title": {
+            "en": "Off"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Min"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Standard"
+          }
+        },
+        {
+          "id": "3",
           "title": {
             "en": "Max"
           }
@@ -3772,6 +7863,21 @@
       "getable": true,
       "setable": false
     },
+    "heat_recovery_active_iqc": {
+      "type": "boolean",
+      "title": {
+        "en": "Heat recovery active"
+      },
+      "desc": {
+        "en": "Heat recovery active"
+      },
+      "insights": true,
+      "insightsTitleTrue": "Heat recovery started",
+      "insightsTitleFalse": "Heat recovery stopped",
+      "icon": "/assets/icons/recovery.svg",
+      "getable": true,
+      "setable": false
+    },
     "heater_enabled_gen3": {
       "type": "boolean",
       "title": {
@@ -3818,6 +7924,37 @@
       "icon": "/assets/icons/heating.svg",
       "getable": true,
       "setable": false
+    },
+    "heating_active_iqc": {
+      "type": "boolean",
+      "title": {
+        "en": "Heating active"
+      },
+      "desc": {
+        "en": "Heating active"
+      },
+      "insights": true,
+      "insightsTitleTrue": "Heating started",
+      "insightsTitleFalse": "Heating stopped",
+      "icon": "/assets/icons/heating.svg",
+      "getable": true,
+      "setable": false
+    },
+    "holiday_schedule_enabled_iqc": {
+      "type": "boolean",
+      "title": {
+        "en": "Holiday schedule enabled"
+      },
+      "desc": {
+        "en": "Holiday schedule enabled - See the device settings to program the holiday schedule"
+      },
+      "uiComponent": "button",
+      "getable": true,
+      "setable": true,
+      "icon": "/assets/icons/schedule.svg",
+      "insights": true,
+      "insightsTitleTrue": "Holiday schedule enabled",
+      "insightsTitleFalse": "Holiday schedule disabled"
     },
     "meter_filter_timer": {
       "title": {
@@ -4445,6 +8582,21 @@
       "getable": true,
       "setable": false
     },
+    "rh_boost_active_iqc": {
+      "type": "boolean",
+      "title": {
+        "en": "Humidity boost active"
+      },
+      "desc": {
+        "en": "Humidity boost active"
+      },
+      "insights": true,
+      "insightsTitleTrue": "Humidity boost started",
+      "insightsTitleFalse": "Humidity boost stopped",
+      "icon": "/assets/icons/humidity.svg",
+      "getable": true,
+      "setable": false
+    },
     "summer_night_cooling_enabled": {
       "type": "boolean",
       "title": {
@@ -4460,6 +8612,75 @@
       "insights": true,
       "insightsTitleTrue": "Summer night cooling enabled",
       "insightsTitleFalse": "Summer night cooling disabled"
+    },
+    "week_schedule_active_program_iqc": {
+      "type": "enum",
+      "title": {
+        "en": "Active week schedule program"
+      },
+      "desc": {
+        "en": "Active week schedule program"
+      },
+      "insights": true,
+      "greyout": true,
+      "icon": "/assets/icons/schedule.svg",
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "values": [
+        {
+          "id": "0",
+          "title": {
+            "en": "None"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Program 1"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Program 2"
+          }
+        },
+        {
+          "id": "3",
+          "title": {
+            "en": "Program 3"
+          }
+        },
+        {
+          "id": "4",
+          "title": {
+            "en": "Program 4"
+          }
+        },
+        {
+          "id": "5",
+          "title": {
+            "en": "Program 5"
+          }
+        }
+      ]
+    },
+    "week_schedule_enabled_iqc": {
+      "type": "boolean",
+      "title": {
+        "en": "Week schedule enabled"
+      },
+      "desc": {
+        "en": "Week schedule enabled - See the device settings to program the week schedule"
+      },
+      "uiComponent": "button",
+      "getable": true,
+      "setable": true,
+      "icon": "/assets/icons/schedule.svg",
+      "insights": true,
+      "insightsTitleTrue": "Week schedule enabled",
+      "insightsTitleFalse": "Week schedule disabled"
     },
     "week_timer_current_active_program_gen3": {
       "type": "enum",

@@ -1,0 +1,16 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Holiday schedule enabled"
+    },
+    "desc": {
+        "en": "Holiday schedule enabled - See the device settings to program the holiday schedule"
+    },
+    "uiComponent": "button",
+    "getable": true,
+    "setable": true,
+    "icon": "/assets/icons/schedule.svg",
+    "insights": true,
+    "insightsTitleTrue": "Holiday schedule enabled",
+    "insightsTitleFalse": "Holiday schedule disabled"
+}

@@ -18,9 +18,20 @@ enum FanMode {
     AWAY = 'away'
 }
 
+const MAX_CLOCK_DRIFT_MINUTES = 2;
+const CLOCK_SYNC_RETRY_INTERVAL = 60 * 60 * 1000;
+
 abstract class BaseDevice extends Homey.Device {
     api: HeruAPI | null = null;
-    alarmNames: { [index: string]: string } | null = null;
+    // Alarm id with the discrete input that reports it, and the alarm's name
+    abstract readonly alarmInputs: { [id: string]: number };
+    abstract readonly alarmNames: { [id: string]: string };
+    // Operating functions shown by the unit, with the discrete input that reports whether they are active
+    abstract readonly functionInputs: { [fn: string]: number };
+    // Suffix of the driver's own capabilities and flow cards, like `heating_active_gen3`
+    abstract readonly driverSuffix: string;
+    functionStates: { [fn: string]: boolean } = {};
+    lastClockSyncAttempt = 0;
 
     async onInit() {
         this.registerCapabilityListener('fan_mode', async (value: FanMode) => {
@@ -131,7 +142,11 @@ abstract class BaseDevice extends Homey.Device {
         });
     }
 
-    abstract listActiveAlarms(): { allActive: string };
+    listActiveAlarms() {
+        return {
+            allActive: this.getActiveAlarmsString(this.getStoreValue('alarms'), this.alarmNames)
+        };
+    }
 
     getActiveAlarmsString(alarmStates: { [index: string]: boolean }, alarmNames: { [index: string]: string }): string {
         return Object.keys(alarmStates)
@@ -165,7 +180,53 @@ abstract class BaseDevice extends Homey.Device {
         return activeAlarms;
     }
 
-    abstract processAlarms(discreteInputs: boolean[]): void;
+    async processAlarms(discreteInputs: boolean[]): Promise<void> {
+        const previousAlarms: { [index: string]: boolean } = this.getStoreValue('alarms') || {};
+        const currentAlarms = Object.fromEntries(Object.entries(this.alarmInputs).map(([id, input]) => [id, discreteInputs[input]]));
+        const activeAlarms = await this.checkAlarmTriggers(currentAlarms, previousAlarms, this.alarmNames);
+        if (this.hasCapability('alarm_active_alarms')) {
+            this.setCapabilityValue('alarm_active_alarms', !!activeAlarms.length).catch(this.error);
+        }
+    }
+
+    isFunctionActive(fn: string) {
+        return !!this.functionStates[fn];
+    }
+
+    processFunctions(discreteInputs: boolean[]) {
+        Object.entries(this.functionInputs).forEach(([fn, input]) => {
+            const active = !!discreteInputs[input];
+            const previous = this.functionStates[fn];
+            this.functionStates[fn] = active;
+            const capability = `${fn}_active_${this.driverSuffix}`;
+            if (this.hasCapability(capability)) this.setCapabilityValue(capability, active).catch(this.error);
+            // Don't trigger on the first read after starting, when the previous state is unknown
+            if (previous !== undefined && previous !== active) {
+                this.homey.flow.getDeviceTriggerCard(`function_${active ? 'started' : 'stopped'}_${this.driverSuffix}`).trigger(this, {}, { function: fn }).catch(this.error);
+            }
+        });
+    }
+
+    // Sets an enum sensor and fires its trigger when the value changes, but not on the first read when the previous value is unknown
+    updateEnumSensor(capability: string, value: number, triggerId: string, tokens: object) {
+        const previous = this.getCapabilityValue(capability);
+        const id = value.toString(10);
+        this.setCapabilityValue(capability, id).catch(this.error);
+        if (previous !== null && previous !== id) {
+            this.homey.flow.getDeviceTriggerCard(triggerId).trigger(this, tokens).catch(this.error);
+        }
+    }
+
+    abstract syncClock(): Promise<void>;
+
+    // The schedules run on the unit's clock. When enabled, correct it once it is a few minutes off, and wait before retrying a sync that didn't help.
+    syncClockIfDrifted(driftMinutes: number) {
+        if (!this.getSetting('sync_clock') || Date.now() - this.lastClockSyncAttempt < CLOCK_SYNC_RETRY_INTERVAL) return;
+        if (driftMinutes > MAX_CLOCK_DRIFT_MINUTES) {
+            this.log(`The unit's clock is ${driftMinutes} minutes off, setting it to Homey's time`);
+            this.syncClock().catch(this.error);
+        }
+    }
 
     approximateMeasurePower(exhaustFanPercent: number, supplyFanPercent: number, heatingPercent: number) {
         const ratedPowerFan = this.getSetting('rated_power_fan')

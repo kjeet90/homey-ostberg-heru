@@ -1,0 +1,15 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Humidity boost active"
+    },
+    "desc": {
+        "en": "Humidity boost active"
+    },
+    "insights": true,
+    "insightsTitleTrue": "Humidity boost started",
+    "insightsTitleFalse": "Humidity boost stopped",
+    "icon": "/assets/icons/humidity.svg",
+    "getable": true,
+    "setable": false
+}

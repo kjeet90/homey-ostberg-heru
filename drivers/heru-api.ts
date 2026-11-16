@@ -31,10 +31,8 @@ function withTimeout<T>(request: Promise<T>, ms: number, description: string): P
     return Promise.race([request, timeout]).finally(() => clearTimeout(timer));
 }
 
-function indexByAddress<T>(data: T[], start: number): T[] {
-    const indexed = new Array<T>(start);
-    indexed.push(...data);
-    return indexed;
+function toRanges(ranges: ModbusRanges): ModbusRange[] {
+    return Array.isArray(ranges) ? ranges : [ranges];
 }
 
 export class HeruAPI {
@@ -56,6 +54,8 @@ export class HeruAPI {
         coils: [],
         holdingRegisters: []
     } as { coils: WriteModbusCoils[]; holdingRegisters: WriteModbusRegisters[] }; //new Map<'coils' | 'holdingRegisters', WriteModbusRegisters[] | WriteModbusCoils[]>();
+    // Optional ranges the unit refused, so the refusal is logged once instead of on every poll
+    skippedRanges = new Set<string>();
 
     registers: ModbusRegisters = {
         coils: {
@@ -229,18 +229,34 @@ export class HeruAPI {
     async readRegisters(client: InstanceType<typeof ModbusRTU>) {
         const { coils, discreteInputs, inputRegisters, holdingRegisters } = this.registers;
         // One request at a time: the RTU-over-TCP connection can only match one response to one request
-        const coilStatus = await withTimeout(client.readCoils(coils.start, coils.count), this.REQUEST_TIMEOUT, 'Reading coils');
-        const discreteInputStatus = await withTimeout(client.readDiscreteInputs(discreteInputs.start, discreteInputs.count), this.REQUEST_TIMEOUT, 'Reading discrete inputs');
-        const inputRegisterValues = await withTimeout(client.readInputRegisters(inputRegisters.start, inputRegisters.count), this.REQUEST_TIMEOUT, 'Reading input registers');
-        const holdingRegisterValues = await withTimeout(client.readHoldingRegisters(holdingRegisters.start, holdingRegisters.count), this.REQUEST_TIMEOUT, 'Reading holding registers');
-
-        // Index every result by its register address, so the register enums can be used directly even when a range doesn't start at 0
         return {
-            coils: indexByAddress(coilStatus.data, coils.start),
-            discreteInputs: indexByAddress(discreteInputStatus.data, discreteInputs.start),
-            inputRegisters: indexByAddress(inputRegisterValues.data, inputRegisters.start),
-            holdingRegisters: indexByAddress(holdingRegisterValues.data, holdingRegisters.start)
+            coils: await this.readRanges(coils, 'coils', (start, count) => client.readCoils(start, count)),
+            discreteInputs: await this.readRanges(discreteInputs, 'discrete inputs', (start, count) => client.readDiscreteInputs(start, count)),
+            inputRegisters: await this.readRanges(inputRegisters, 'input registers', (start, count) => client.readInputRegisters(start, count)),
+            holdingRegisters: await this.readRanges(holdingRegisters, 'holding registers', (start, count) => client.readHoldingRegisters(start, count))
         };
+    }
+
+    // Index every value by its register address, so the register enums can be used directly even when a range doesn't start at 0.
+    // Addresses in a skipped optional range stay undefined.
+    async readRanges<T>(ranges: ModbusRanges, type: string, read: (start: number, count: number) => Promise<{ data: T[] }>): Promise<T[]> {
+        const values: T[] = [];
+        for (const range of toRanges(ranges)) {
+            const description = `Reading ${type} ${range.start}-${range.start + range.count - 1}`;
+            try {
+                const { data } = await withTimeout(read(range.start, range.count), this.REQUEST_TIMEOUT, description);
+                // Coils come back padded to a whole byte, so only take the requested count
+                data.slice(0, range.count).forEach((value, i) => (values[range.start + i] = value));
+                this.skippedRanges.delete(description);
+            } catch (e) {
+                if (!range.optional || !isModbusException(e)) throw e;
+                if (!this.skippedRanges.has(description)) {
+                    this.skippedRanges.add(description);
+                    this.device?.log(`${description} was refused by the unit, skipping it --> ${e.message}`);
+                }
+            }
+        }
+        return values;
     }
 
     writeRegister(startRegister: number, value: number): Promise<void> {

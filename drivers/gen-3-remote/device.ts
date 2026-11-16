@@ -1,27 +1,17 @@
 import BaseDevice from '../base-device';
 import { HeruAPI } from '../heru-api';
 import { Gen3HoldingRegisters, Gen3Registers } from '../registers';
-import { alarms, registers, RegulationModeGen3, SetRegulationModeGen3 } from './constants';
-import { convertArrayOfBooleansToNumber, convertNumberToArrayOfBooleans } from './utils';
-
-// Operating functions shown by the unit, with the discrete input that reports whether they are active
-const FUNCTIONS = {
-    heating: Gen3Registers.discreteInputs.HEATING,
-    heat_recovery: Gen3Registers.discreteInputs.RECOVERING_HEAT_COLD,
-    co2_boost: Gen3Registers.discreteInputs.CO2_BOOST,
-    rh_boost: Gen3Registers.discreteInputs.RH_BOOST
-};
-type Gen3Function = keyof typeof FUNCTIONS;
+import { alarms, gen3AlarmInputs, functionInputs, registers, RegulationModeGen3, SetRegulationModeGen3 } from './constants';
+import { getLocalTime, isWeekdayInMask, pad, WEEKDAY_NAMES, WEEKDAYS, weekdaysToMask } from '../utils';
 
 const FAN_SPEED_NAMES = ['Off', 'Min', 'Standard', 'Medium', 'Max'];
-const WEEKDAY_NAMES = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const MINUTES_PER_WEEK = 7 * 24 * 60;
-const MAX_CLOCK_DRIFT_MINUTES = 2;
-const CLOCK_SYNC_RETRY_INTERVAL = 60 * 60 * 1000;
 
 export class Gen3Remote extends BaseDevice {
-    functionStates: Partial<Record<Gen3Function, boolean>> = {};
-    lastClockSyncAttempt = 0;
+    readonly alarmInputs = gen3AlarmInputs;
+    readonly alarmNames = alarms;
+    readonly functionInputs = functionInputs;
+    readonly driverSuffix = 'gen3';
 
     async onInit() {
         await super.onInit();
@@ -69,10 +59,6 @@ export class Gen3Remote extends BaseDevice {
         if (!this.hasCapability('button.clear_alarms')) await this.addCapability('button.clear_alarms');
     }
 
-    isFunctionActive(fn: Gen3Function) {
-        return !!this.functionStates[fn];
-    }
-
     isCurrentFanSpeed(speed: string) {
         return this.getCapabilityValue('current_fan_speed_gen3') === speed;
     }
@@ -81,74 +67,29 @@ export class Gen3Remote extends BaseDevice {
         return this.getCapabilityValue('week_timer_current_active_program_gen3') === program;
     }
 
-    getHomeyTime() {
-        const parts = new Intl.DateTimeFormat('en-GB', {
-            timeZone: this.homey.clock.getTimezone(),
-            weekday: 'short',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hourCycle: 'h23'
-        }).formatToParts(new Date());
-        const part = (type: Intl.DateTimeFormatPartTypes) => parts.find((p) => p.type === type)?.value ?? '';
-        return {
-            weekday: WEEKDAY_NAMES.indexOf(part('weekday')),
-            hours: Number(part('hour')),
-            minutes: Number(part('minute')),
-            seconds: Number(part('second'))
-        };
-    }
-
     async syncClock() {
         this.lastClockSyncAttempt = Date.now();
-        const { weekday, hours, minutes, seconds } = this.getHomeyTime();
+        const { weekday, hours, minutes, seconds } = getLocalTime(this.homey.clock.getTimezone());
         // One request, so the seconds are written last and the unit applies the new time in one go
         await this.api?.writeRegisters(Gen3Registers.holdingRegisters.CLOCK_WEEKDAY, [weekday, hours, minutes, seconds]);
-        this.log(`Set the unit's clock to ${WEEKDAY_NAMES[weekday]} ${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
+        this.log(`Set the unit's clock to ${WEEKDAY_NAMES[weekday]} ${hours}:${pad(minutes)}:${pad(seconds)}`);
     }
 
+    // The unit's clock only has a weekday, so compare the minutes into the week
     checkClockDrift(holdingRegisters: number[]) {
-        if (!this.getSetting('sync_clock') || Date.now() - this.lastClockSyncAttempt < CLOCK_SYNC_RETRY_INTERVAL) return;
-        const homey = this.getHomeyTime();
+        const homey = getLocalTime(this.homey.clock.getTimezone());
         const unitMinutes = holdingRegisters[Gen3Registers.holdingRegisters.CLOCK_WEEKDAY] * 1440 + holdingRegisters[Gen3Registers.holdingRegisters.CLOCK_HOURS] * 60 + holdingRegisters[Gen3Registers.holdingRegisters.CLOCK_MINUTES];
         const homeyMinutes = homey.weekday * 1440 + homey.hours * 60 + homey.minutes;
         const difference = Math.abs(unitMinutes - homeyMinutes);
-        const drift = Math.min(difference, MINUTES_PER_WEEK - difference);
-        if (drift > MAX_CLOCK_DRIFT_MINUTES) {
-            this.log(`The unit's clock is ${drift} minutes off, setting it to Homey's time`);
-            this.syncClock().catch(this.error);
-        }
-    }
-
-    processFunctions(discreteInputs: boolean[]) {
-        (Object.keys(FUNCTIONS) as Gen3Function[]).forEach((fn) => {
-            const active = !!discreteInputs[FUNCTIONS[fn]];
-            const previous = this.functionStates[fn];
-            this.functionStates[fn] = active;
-            if (this.hasCapability(`${fn}_active_gen3`)) this.setCapabilityValue(`${fn}_active_gen3`, active).catch(this.error);
-            // Don't trigger on the first read after starting, when the previous state is unknown
-            if (previous !== undefined && previous !== active) {
-                this.homey.flow.getDeviceTriggerCard(active ? 'function_started_gen3' : 'function_stopped_gen3').trigger(this, {}, { function: fn }).catch(this.error);
-            }
-        });
+        this.syncClockIfDrifted(Math.min(difference, MINUTES_PER_WEEK - difference));
     }
 
     processCurrentFanSpeed(speed: number) {
-        const previous = this.getCapabilityValue('current_fan_speed_gen3');
-        const value = speed.toString(10);
-        this.setCapabilityValue('current_fan_speed_gen3', value).catch(this.error);
-        if (previous !== null && previous !== value) {
-            this.homey.flow.getDeviceTriggerCard('current_fan_speed_changed_gen3').trigger(this, { speed: FAN_SPEED_NAMES[speed] ?? value }).catch(this.error);
-        }
+        this.updateEnumSensor('current_fan_speed_gen3', speed, 'current_fan_speed_changed_gen3', { speed: FAN_SPEED_NAMES[speed] ?? speed.toString(10) });
     }
 
     processWeekTimerProgram(program: number) {
-        const previous = this.getCapabilityValue('week_timer_current_active_program_gen3');
-        const value = program.toString(10);
-        this.setCapabilityValue('week_timer_current_active_program_gen3', value).catch(this.error);
-        if (previous !== null && previous !== value) {
-            this.homey.flow.getDeviceTriggerCard('week_timer_program_changed_gen3').trigger(this, { program }).catch(this.error);
-        }
+        this.updateEnumSensor('week_timer_current_active_program_gen3', program, 'week_timer_program_changed_gen3', { program });
     }
 
     async setHeaterEnabled(value: boolean) {
@@ -165,6 +106,12 @@ export class Gen3Remote extends BaseDevice {
 
     async updateWeekProgramWeekdays(program: number, weekdays: number) {
         await this.api?.writeRegister(Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_WEEKDAYS` as keyof typeof Gen3HoldingRegisters], weekdays);
+    }
+
+    // Changes one weekday of a program, keeping the other days as they are
+    async updateWeekProgramWeekday(program: number, weekday: string, value: boolean) {
+        const settings = this.getSettings();
+        await this.updateWeekProgramWeekdays(program, weekdaysToMask((day) => (day === weekday ? value : !!settings[`program_${program}_week_day_${day}`])));
     }
 
     async updateWeekProgramStartTime(program: number, hour: number, minute: number) {
@@ -260,36 +207,6 @@ export class Gen3Remote extends BaseDevice {
         if (previousRegulationMode !== newRegulationMode) this.triggerRegulationModeChanged(newRegulationMode);
     }
 
-    async processAlarms(discreteInputs: boolean[]): Promise<void> {
-        const previousAlarms: { [index: string]: boolean } = this.getStoreValue('alarms') || {};
-        const currentAlarms: { [index: string]: boolean } = {} as { [index: string]: boolean };
-        currentAlarms['fire_alarm'] = discreteInputs[Gen3Registers.discreteInputs.FIRE_ALARM];
-        currentAlarms['rotor_alarm'] = discreteInputs[Gen3Registers.discreteInputs.ROTOR_ALARM];
-        currentAlarms['freeze_alarm'] = discreteInputs[Gen3Registers.discreteInputs.FREEZE_ALARM];
-        currentAlarms['low_supply_alarm'] = discreteInputs[Gen3Registers.discreteInputs.LOW_SUPPLY_ALARM];
-        currentAlarms['low_rotor_temperature_alarm'] = discreteInputs[Gen3Registers.discreteInputs.LOW_ROTOR_TEMPEARTURE_ALARM];
-        currentAlarms['temp_sensor_open_circuit_alarm'] = discreteInputs[Gen3Registers.discreteInputs.TEMP_SENSOR_OPEN_CIRCUIT_ALARM];
-        currentAlarms['temp_sensor_short_circut_alarm'] = discreteInputs[Gen3Registers.discreteInputs.TEMP_SENSOR_SHORT_CIRCUIT_ALARM];
-        currentAlarms['pulser_alarm'] = discreteInputs[Gen3Registers.discreteInputs.PULSER_ALARM];
-        currentAlarms['supply_fan_alarm'] = discreteInputs[Gen3Registers.discreteInputs.SUPPLY_FAN_ALARM];
-        currentAlarms['extract_fan_alarm'] = discreteInputs[Gen3Registers.discreteInputs.EXHAUST_FAN_ALARM];
-        currentAlarms['supply_filter_alarm'] = discreteInputs[Gen3Registers.discreteInputs.SUPPLY_FILTER_ALARM];
-        currentAlarms['extract_filter_alarm'] = discreteInputs[Gen3Registers.discreteInputs.EXHAUST_FILTER_ALARM];
-        currentAlarms['filter_timer_alarm'] = discreteInputs[Gen3Registers.discreteInputs.FILTER_TIMER_ALARM];
-        currentAlarms['carbondioxide_boost_alarm'] = discreteInputs[Gen3Registers.discreteInputs.CO2_BOOST];
-        const activeAlarms = await this.checkAlarmTriggers(currentAlarms, previousAlarms, alarms);
-        if (this.hasCapability('alarm_active_alarms')) {
-            this.setCapabilityValue('alarm_active_alarms', !!activeAlarms.length).catch((err) => this.error(err));
-        }
-    }
-
-    listActiveAlarms() {
-        const currentAlarms = this.getStoreValue('alarms');
-        return {
-            allActive: this.getActiveAlarmsString(currentAlarms, alarms)
-        };
-    }
-
     async onSettings(event: {
         oldSettings: { [p: string]: any };
         newSettings: { [p: string]: any };
@@ -304,10 +221,7 @@ export class Gen3Remote extends BaseDevice {
             const prefix = `program_${program}`;
             const setting = (key: string) => newSettings[`${prefix}_${key}`];
             const updates: [string, () => Promise<void>][] = [
-                ['week_day', () => this.updateWeekProgramWeekdays(
-                    program,
-                    convertArrayOfBooleansToNumber(['sunday', 'saturday', 'friday', 'thursday', 'wednesday', 'tuesday', 'monday'].map((day) => setting(`week_day_${day}`)))
-                )],
+                ['week_day', () => this.updateWeekProgramWeekdays(program, weekdaysToMask((day) => !!setting(`week_day_${day}`)))],
                 ['start', () => this.updateWeekProgramStartTime(program, setting('start_hour'), setting('start_minute'))],
                 ['end', () => this.updateWeekProgramEndTime(program, setting('end_hour'), setting('end_minute'))],
                 ['temperature', () => this.updateWeekProgramTemperature(program, setting('temperature'))],
@@ -348,16 +262,10 @@ export class Gen3Remote extends BaseDevice {
         if (results.holdingRegisters.length) {
             const programSettings = Array.from({ length: 5 }).map((_, i) => {
                 const program = i + 1;
-                const weekdays = convertNumberToArrayOfBooleans(results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_WEEKDAYS` as keyof typeof Gen3HoldingRegisters]], 7);
+                const weekdays = results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_WEEKDAYS` as keyof typeof Gen3HoldingRegisters]];
 
                 return {
-                    [`program_${program}_week_day_monday`]: weekdays[6],
-                    [`program_${program}_week_day_tuesday`]: weekdays[5],
-                    [`program_${program}_week_day_wednesday`]: weekdays[4],
-                    [`program_${program}_week_day_thursday`]: weekdays[3],
-                    [`program_${program}_week_day_friday`]: weekdays[2],
-                    [`program_${program}_week_day_saturday`]: weekdays[1],
-                    [`program_${program}_week_day_sunday`]: weekdays[0],
+                    ...Object.fromEntries(WEEKDAYS.map((day) => [`program_${program}_week_day_${day}`, isWeekdayInMask(weekdays, day)])),
                     [`program_${program}_start_hour`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_START_HOUR` as keyof typeof Gen3HoldingRegisters]],
                     [`program_${program}_start_minute`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_START_MINUTE` as keyof typeof Gen3HoldingRegisters]],
                     [`program_${program}_end_hour`]: results.holdingRegisters[Gen3Registers.holdingRegisters[`WEEK_TIMER_PROGRAM_${program}_END_HOUR` as keyof typeof Gen3HoldingRegisters]],

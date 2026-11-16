@@ -1,0 +1,15 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "CO₂ boost active"
+    },
+    "desc": {
+        "en": "CO₂ boost active"
+    },
+    "insights": true,
+    "insightsTitleTrue": "CO₂ boost started",
+    "insightsTitleFalse": "CO₂ boost stopped",
+    "icon": "/assets/icons/speedometer.svg",
+    "getable": true,
+    "setable": false
+}

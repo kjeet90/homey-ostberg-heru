@@ -1,0 +1,15 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Cooling active"
+    },
+    "desc": {
+        "en": "Cooling active"
+    },
+    "insights": true,
+    "insightsTitleTrue": "Cooling started",
+    "insightsTitleFalse": "Cooling stopped",
+    "icon": "/assets/icons/snowflake-thermometer.svg",
+    "getable": true,
+    "setable": false
+}

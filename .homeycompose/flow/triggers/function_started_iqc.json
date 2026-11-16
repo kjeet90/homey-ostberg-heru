@@ -1,0 +1,56 @@
+{
+    "id": "function_started_iqc",
+    "title": {
+        "en": "A function started"
+    },
+    "titleFormatted": {
+        "en": "[[function]] started"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        },
+        {
+            "name": "function",
+            "type": "dropdown",
+            "title": {
+                "en": "Function"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "heating",
+                    "label": {
+                        "en": "Heating"
+                    }
+                },
+                {
+                    "id": "heat_recovery",
+                    "label": {
+                        "en": "Heat recovery"
+                    }
+                },
+                {
+                    "id": "cooling",
+                    "label": {
+                        "en": "Cooling"
+                    }
+                },
+                {
+                    "id": "co2_boost",
+                    "label": {
+                        "en": "CO₂ boost"
+                    }
+                },
+                {
+                    "id": "rh_boost",
+                    "label": {
+                        "en": "Humidity boost"
+                    }
+                }
+            ]
+        }
+    ]
+}

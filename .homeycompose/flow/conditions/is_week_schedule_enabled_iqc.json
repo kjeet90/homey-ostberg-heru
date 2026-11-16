@@ -1,0 +1,17 @@
+{
+    "id": "is_week_schedule_enabled_iqc",
+    "title": {
+        "en": "Week schedule !{{enabled|disabled}}"
+    },
+    "titleFormatted": {
+        "en": "Week schedule is !{{enabled|disabled}}"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        }
+    ]
+}

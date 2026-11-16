@@ -1,0 +1,16 @@
+{
+    "id": "sync_clock_iqc",
+    "title": {
+        "en": "Set the unit's clock to Homey's time"
+    },
+    "hint": {
+        "en": "The week and holiday schedules run on the unit's clock. Use this to correct it, for example after a daylight saving time change."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        }
+    ]
+}

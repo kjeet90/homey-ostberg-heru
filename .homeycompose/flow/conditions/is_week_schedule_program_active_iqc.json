@@ -1,0 +1,56 @@
+{
+    "id": "is_week_schedule_program_active_iqc",
+    "title": {
+        "en": "Week schedule program !{{is|isn't}} active"
+    },
+    "titleFormatted": {
+        "en": "Week schedule program [[program]] !{{is|isn't}} active"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+                "en": "Program"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "1"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "2"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "3"
+                    }
+                },
+                {
+                    "id": "4",
+                    "label": {
+                        "en": "4"
+                    }
+                },
+                {
+                    "id": "5",
+                    "label": {
+                        "en": "5"
+                    }
+                }
+            ]
+        }
+    ]
+}

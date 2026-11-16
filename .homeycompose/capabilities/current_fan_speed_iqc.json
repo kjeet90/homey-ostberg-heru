@@ -1,0 +1,41 @@
+{
+    "type": "enum",
+    "title": {
+        "en": "Current fan speed"
+    },
+    "desc": {
+        "en": "Fan speed set by the user or by the schedules"
+    },
+    "insights": true,
+    "greyout": true,
+    "icon": "/assets/icons/speedometer.svg",
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "values": [
+        {
+            "id": "0",
+            "title": {
+                "en": "Off"
+            }
+        },
+        {
+            "id": "1",
+            "title": {
+                "en": "Min"
+            }
+        },
+        {
+            "id": "2",
+            "title": {
+                "en": "Standard"
+            }
+        },
+        {
+            "id": "3",
+            "title": {
+                "en": "Max"
+            }
+        }
+    ]
+}

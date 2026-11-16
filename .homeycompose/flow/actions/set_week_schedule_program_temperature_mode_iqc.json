@@ -1,0 +1,81 @@
+{
+    "id": "set_week_schedule_program_temperature_mode_iqc",
+    "title": {
+        "en": "Set week schedule program temperature mode"
+    },
+    "titleFormatted": {
+        "en": "Set week schedule program [[program]] temperature mode to [[mode]]"
+    },
+    "hint": {
+        "en": "Economy is only used when the economy setpoint is enabled on the unit."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+                "en": "Program"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "1"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "2"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "3"
+                    }
+                },
+                {
+                    "id": "4",
+                    "label": {
+                        "en": "4"
+                    }
+                },
+                {
+                    "id": "5",
+                    "label": {
+                        "en": "5"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "mode",
+            "type": "dropdown",
+            "title": {
+                "en": "Temperature mode"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Comfort"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Economy"
+                    }
+                }
+            ]
+        }
+    ]
+}

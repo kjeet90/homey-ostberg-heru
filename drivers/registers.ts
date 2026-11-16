@@ -128,14 +128,67 @@ export enum Gen3HoldingRegisters {
 }
 
 enum IQCInputRegisters {
-    CHANGEOVER_ACTIVE = 33
+    CHANGEOVER_ACTIVE = 33,
+    // Three quality sensors, each a type (0 = none, 1 = RH, 2 = CO2, 3 = VOC) followed by its value
+    QUALITY_SENSOR_1_TYPE = 40,
+    QUALITY_SENSOR_1_VALUE,
+    QUALITY_SENSOR_2_TYPE,
+    QUALITY_SENSOR_2_VALUE,
+    QUALITY_SENSOR_3_TYPE,
+    QUALITY_SENSOR_3_VALUE
 }
 
-enum IQCHoldingRegisters {
+export enum IQCHoldingRegisters {
     SETPOINT_TEMPERATURE_ECONOMY,
     SUMMER_NIGHT_COOLING_ENABLED = 18,
     PREHEATER_ENABLED = 63,
-    HEATER_ENABLED = 66
+    HEATER_ENABLED = 66,
+    WEEK_SCHEDULE_ENABLED = 139,
+    HOLIDAY_SCHEDULE_ENABLED = 199,
+    // Reading the day copies the unit's time to a buffer, writing the seconds applies the buffer to the unit's clock
+    CLOCK_YEAR = 399,
+    CLOCK_MONTH,
+    CLOCK_DAY,
+    CLOCK_HOURS,
+    CLOCK_MINUTES,
+    CLOCK_SECONDS
+}
+
+// Week schedule program 1 starts at 4x00141, each next program 10 registers further
+export enum IQCWeekProgramField {
+    START_HOUR,
+    START_MINUTE,
+    END_HOUR,
+    END_MINUTE,
+    WEEKDAYS,
+    TEMPERATURE_MODE,
+    FAN_SPEED,
+    ENABLED
+}
+
+export function iqcWeekProgramRegister(program: number, field: IQCWeekProgramField) {
+    return 140 + (program - 1) * 10 + field;
+}
+
+// Holiday schedule program 1 starts at 4x00201, each next program 20 registers further
+export enum IQCHolidayProgramField {
+    START_YEAR,
+    // Month and day as MMDD, so 1102 is 2 November
+    START_DATE,
+    START_HOUR,
+    START_MINUTE,
+    END_YEAR,
+    END_DATE,
+    END_HOUR,
+    END_MINUTE,
+    TEMPERATURE_MODE,
+    FAN_SPEED,
+    // Bit 0 is on/off
+    ENABLED
+}
+
+export function iqcHolidayProgramRegister(program: number, field: IQCHolidayProgramField) {
+    return 200 + (program - 1) * 20 + field;
 }
 
 enum IQCDiscreteInputs {

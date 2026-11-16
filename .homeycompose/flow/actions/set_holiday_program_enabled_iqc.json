@@ -1,0 +1,108 @@
+{
+    "id": "set_holiday_program_enabled_iqc",
+    "title": {
+        "en": "Set holiday program"
+    },
+    "titleFormatted": {
+        "en": "Set holiday program [[program]] to [[state]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+                "en": "Program"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "1"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "2"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "3"
+                    }
+                },
+                {
+                    "id": "4",
+                    "label": {
+                        "en": "4"
+                    }
+                },
+                {
+                    "id": "5",
+                    "label": {
+                        "en": "5"
+                    }
+                },
+                {
+                    "id": "6",
+                    "label": {
+                        "en": "6"
+                    }
+                },
+                {
+                    "id": "7",
+                    "label": {
+                        "en": "7"
+                    }
+                },
+                {
+                    "id": "8",
+                    "label": {
+                        "en": "8"
+                    }
+                },
+                {
+                    "id": "9",
+                    "label": {
+                        "en": "9"
+                    }
+                },
+                {
+                    "id": "10",
+                    "label": {
+                        "en": "10"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+                "en": "State"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Disabled"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Enabled"
+                    }
+                }
+            ]
+        }
+    ]
+}

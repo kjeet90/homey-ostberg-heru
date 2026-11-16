@@ -12,31 +12,62 @@
         "target_temperature.eco",
         "fan_mode",
         "regulation_mode_iqc",
+        "current_fan_speed_iqc",
         "meter_temperature_outdoor_air",
         "meter_temperature_supply_air",
         "meter_temperature_waste_air",
         "meter_temperature_extract_air",
-        "meter_temperature_heat_recovery_wheel",
         "meter_temperature_room",
-        "meter_thermal_efficiency",
-        "meter_temperature_water",
+        "measure_co2",
+        "co2_boost_active_iqc",
         "meter_humidity_relative",
+        "rh_boost_active_iqc",
+        "heat_recovery_active_iqc",
+        "meter_power_heat_recovery",
+        "meter_temperature_heat_recovery_wheel",
+        "meter_thermal_efficiency",
+        "preheater_enabled_iqc",
+        "heater_enabled_iqc",
+        "heating_active_iqc",
+        "meter_power_heating",
+        "cooling_active_iqc",
+        "meter_temperature_water",
         "meter_rpm_supply",
         "meter_rpm_extract",
         "meter_power_supply",
         "meter_power_extract",
         "meter_pressure_supply",
         "meter_pressure_extract",
-        "meter_power_heating",
         "alarm_active_alarms",
         "meter_filter_timer",
-        "preheater_enabled_iqc",
-        "heater_enabled_iqc",
+        "button.reset_filter_timer",
+        "button.clear_alarms",
+        "week_schedule_enabled_iqc",
+        "week_schedule_active_program_iqc",
+        "holiday_schedule_enabled_iqc",
         "summer_night_cooling_enabled",
         "meter_power",
         "measure_power"
     ],
     "capabilitiesOptions": {
+        "button.reset_filter_timer": {
+            "maintenanceAction": true,
+            "title": {
+                "en": "Reset filter timer"
+            },
+            "desc": {
+                "en": "Starts a new filter period. Do this after replacing the filters, then use Clear alarms to dismiss the filter alarm."
+            }
+        },
+        "button.clear_alarms": {
+            "maintenanceAction": true,
+            "title": {
+                "en": "Clear alarms"
+            },
+            "desc": {
+                "en": "Dismisses the active alarms on the unit. An alarm whose cause is still present comes back."
+            }
+        },
         "target_temperature": {
             "title": {
                 "en": "Comfort target temperature"

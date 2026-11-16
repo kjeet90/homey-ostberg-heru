@@ -1,0 +1,38 @@
+{
+    "id": "set_week_schedule_enabled_iqc",
+    "title": {
+        "en": "Set week schedule"
+    },
+    "titleFormatted": {
+        "en": "Set week schedule to [[state]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        },
+        {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+                "en": "State"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Disabled"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Enabled"
+                    }
+                }
+            ]
+        }
+    ]
+}

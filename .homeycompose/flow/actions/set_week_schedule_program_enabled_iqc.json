@@ -1,0 +1,78 @@
+{
+    "id": "set_week_schedule_program_enabled_iqc",
+    "title": {
+        "en": "Set week schedule program"
+    },
+    "titleFormatted": {
+        "en": "Set week schedule program [[program]] to [[state]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+                "en": "Program"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "1"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "2"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "3"
+                    }
+                },
+                {
+                    "id": "4",
+                    "label": {
+                        "en": "4"
+                    }
+                },
+                {
+                    "id": "5",
+                    "label": {
+                        "en": "5"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+                "en": "State"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Disabled"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Enabled"
+                    }
+                }
+            ]
+        }
+    ]
+}

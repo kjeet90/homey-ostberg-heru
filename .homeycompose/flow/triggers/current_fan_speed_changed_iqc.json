@@ -1,0 +1,26 @@
+{
+    "id": "current_fan_speed_changed_iqc",
+    "title": {
+        "en": "Current fan speed changed"
+    },
+    "hint": {
+        "en": "The fan speed set by the user or by the schedules changed."
+    },
+    "tokens": [
+        {
+            "name": "speed",
+            "type": "string",
+            "title": {
+                "en": "Fan speed"
+            },
+            "example": "Standard"
+        }
+    ],
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        }
+    ]
+}

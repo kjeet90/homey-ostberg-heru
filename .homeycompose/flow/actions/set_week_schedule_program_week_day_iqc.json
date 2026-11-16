@@ -1,0 +1,130 @@
+{
+    "id": "set_week_schedule_program_week_day_iqc",
+    "title": {
+        "en": "Set week schedule program weekday"
+    },
+    "titleFormatted": {
+        "en": "Set week schedule program [[program]] weekday [[week_day]] to [[state]]"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        },
+        {
+            "name": "program",
+            "type": "dropdown",
+            "title": {
+                "en": "Program"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "1"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "2"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "3"
+                    }
+                },
+                {
+                    "id": "4",
+                    "label": {
+                        "en": "4"
+                    }
+                },
+                {
+                    "id": "5",
+                    "label": {
+                        "en": "5"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "week_day",
+            "type": "dropdown",
+            "title": {
+                "en": "Weekday"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "monday",
+                    "label": {
+                        "en": "Monday"
+                    }
+                },
+                {
+                    "id": "tuesday",
+                    "label": {
+                        "en": "Tuesday"
+                    }
+                },
+                {
+                    "id": "wednesday",
+                    "label": {
+                        "en": "Wednesday"
+                    }
+                },
+                {
+                    "id": "thursday",
+                    "label": {
+                        "en": "Thursday"
+                    }
+                },
+                {
+                    "id": "friday",
+                    "label": {
+                        "en": "Friday"
+                    }
+                },
+                {
+                    "id": "saturday",
+                    "label": {
+                        "en": "Saturday"
+                    }
+                },
+                {
+                    "id": "sunday",
+                    "label": {
+                        "en": "Sunday"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+                "en": "State"
+            },
+            "required": true,
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Disabled"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Enabled"
+                    }
+                }
+            ]
+        }
+    ]
+}

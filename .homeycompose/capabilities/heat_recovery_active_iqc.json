@@ -1,0 +1,15 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Heat recovery active"
+    },
+    "desc": {
+        "en": "Heat recovery active"
+    },
+    "insights": true,
+    "insightsTitleTrue": "Heat recovery started",
+    "insightsTitleFalse": "Heat recovery stopped",
+    "icon": "/assets/icons/recovery.svg",
+    "getable": true,
+    "setable": false
+}

@@ -1,0 +1,15 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Heating active"
+    },
+    "desc": {
+        "en": "Heating active"
+    },
+    "insights": true,
+    "insightsTitleTrue": "Heating started",
+    "insightsTitleFalse": "Heating stopped",
+    "icon": "/assets/icons/heating.svg",
+    "getable": true,
+    "setable": false
+}

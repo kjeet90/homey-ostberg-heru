@@ -1,0 +1,17 @@
+{
+    "id": "is_holiday_schedule_enabled_iqc",
+    "title": {
+        "en": "Holiday schedule !{{enabled|disabled}}"
+    },
+    "titleFormatted": {
+        "en": "Holiday schedule is !{{enabled|disabled}}"
+    },
+    "highlight": true,
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=iqc-touch"
+        }
+    ]
+}

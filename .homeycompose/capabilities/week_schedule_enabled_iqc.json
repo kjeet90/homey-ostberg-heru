@@ -1,0 +1,16 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Week schedule enabled"
+    },
+    "desc": {
+        "en": "Week schedule enabled - See the device settings to program the week schedule"
+    },
+    "uiComponent": "button",
+    "getable": true,
+    "setable": true,
+    "icon": "/assets/icons/schedule.svg",
+    "insights": true,
+    "insightsTitleTrue": "Week schedule enabled",
+    "insightsTitleFalse": "Week schedule disabled"
+}

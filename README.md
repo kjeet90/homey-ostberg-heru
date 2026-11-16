@@ -45,7 +45,7 @@ Since Östberg has changed naming convention between the Gen 3 and the IQC for E
 -   Waste: From the unit and out of the house
 -   Outdoor: From the outside and in to the unit
 
-**Reset filter timer** and **Clear alarms** are available for Gen 3 under *Device settings → Maintenance actions*. They are written as a single coil write (Modbus function 5), as an earlier attempt with function 15 did not work. Resetting the filter timer does not dismiss the filter alarm, use **Clear alarms** for that.
+**Reset filter timer** and **Clear alarms** are available for Gen 3 and IQC Touch under *Device settings → Maintenance actions*. They are written as a single coil write (Modbus function 5), as an earlier attempt with function 15 did not work. Resetting the filter timer does not dismiss the filter alarm, use **Clear alarms** for that.
 
 Alarms used to be read from the wrong Modbus addresses, which caused false **Supply fan** and **Extract fan** alarms during normal operation (they were actually the *Heating* and *Heat recovery* status). This is fixed, so after updating the alarms reflect the real state of the unit.
 
@@ -53,11 +53,31 @@ Alarms used to be read from the wrong Modbus addresses, which caused false **Sup
 
 The week timer runs on the unit's own clock. Enable **Keep the unit's clock in sync with Homey** in the device settings to have the app correct the clock whenever it is more than 2 minutes off (for example after a daylight saving time change), or use the **Set the unit's clock to Homey's time** flow card.
 
+### IQC Touch: schedules and clock
+
+The week schedule (5 programs) and the holiday schedule (10 programs) of the IQC are shown in the device settings, and follow changes made on the IQC panel. Each program has a fan speed (Standby, Min, Standard or Max, as the IQC has four fan speeds) and a temperature mode (Comfort or Economy, Economy is only used when the economy setpoint is enabled on the unit). Holiday programs take a start and end date as YYYY-MM-DD. Both schedules can also be changed with flow cards.
+
+Like the Gen 3 week timer, the schedules run on the unit's own clock. Enable **Keep the unit's clock in sync with Homey** or use the **Set the unit's clock to Homey's time** flow card.
+
+CO₂ and relative humidity are read from the RH/CO₂/VOC sensors connected to the unit. When two sensors of the same type are connected, the highest value is shown, as the unit does.
+
+The schedule, clock and sensor registers are read separately from the rest. If the unit's firmware doesn't have them, these features are skipped and the rest of the device keeps working.
+
 ## Disclaimer
 
 -   I take no responsibility for any damages caused by the use of this app.
 
 # Changelog
+
+## Unreleased
+
+### Feature
+- IQC Touch: Week schedule and holiday schedule in the device settings, with flow cards to change them
+- IQC Touch: Current fan speed, set by the user or the schedules
+- IQC Touch: Heating, heat recovery, cooling, CO₂ boost and humidity boost status, with flow cards for when they start or stop
+- IQC Touch: CO₂, relative humidity and heat recovery power
+- IQC Touch: Keep the unit's clock in sync with Homey, and a flow card to set it
+- IQC Touch: Reset the filter timer and clear alarms from the device's maintenance actions
 
 ## 1.8.0
 
